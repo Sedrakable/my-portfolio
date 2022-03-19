@@ -1,0 +1,5 @@
+nav {
+  background: $black;
+  height: 64px;
+  @include flex;
+}
