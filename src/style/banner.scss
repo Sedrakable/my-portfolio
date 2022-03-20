@@ -1,0 +1,21 @@
+.banner {
+  margin: 0 auto;
+  width: fit-content;
+  @include flex;
+  gap: 32px;
+  padding-top: 64px;
+  h2 {
+    color: $gray;
+  }
+  span {
+    font-size: 30px;
+    padding: 0 8px;
+    color: $white;
+  }
+  .phrase {
+    color: $white;
+  }
+  image {
+    object-fit: cover;
+  }
+}

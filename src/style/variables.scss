@@ -2,7 +2,7 @@
 
 $black: #262729;
 $primary: #feb701;
-$gray: #babbbf;
+$gray: #7c7d80;
 $white: #f5f6fa;
 
 $header-font: "Bebas Neue", cursive;
@@ -13,21 +13,25 @@ h1 {
   color: $primary;
   font-size: 64px;
   line-height: 100%;
+  letter-spacing: 0.02em;
+  margin: 0 auto;
 }
 
 h2 {
   font-family: $header-font;
-  color: $primary;
+  color: $white;
   font-size: 28px;
   line-height: 110%;
-  letter-spacing: 0.02em;
+  letter-spacing: 0.04em;
+  margin: 0 auto;
 }
 
 h3 {
   font-family: $header-font;
   color: $primary;
   font-size: 16px;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.06em;
+  margin: 0 auto;
 }
 
 p {
@@ -37,4 +41,5 @@ p {
 }
 body {
   background: $black;
+  margin: 0 auto;
 }

@@ -1,13 +1,22 @@
 import React from "react";
 import ReactDOM from "react-dom";
+import MainLogo from "./MainLogo";
 
 function Navbar() {
   return (
     <nav>
-      <h1>Hello</h1>
-      <h2>Hello</h2>
-      <h3>Hello</h3>
-      <p>Hello</p>
+      <MainLogo />
+      <div className="tabs">
+        <a className="active" href="#">
+          <h2>Home</h2>
+        </a>
+        <a href="#">
+          <h2>About</h2>
+        </a>
+        <a href="#">
+          <h2>Projects</h2>
+        </a>
+      </div>
     </nav>
   );
 }
