@@ -4,6 +4,8 @@ import Navbar from "./components/Navbar";
 import NavbarColumn from "./components/NavbarColumn";
 import Banner from "./components/Banner";
 import Cards from "./components/Cards";
+import About from "./components/About";
+import Background from "./components/Background";
 
 class App extends React.Component {
   constructor(props) {
@@ -12,7 +14,12 @@ class App extends React.Component {
     this.navColumn = React.createRef();
   }
 
+  initialize = () => {
+    this.navColumn.current.style.left = `${-100}px`;
+  };
+
   componentDidMount = () => {
+    this.initialize();
     window.addEventListener("scroll", this.onScroll, true);
   };
 
@@ -28,9 +35,9 @@ class App extends React.Component {
     const ratio = (navHeight - scrollY) / navHeight;
     const xColumn = ratio * navColumnWidth;
 
-    console.log(
-      "navY: " + ratio + " navHeight: " + navColumnWidth + " Ratio: " + xColumn
-    );
+    // console.log(
+    //   "navY: " + ratio + " navHeight: " + navColumnWidth + " Ratio: " + xColumn
+    // );
 
     this.navbarOpacity(nav, ratio);
     this.navbarMove(navColumn, xColumn, ratio);
@@ -48,6 +55,7 @@ class App extends React.Component {
   render() {
     return (
       <div className="App">
+        <Background />
         <Navbar ref={this.nav} />
         <NavbarColumn ref={this.navColumn} />
         <div className="container">
@@ -55,6 +63,10 @@ class App extends React.Component {
           <div className="projects">
             <h2>Projects</h2>
             <Cards />
+          </div>
+          <div className="projects">
+            <h2>Projects</h2>
+            <About />
           </div>
         </div>
       </div>
