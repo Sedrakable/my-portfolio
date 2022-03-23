@@ -3,19 +3,33 @@
   width: fit-content;
   @include flex;
   gap: 32px;
-  padding-top: 64px;
-  h2 {
-    color: $gray;
+  margin: 96px 0;
+  .text {
+    text-align: start;
+    h1 {
+      text-shadow: $shadow;
+    }
+    h2 {
+      color: $gray;
+    }
+    span {
+      font-size: 30px;
+      padding: 0 8px;
+      color: $white;
+    }
+    .phrase {
+      color: $white;
+    }
   }
-  span {
-    font-size: 30px;
-    padding: 0 8px;
-    color: $white;
-  }
-  .phrase {
-    color: $white;
-  }
-  image {
-    object-fit: cover;
+  svg {
+    width: 320px;
+    image {
+      x: -100;
+      y: -60;
+    }
+    polygon {
+      stroke: $primary !important;
+      stroke-width: 6px !important;
+    }
   }
 }

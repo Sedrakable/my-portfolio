@@ -3,3 +3,31 @@
   justify-content: $x;
   align-items: $y;
 }
+
+@mixin bcb(
+  $background: transparent,
+  $color: transparent,
+  $border: transparent
+) {
+  background-color: $background;
+  color: $color;
+  border: 2px solid $border;
+}
+
+@mixin gradient {
+  background: linear-gradient(90deg, $primary, $secondary, $primary);
+  background-size: 400% 400%;
+  animation: gradient 8s ease infinite;
+}
+
+@keyframes gradient {
+  0% {
+    background-position: 0% 0%;
+  }
+  50% {
+    background-position: 100% 0%;
+  }
+  100% {
+    background-position: 0% 0%;
+  }
+}

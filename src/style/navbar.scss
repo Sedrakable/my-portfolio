@@ -1,8 +1,12 @@
 nav {
   @include flex(space-between);
   height: fit-content;
-  background: $black;
-  padding: 16px 128px;
+  padding: 8px 128px;
+  background: $dark-gray;
+  position: fixed;
+  top: 0;
+  right: 0;
+  left: 0;
 }
 
 .tabs {

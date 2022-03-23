@@ -1,20 +1,29 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
-$black: #262729;
-$primary: #feb701;
+$black: hsl(220, 4%, 10%);
+$dark-gray: #262729;
+$primary: hsl(32, 99%, 50%);
+$secondary: #feb701;
 $gray: #7c7d80;
 $white: #f5f6fa;
+$shadow: 2px 2px 4px 4px rgba(0, 0, 0, 0.1);
+$shadow-big: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
 
 $header-font: "Bebas Neue", cursive;
 $main-font: Calibri, sans-serif;
+
+body {
+  background: $black;
+  margin: 0 auto;
+}
 
 h1 {
   font-family: $header-font;
   color: $primary;
   font-size: 64px;
   line-height: 100%;
-  letter-spacing: 0.02em;
   margin: 0 auto;
+  font-weight: 400;
 }
 
 h2 {
@@ -22,8 +31,8 @@ h2 {
   color: $white;
   font-size: 28px;
   line-height: 110%;
-  letter-spacing: 0.04em;
   margin: 0 auto;
+  font-weight: 400;
 }
 
 h3 {
@@ -32,14 +41,36 @@ h3 {
   font-size: 16px;
   letter-spacing: 0.06em;
   margin: 0 auto;
+  font-weight: 400;
 }
 
 p {
   font-family: $main-font;
   color: $white;
   font-size: 16px;
+  font-weight: 400;
+  margin: 0;
 }
-body {
-  background: $black;
-  margin: 0 auto;
+
+a {
+  text-decoration: none;
+  font-family: $main-font;
+  color: $white;
+  font-size: 16px;
+  font-weight: 600;
+  line-height: 18px;
+}
+
+.App {
+  width: 100%;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0 15%;
+  margin-bottom: 64px;
+  gap: 64px;
+  text-align: center;
 }
