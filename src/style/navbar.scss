@@ -1,4 +1,4 @@
-nav {
+.navbar {
   @include flex(space-between);
   height: fit-content;
   padding: 8px 128px;
@@ -7,19 +7,58 @@ nav {
   top: 0;
   right: 0;
   left: 0;
+  .tabs {
+    @include flex;
+    gap: 24px;
+    height: fit-content;
+    a {
+      text-decoration: none;
+    }
+    .active {
+      h2 {
+        border-bottom: 2px solid $primary;
+        // color: $primary;
+      }
+    }
+  }
 }
 
-.tabs {
-  @include flex;
-  gap: 24px;
-  height: fit-content;
-  a {
-    text-decoration: none;
-  }
-  .active {
-    h2 {
-      border-bottom: 2px solid $primary;
-      // color: $primary;
+.navbarColumn {
+  @include flex(flex-start);
+  flex-direction: column;
+  width: fit-content;
+  background: $dark-gray;
+  padding: 64px 12px;
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  .tabs {
+    @include flex;
+    flex-direction: column;
+    margin-top: 128px;
+    gap: 4px;
+    width: fit-content;
+    a {
+      margin-top: 4px;
+      text-decoration: none;
+      h3 {
+        color: $gray;
+      }
+    }
+    .bar {
+      height: 2px;
+      width: 100%;
+      background: $black;
+    }
+    .active {
+      h2 {
+        border-bottom: 2px solid $primary;
+        // color: $primary;
+      }
+      h3 {
+        color: $primary;
+      }
     }
   }
 }

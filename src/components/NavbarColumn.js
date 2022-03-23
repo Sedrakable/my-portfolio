@@ -2,21 +2,23 @@ import React from "react";
 import ReactDOM from "react-dom";
 import MainLogo from "./MainLogo";
 
-const Navbar = React.forwardRef((props, ref) => (
-  <nav className="navbar" ref={ref}>
+const NavbarColumn = React.forwardRef((props, ref) => (
+  <nav className="navbarColumn" ref={ref}>
     <MainLogo />
     <div className="tabs">
       <a className="active" href="#">
-        <h2>Home</h2>
+        <h3>Home</h3>
       </a>
+      <div className="bar"></div>
       <a href="#">
-        <h2>About</h2>
+        <h3>About</h3>
       </a>
+      <div className="bar"></div>
       <a href="#">
-        <h2>Projects</h2>
+        <h3>Projects</h3>
       </a>
     </div>
   </nav>
 ));
 
-export default Navbar;
+export default NavbarColumn;
