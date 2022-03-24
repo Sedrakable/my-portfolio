@@ -70,13 +70,12 @@ a {
   justify-content: flex-start;
   align-items: center;
   margin: 0 15% 0 calc(15% + 58px);
-  margin-bottom: 64px;
   gap: 64px;
   text-align: center;
 }
 
 .d-none {
-  display: none;
+  display: none !important;
 }
 
 .v-none {

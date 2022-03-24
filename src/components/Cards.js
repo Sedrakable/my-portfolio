@@ -56,7 +56,7 @@ class Cards extends Component {
         {cards.map((card, index) => {
           return (
             <Card
-              key={index}
+              id={index}
               src={card.src}
               title={card.title}
               langs={card.langs}

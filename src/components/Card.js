@@ -5,7 +5,7 @@ class Card extends Component {
   render() {
     return (
       <div className="card">
-        <img key={this.props.key} src={this.props.src} />
+        <img key={this.props.id} src={this.props.src} />
         <div className="info">
           <h2>{this.props.title}</h2>
           <div className="langs">

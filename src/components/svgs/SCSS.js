@@ -14,7 +14,7 @@ class SCSS extends Component {
       >
         <path
           fill="currentColor"
-          fill-rule="evenodd"
+          fillRule="evenodd"
           d="M16 2A14 14 0 1 1 2 16A14 14 0 0 1 16 2Z"
         />
         <path

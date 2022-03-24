@@ -12,17 +12,19 @@ class Background extends Component {
 
   move = (event) => {
     // console.log("x:" + event.clientY + "dom: " + this.glow);
-    const glow = this.glow.current;
-    // glow.style.animation = "none";
-    const clone = glow.cloneNode(true);
+    // const glow = this.glow.current;
+    this.glow.current.classList.remove("pulse");
+    const clone = this.glow.current.cloneNode(true);
     clone.classList.add("shutdown");
-    glow.after(clone);
+
+    this.glow.current.after(clone);
 
     this.track(clone, event);
-    this.track(glow, event);
+    this.track(this.glow.current, event);
 
     const timeout = setTimeout(() => {
       clone.remove();
+      this.glow.current.classList.add("pulse");
       // glow.style.animation = "2s pulse infinite";
     }, 1900);
   };

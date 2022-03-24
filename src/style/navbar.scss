@@ -1,5 +1,5 @@
 .navbar {
-  @include flex(space-between);
+  @include flex(space-between, flex-end);
   height: fit-content;
   padding: 8px 128px;
   background: $dark-gray;
@@ -11,6 +11,7 @@
     @include flex;
     gap: 24px;
     height: fit-content;
+    padding-bottom: 4px;
     a {
       text-decoration: none;
     }
