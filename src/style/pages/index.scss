@@ -53,6 +53,7 @@
   margin: 32px 0;
   box-shadow: $shadow;
   cursor: pointer;
+  animation: hover-small infinite 2s;
   &:hover {
     animation: hover infinite 2s;
   }
@@ -68,17 +69,33 @@
   }
 }
 
+@mixin animBase {
+  transform: translateY(0px) scale(1);
+  box-shadow: 0 0 2px 2px rgba($primary, 0.4);
+}
+
 @keyframes hover {
   0% {
-    transform: translateY(0px) scale(1);
-    box-shadow: 0 0 2px 2px rgba($primary, 0.4);
+    @include animBase;
   }
   50% {
     transform: translateY(-2px) scale(1.1);
     box-shadow: 0 0 12px 12px rgba($primary, 0.4);
   }
   100% {
-    transform: translateY(0px) scale(1);
-    box-shadow: 0 0 2px 2px rgba($primary, 0.4);
+    @include animBase;
+  }
+}
+
+@keyframes hover-small {
+  0% {
+    @include animBase;
+  }
+  50% {
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 0 6px 6px rgba($primary, 0.4);
+  }
+  100% {
+    @include animBase;
   }
 }

@@ -15,6 +15,7 @@ class App extends React.Component {
     this.nav = React.createRef();
     this.navColumn = React.createRef();
     this.scrollBtn = React.createRef();
+    this.state = { scrolled: false };
   }
 
   initialize = () => {
@@ -28,6 +29,7 @@ class App extends React.Component {
   };
 
   onScroll = () => {
+    this.state.scrolled = true;
     const scrollY = window.scrollY; //Don't get confused by what's scrolling - It's not the window
 
     const navHeight = this.nav.current.offsetHeight;
@@ -78,16 +80,43 @@ class App extends React.Component {
   createObserver = () => {
     const options = {
       root: null,
-      rootMargin: "-64px 0px",
+      rootMargin: "-360px 0px",
     };
 
-    console.log(options);
     const boxes = this.container.current.childNodes;
+
+    // const observer = new IntersectionObserver((entries) => {
+    //   entries.forEach((entry) => {
+    //     const index = this.getBoxIndex(entry.target);
+    //     console.log(entry);
+    //     if (index > 0 && this.state.scrolled) {
+    //       const previousButton =
+    //         this.container.current.childNodes[index - 1].querySelector(
+    //           ".btn-scroll"
+    //         );
+    //       console.log(!previousButton.classList.contains("d-none"));
+    //       if (!previousButton.classList.contains("d-none")) {
+    //         previousButton.classList.add("d-none");
+    //       }
+    //     }
+    //     if (entry.isIntersecting) {
+    //       this.container.current.childNodes[index]
+    //         .querySelector(".btn-scroll")
+    //         .classList.remove("d-none");
+    //     }
+    //   });
+    // }, options);
 
     const observer = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
+        console.log(entry);
+
         const index = this.getBoxIndex(entry.target);
         console.log(index);
+
+        this.container.current.childNodes[index]
+          .querySelector(".btn-scroll")
+          .classList.toggle("d-none", !entry.isIntersecting);
       });
     }, options);
 
@@ -105,7 +134,10 @@ class App extends React.Component {
         <div className="container" ref={this.container}>
           <div className="box">
             <Banner />
-            <ScrollButton customClickEvent={this.scrollPage} />
+            <ScrollButton
+              customClickEvent={this.scrollPage}
+              display={"d-none"}
+            />
           </div>
           <div className="box">
             <h1 className="title">Projects</h1>
