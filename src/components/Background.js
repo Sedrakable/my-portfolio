@@ -13,6 +13,7 @@ class Background extends Component {
   move = (event) => {
     // console.log("x:" + event.clientY + "dom: " + this.glow);
     const glow = this.glow.current;
+    // glow.style.animation = "none";
     const clone = glow.cloneNode(true);
     clone.classList.add("shutdown");
     glow.after(clone);
@@ -22,6 +23,7 @@ class Background extends Component {
 
     const timeout = setTimeout(() => {
       clone.remove();
+      // glow.style.animation = "2s pulse infinite";
     }, 1900);
   };
 
@@ -42,7 +44,7 @@ class Background extends Component {
     return (
       <div className="background">
         <div className="grid"></div>
-        <div ref={this.glow} className="glow"></div>
+        <div ref={this.glow} className="glow pulse"></div>
       </div>
     );
   }

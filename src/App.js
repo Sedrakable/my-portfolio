@@ -61,11 +61,11 @@ class App extends React.Component {
         <div className="container">
           <Banner />
           <div className="projects">
-            <h2>Projects</h2>
+            <h1 className="title">Projects</h1>
             <Cards />
           </div>
           <div className="projects">
-            <h2>Projects</h2>
+            <h1 className="title">About</h1>
             <About />
           </div>
         </div>

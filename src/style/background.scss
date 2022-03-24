@@ -1,7 +1,6 @@
 .background {
   z-index: -1;
   //background-image: url("data:image/svg+xml,<svg fill='#000' xmlns='http://www.w3.org/2000/svg' width='32' viewBox='0 0 499.14 864'><polygon points='499.14 176 499.14 688 277.3 560 277.3 304 499.14 176'/><polygon points='471.4 736 471.4 864 27.73 864 27.73 736 249.57 608 471.4 736'/><polygon points='221.84 304 221.84 560 0 688 0 176 221.84 304'/><polygon points='471.41 0 471.41 128 249.57 256 27.73 128 27.73 0 471.41 0'/></svg>");
-
   position: fixed;
   top: 0;
   bottom: 0;
@@ -29,11 +28,26 @@
     animation: 2000ms shutdown;
     animation-iteration-count: 1;
   }
+  .pulse {
+    animation: 2s pulse infinite;
+  }
 }
 
 @keyframes shutdown {
   to {
     box-shadow: 0 0 0px 0px rgba($primary, 0.8);
     opacity: 0;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 16px 16px rgba($primary, 0.8);
+  }
+  50% {
+    box-shadow: 0 0 24px 24px rgba($primary, 1);
+  }
+  100% {
+    box-shadow: 0 0 16px 16px rgba($primary, 0.8);
   }
 }

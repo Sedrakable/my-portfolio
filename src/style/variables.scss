@@ -1,7 +1,7 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
-$black: hsl(220, 6%, 10%);
-$dark-gray: #1f2023;
+$black: hsl(220, 6%, 8%);
+$dark-gray: hsl(220, 6%, 12%);
 $primary: hsl(32, 99%, 50%);
 $secondary: #feb701;
 $gray: #7c7d80;
@@ -47,8 +47,8 @@ h3 {
 p {
   font-family: $main-font;
   color: $white;
-  font-size: 16px;
-  font-weight: 400;
+  font-size: 18px;
+  font-weight: 300;
   margin: 0;
 }
 
@@ -69,7 +69,7 @@ a {
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin: 0 15%;
+  margin: 0 15% 0 calc(15% + 58px);
   margin-bottom: 64px;
   gap: 64px;
   text-align: center;
@@ -81,4 +81,10 @@ a {
 
 .v-none {
   visibility: hidden;
+}
+
+.bar {
+  height: 2px;
+  width: 100%;
+  background: $black;
 }

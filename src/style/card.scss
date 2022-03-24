@@ -1,16 +1,16 @@
 .cards {
   @include flex;
   gap: 64px;
-  margin: 0;
-  margin-top: 32px;
+  margin: 0 auto;
   flex-wrap: wrap;
   width: fit-content;
 }
 
 .card {
   box-shadow: $shadow;
-  width: 320px;
-  background-color: $dark-gray;
+  min-width: 320px;
+  max-width: 320px;
+  background-color: $black;
   height: fit-content;
   gap: 0;
   transition: 200ms;

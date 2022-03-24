@@ -1,15 +1,34 @@
-.projects > {
-  h2 {
+.projects {
+  padding: 32px 32px;
+  gap: 32px;
+  .title {
     color: $white;
     border-bottom: 2px solid $primary;
     width: fit-content;
     padding: 0 16px;
+    margin: 0;
   }
 }
 
-.projects {
+.about {
+  padding: 48px;
+  background-color: $black;
+  text-align: start;
   width: fit-content;
-  background: $dark-gray;
-  padding: 32px 0;
   box-shadow: $shadow;
+  border-left: 32px solid $dark-gray;
+  border-right: 32px solid $dark-gray;
+  h2 {
+    width: 75%;
+    text-align: start;
+    color: $gray;
+    padding: 4px 0;
+  }
+}
+
+.lil-container,
+.projects {
+  @include flex;
+  flex-direction: column;
+  width: 100%;
 }

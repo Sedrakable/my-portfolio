@@ -11,7 +11,7 @@ function Banner() {
         <h2>
           Hello, I'm <span>Sedrak</span> and i'm a
         </h2>
-        <h1>Front End Development</h1>
+        <h1>Front End Developer</h1>
         <h2 className="phrase">Making simple UI with complex designs </h2>
       </div>
       <Hexagon

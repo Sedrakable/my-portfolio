@@ -1,16 +1,20 @@
 .banner {
   margin: 0 auto;
-  width: fit-content;
+  max-width: fit-content;
   @include flex;
+  flex-wrap: wrap-reverse;
   gap: 32px;
   margin: 192px 0 96px 0;
   .text {
+    margin-left: 64px;
     text-align: start;
     h1 {
-      text-shadow: $shadow;
+      width: fit-content;
     }
     h2 {
+      margin: 0;
       color: $gray;
+      width: fit-content;
     }
     span {
       font-size: 30px;
