@@ -29,7 +29,7 @@ h1 {
 h2 {
   font-family: $header-font;
   color: $white;
-  font-size: 28px;
+  font-size: 32px;
   line-height: 110%;
   margin: 0 auto;
   font-weight: 400;
@@ -38,7 +38,7 @@ h2 {
 h3 {
   font-family: $header-font;
   color: $primary;
-  font-size: 16px;
+  font-size: 18px;
   letter-spacing: 0.06em;
   margin: 0 auto;
   font-weight: 400;
@@ -80,10 +80,4 @@ a {
 
 .v-none {
   visibility: hidden;
-}
-
-.bar {
-  height: 2px;
-  width: 100%;
-  background: $black;
 }

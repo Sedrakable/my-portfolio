@@ -6,15 +6,19 @@ const Navbar = React.forwardRef((props, ref) => (
   <nav className="navbar" ref={ref}>
     <MainLogo />
     <div className="tabs">
-      <a className="active" href="#">
-        <h2>Home</h2>
-      </a>
-      <a href="#">
-        <h2>About</h2>
-      </a>
-      <a href="#">
-        <h2>Projects</h2>
-      </a>
+      {props.tabs.map((tab, index) => {
+        return (
+          <a
+            className={index === 0 ? "active" : ""}
+            onClick={(e) => {
+              props.customClickEvent(e, index);
+            }}
+            href="#"
+          >
+            <h2>{tab.title}</h2>
+          </a>
+        );
+      })}
     </div>
   </nav>
 ));

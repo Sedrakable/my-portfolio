@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 const ScrollButton = React.forwardRef((props, ref) => (
   <div
-    className={"btn-scroll " + props.display}
+    className={"btn-scroll d-none"}
     ref={ref}
     onClick={(e) => {
       props.customClickEvent(e);
