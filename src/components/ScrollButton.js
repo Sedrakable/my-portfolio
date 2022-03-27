@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import Hexagon from "react-hexagon";
 
 const ScrollButton = React.forwardRef((props, ref) => (
   <div
@@ -14,6 +15,7 @@ const ScrollButton = React.forwardRef((props, ref) => (
         <polygon className="cls-2" points="0 64 0 96 55.46 64 27.73 48 0 64" />
       </g>
     </svg>
+    <Hexagon className="hex" />
   </div>
 ));
 

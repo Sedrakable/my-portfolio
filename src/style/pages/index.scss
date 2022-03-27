@@ -21,37 +21,6 @@
   }
 }
 
-.btn-scroll {
-  z-index: 2;
-  @include flex;
-  position: fixed;
-  bottom: 0;
-  left: 50%;
-  right: 50%;
-  width: 64px;
-  height: 64px;
-  background: $white;
-  border: 2px solid $orange;
-  border-radius: 50%;
-  margin: 32px 0;
-  box-shadow: $shadow;
-  cursor: pointer;
-  animation: hover-small infinite 2s;
-  &:hover {
-    animation: hover infinite 2s;
-  }
-  svg {
-    width: 32px;
-    transform: rotate(90deg) translateX(4px);
-  }
-  .cls-1 {
-    fill: $primary;
-  }
-  .cls-2 {
-    fill: $orange;
-  }
-}
-
 .about {
   padding: 48px;
   background-color: $black;
