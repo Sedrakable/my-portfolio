@@ -46,7 +46,7 @@ class Background extends Component {
     return (
       <div className="background">
         <div className="grid"></div>
-        <div ref={this.glow} className="glow pulse"></div>
+        <div ref={this.glow} className="cursor glow pulse"></div>
       </div>
     );
   }

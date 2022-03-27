@@ -5,6 +5,8 @@ import NavbarColumn from "./components/NavbarColumn";
 import Banner from "./components/Banner";
 import Cards from "./components/Cards";
 import About from "./components/About";
+import Contact from "./components/Contact";
+
 import Background from "./components/Background";
 import ScrollButton from "./components/ScrollButton";
 
@@ -141,6 +143,7 @@ class App extends React.Component {
       { title: "Intro", component: <Banner icons={icons} /> },
       { title: "Projects", component: <Cards /> },
       { title: "About", component: <About /> },
+      { title: "Contact", component: <Contact /> },
     ];
 
     return (

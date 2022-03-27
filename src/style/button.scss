@@ -1,0 +1,13 @@
+.btn {
+  @include bcb($primary, $black, $primary);
+  width: fit-content;
+  padding: 6px 18px 4px 18px;
+  background: linear-gradient($primary 50%, $black 50%);
+  background-size: 100% 200%;
+  transition: 100ms;
+  &:hover {
+    background-position: 0% 100%;
+    transition: 200ms;
+    color: $primary;
+  }
+}

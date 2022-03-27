@@ -23,6 +23,7 @@ class Banner extends React.Component {
             backgroundSize={640}
             backgroundImage={require("../content/avatar.JPG")}
           />
+          <Hexagon className="flying blur" />
           <Hexagon className="flying expand" />
           <Hexagon className="flying expand one" />
           <Hexagon className="flying expand two" />

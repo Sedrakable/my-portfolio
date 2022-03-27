@@ -1,0 +1,54 @@
+form {
+  @include flex;
+  background: $dark-gray;
+
+  flex-direction: column;
+  gap: 16px;
+  width: 70%;
+  padding: 32px 64px 16px 64px;
+  .top {
+    @include flex;
+    width: 100%;
+    gap: 16px;
+  }
+}
+
+input {
+  @include bcb($black, $white);
+  flex-grow: 1;
+  width: 100%;
+  border: none;
+  border-bottom: 2px solid $primary;
+  padding: 8px;
+  margin: 0;
+  &:focus-visible {
+    outline: none;
+    border: 2px solid $primary;
+  }
+}
+
+textarea {
+  @include bcb($black, $white);
+  min-width: calc(100% - 16px);
+  max-width: calc(100% - 16px);
+  min-height: 92px;
+  border: none;
+  border-bottom: 2px solid $primary;
+  padding: 8px;
+  margin: 0;
+  &:focus-visible {
+    outline: none;
+    border: 2px solid $primary;
+  }
+}
+
+::-webkit-resizer {
+  $size: 8px;
+  background: none;
+  width: 0;
+  height: 0;
+  border-bottom: $size solid $primary;
+  border-right: $size solid $primary;
+  border-left: $size solid transparent;
+  border-top: $size solid transparent;
+}

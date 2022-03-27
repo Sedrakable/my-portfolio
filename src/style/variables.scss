@@ -35,7 +35,8 @@ h2 {
   font-weight: 400;
 }
 
-h3 {
+h3,
+.btn {
   font-family: $header-font;
   color: $primary;
   font-size: 18px;
@@ -52,7 +53,9 @@ p {
   margin: 0;
 }
 
-a {
+a,
+input,
+textarea {
   text-decoration: none;
   font-family: $main-font;
   color: $white;
@@ -64,13 +67,14 @@ a {
 .App {
   width: 100%;
 }
+
 .container {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
-  margin: 0 15% 0 calc(15% + 58px);
-  gap: 64px;
+  margin: 128px 15% 128px calc(15% + 58px);
+  gap: 192px;
   text-align: center;
 }
 

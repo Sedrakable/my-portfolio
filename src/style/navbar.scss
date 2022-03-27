@@ -12,13 +12,13 @@
     @include flex;
     gap: 24px;
     height: fit-content;
+
     a {
       padding: 4px 8px;
     }
     .active {
       h2 {
         border-bottom: 2px solid $primary;
-        // color: $primary;
       }
     }
   }
@@ -51,8 +51,10 @@
       h3 {
         color: $gray;
       }
+      &:last-child {
+        border: none;
+      }
     }
-
     .active {
       h2 {
         border-bottom: 2px solid $primary;
