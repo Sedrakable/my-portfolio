@@ -30,7 +30,7 @@
 }
 
 @mixin pulsesvg {
-  animation: 2s pulsesvg infinite;
+  animation: 4s pulsesvg infinite;
 }
 
 @mixin shutdown {
@@ -52,7 +52,7 @@
 
 @keyframes expand {
   to {
-    transform: scale(1.5);
+    transform: scale(2);
     opacity: 0;
   }
 }
@@ -72,7 +72,7 @@
 }
 
 @keyframes pulsesvg {
-  $x: 0px 0px 16px rgba($primary, 0.8);
+  $x: 0px 0px 8px rgba($primary, 0.8);
   $y: 0px 0px 24px rgba($primary, 1);
   0% {
     filter: drop-shadow($x);
