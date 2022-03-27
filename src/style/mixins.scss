@@ -20,7 +20,7 @@
 }
 
 @mixin gradient {
-  background: linear-gradient(90deg, $primary, $secondary, $primary);
+  background: linear-gradient(90deg, $yellow, $orange, $yellow);
   background-size: 400% 400%;
   animation: gradient 8s ease infinite;
 }
