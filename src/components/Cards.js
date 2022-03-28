@@ -53,20 +53,29 @@ const cards = [
 class Cards extends Component {
   constructor(props) {
     super(props);
-    this.state = { card: cards[0] };
+    this.state = { card: cards[2] };
     this.setCard = this.setCard.bind(this);
+    this.cards = React.createRef();
   }
 
-  setCard(index) {
-    console.log("bruhhhh");
+  setCard = (e) => {
+    const btn = e.currentTarget;
+    const card = btn.closest(".card");
+    const index = [...card.parentNode.children].indexOf(card) - 1;
     this.setState({ card: cards[index] });
-  }
+  };
+
+  toggleOverlay = (e) => {
+    if (e) this.setCard(e);
+    this.cards.current.childNodes[0].classList.toggle("d-none");
+  };
+
   render() {
     return (
-      <div className="cards">
-        <CardShow card={this.state.card} />
+      <div className="cards" ref={this.cards}>
+        <CardShow card={this.state.card} toggle={this.toggleOverlay} />
         {cards.map((card, index) => {
-          return <Card card={card} key={index} setCard={this.setCard} />;
+          return <Card card={card} key={index} toggle={this.toggleOverlay} />;
         })}
       </div>
     );

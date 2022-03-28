@@ -7,13 +7,13 @@
 }
 
 .card {
+  @include flex;
+  flex-direction: column;
   position: relative;
   box-shadow: $shadow;
   min-width: 320px;
   max-width: 320px;
-
-  height: fit-content;
-  gap: 0;
+  background: $dark-gray;
   transition: 200ms;
   img {
     width: 100%;
@@ -26,12 +26,18 @@
     flex-direction: column;
     text-align: center;
     background-color: $dark-gray;
-    h2 {
-      padding: 8px 0 2px 0;
-      // @include gradient;
-      background: $white;
-      color: $black;
-      width: 100%;
+    width: 100%;
+    .header {
+      @include flex(space-between);
+      @include bcb($black, $white, $primary);
+      border-left: none;
+      border-right: none;
+      border-top: none;
+      padding: 12px 8px 2px 8px;
+
+      path {
+        fill: $black;
+      }
     }
     .langs {
       @include flex(flex-start, flex-start);
@@ -94,6 +100,9 @@
         background: linear-gradient($black 50%, $primary 50%);
         background-size: 100% 200%;
         transition: 100ms;
+        path {
+          fill: $primary;
+        }
         &:hover {
           background-position: 0% 100%;
           transition: 200ms;
@@ -108,6 +117,7 @@
 
 #card-show {
   @include flex;
+  flex-direction: row;
   position: relative;
   top: 50%;
   left: 50%;
@@ -123,7 +133,13 @@
   .info {
     width: 320px;
     height: 100%;
+    .header {
+      path {
+        fill: $primary;
+      }
+    }
     .desc {
+      background-color: $white;
       height: 100%;
       padding: 8px 16px;
       color: $gray;
