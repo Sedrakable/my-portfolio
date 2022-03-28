@@ -11,7 +11,7 @@
   box-shadow: $shadow;
   min-width: 320px;
   max-width: 320px;
-  background-color: $dark-gray;
+
   height: fit-content;
   gap: 0;
   transition: 200ms;
@@ -19,11 +19,14 @@
     width: 100%;
     height: 192px;
     object-fit: cover;
+    transition: 200ms;
   }
   .info {
+    @include flex(space-between, stretch);
+    flex-direction: column;
     text-align: center;
+    background-color: $dark-gray;
     h2 {
-      margin-top: -4px;
       padding: 8px 0 2px 0;
       // @include gradient;
       background: $white;
@@ -101,4 +104,48 @@
       }
     }
   }
+}
+
+#card-show {
+  @include flex;
+  position: relative;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: fit-content;
+  min-width: fit-content;
+  height: 320px;
+  z-index: 3;
+  img {
+    width: 512px;
+    height: 100%;
+  }
+  .info {
+    width: 320px;
+    height: 100%;
+    .desc {
+      height: 100%;
+      padding: 8px 16px;
+      color: $gray;
+      text-align: justify;
+      hyphens: auto;
+    }
+  }
+}
+
+.overlay {
+  position: fixed;
+  background: rgba($black, 0.8);
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  z-index: 2;
+}
+.card-expand {
+  // position: absolute;
+  // transition: 1000ms;
+  // transform: scale(2);
+  // z-index: 1;
+  // opacity: 0;
 }

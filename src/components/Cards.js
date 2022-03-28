@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import Card from "./Card";
+import CardShow from "./CardShow";
 
 import Rails from "./svgs/Rails";
 import JS from "./svgs/JS";
@@ -50,20 +51,22 @@ const cards = [
   },
 ];
 class Cards extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { card: cards[0] };
+    this.setCard = this.setCard.bind(this);
+  }
+
+  setCard(index) {
+    console.log("bruhhhh");
+    this.setState({ card: cards[index] });
+  }
   render() {
     return (
       <div className="cards">
+        <CardShow card={this.state.card} />
         {cards.map((card, index) => {
-          return (
-            <Card
-              id={index}
-              src={card.src}
-              title={card.title}
-              langs={card.langs}
-              view={card.view}
-              code={card.code}
-            />
-          );
+          return <Card card={card} key={index} setCard={this.setCard} />;
         })}
       </div>
     );
