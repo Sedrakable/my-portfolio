@@ -67,7 +67,10 @@ class Cards extends Component {
 
   toggleOverlay = (e) => {
     if (e) this.setCard(e);
-    this.cards.current.childNodes[0].classList.toggle("d-none");
+
+    const overlay = this.cards.current.querySelector(".overlay");
+    overlay.classList.toggle("overlay-enter");
+    overlay.querySelector(".card-show").classList.toggle("card-enter");
   };
 
   render() {

@@ -1,11 +1,19 @@
 import React, { Component } from "react";
 import Exit from "./svgs/Exit";
+import ScrollButton from "./ScrollButton";
+import BigArrow from "./svgs/BigArrow";
 
 class CardShow extends Component {
   render() {
     return (
-      <div className="overlay d-none">
-        <div className="card" id="card-show">
+      <div
+        className="overlay"
+        // onClick={() => {
+        //   this.props.toggle();
+        // }}
+      >
+        <BigArrow />
+        <div className="card card-show">
           <img key={this.props.card.id} src={this.props.card.src} />
           <div className="info">
             <div className="header">
@@ -35,6 +43,7 @@ class CardShow extends Component {
             </div>
           </div>
         </div>
+        <BigArrow />
       </div>
     );
   }

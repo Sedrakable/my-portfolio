@@ -95,11 +95,12 @@
         }
       }
       svg {
-        padding: 2px;
+        padding: 4px;
         border: 2px solid $primary;
         background: linear-gradient($black 50%, $primary 50%);
         background-size: 100% 200%;
         transition: 100ms;
+
         path {
           fill: $primary;
         }
@@ -115,17 +116,16 @@
   }
 }
 
-#card-show {
+.card-show {
   @include flex;
   flex-direction: row;
   position: relative;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
   width: fit-content;
   min-width: fit-content;
   height: 320px;
   z-index: 3;
+  transition: 500ms;
+  margin-top: -1000px;
   img {
     width: 512px;
     height: 100%;
@@ -151,17 +151,33 @@
 
 .overlay {
   position: fixed;
+  @include flex;
+  flex-direction: column;
   background: rgba($black, 0.8);
+  opacity: 0;
   top: 0;
   left: 0;
   bottom: 0;
   right: 0;
-  z-index: 2;
+  max-height: 0;
+  z-index: 10;
+  transition: 500ms;
+  .big-arrow {
+    position: relative;
+    width: 64px;
+    height: 64px;
+    margin: 32px;
+    transform: rotate(90deg);
+    cursor: pointer;
+  }
 }
-.card-expand {
-  // position: absolute;
-  // transition: 1000ms;
-  // transform: scale(2);
-  // z-index: 1;
-  // opacity: 0;
+
+.overlay-enter {
+  max-height: inherit;
+  opacity: 1;
+}
+
+.card-enter {
+  margin-top: 0;
+  transition: 500ms;
 }

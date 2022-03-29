@@ -94,3 +94,59 @@
     opacity: 0;
   }
 }
+
+@mixin animBase {
+  transform: scale(1);
+}
+
+@keyframes hover {
+  0% {
+    @include animBase;
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    @include animBase;
+  }
+}
+
+@keyframes hover-small {
+  0% {
+    @include animBase;
+  }
+  50% {
+    transform: scale(1.05);
+  }
+  100% {
+    @include animBase;
+  }
+}
+
+@mixin glowBase {
+  filter: drop-shadow(0 0 2px rgba($primary, 0.8));
+}
+
+@keyframes glow {
+  0% {
+    @include glowBase;
+  }
+  50% {
+    filter: drop-shadow(0 0 12px rgba($primary, 1));
+  }
+  100% {
+    @include glowBase;
+  }
+}
+
+@keyframes glow-small {
+  0% {
+    @include glowBase;
+  }
+  50% {
+    filter: drop-shadow(0 0 6px rgba($primary, 1));
+  }
+  100% {
+    @include glowBase;
+  }
+}
