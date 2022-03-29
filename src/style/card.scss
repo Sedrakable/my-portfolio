@@ -126,10 +126,14 @@
   z-index: 3;
   transition: 500ms;
   margin-top: -1000px;
-  img {
+  .image-wrapper {
     width: 512px;
     height: 100%;
+    img {
+      min-height: 100%;
+    }
   }
+
   .info {
     width: 320px;
     height: 100%;
@@ -140,6 +144,7 @@
     }
     .desc {
       background-color: $white;
+      border-bottom: 2px solid $primary;
       height: 100%;
       padding: 8px 16px;
       color: $gray;
@@ -153,7 +158,7 @@
   position: fixed;
   @include flex;
   flex-direction: column;
-  background: rgba($black, 0.8);
+  background: rgba(black, 0.9);
   opacity: 0;
   top: 0;
   left: 0;
@@ -169,6 +174,19 @@
     margin: 32px;
     transform: rotate(90deg);
     cursor: pointer;
+
+    &:first-child {
+      transform: rotate(-90deg);
+    }
+
+    .cls-1 {
+      fill: $primary;
+      stroke: $primary;
+    }
+    .cls-2 {
+      fill: $yellow;
+      stroke: $yellow;
+    }
   }
 }
 

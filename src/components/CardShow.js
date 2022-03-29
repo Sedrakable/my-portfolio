@@ -14,7 +14,9 @@ class CardShow extends Component {
       >
         <BigArrow customClickEvent={this.props.previousCard} />
         <div className="card card-show">
-          <img key={this.props.card.id} src={this.props.card.src} />
+          <div className="image-wrapper">
+            <img key={this.props.card.id} src={this.props.card.src} />
+          </div>
           <div className="info">
             <div className="header">
               <h2>{this.props.card.title}</h2>
