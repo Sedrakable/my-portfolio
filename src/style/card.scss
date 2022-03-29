@@ -127,8 +127,16 @@
   transition: 500ms;
   margin-top: -1000px;
   .image-wrapper {
+    position: relative;
+    @include flex(flex-start);
+    overflow: hidden;
     width: 512px;
     height: 100%;
+    .small-arrows {
+      @include flex(space-between);
+      position: absolute;
+      width: 100%;
+    }
     img {
       min-height: 100%;
     }

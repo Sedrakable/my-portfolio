@@ -4,17 +4,30 @@ import ScrollButton from "./ScrollButton";
 import BigArrow from "./svgs/BigArrow";
 
 class CardShow extends Component {
+  nextImage = () => {
+    console.log("reee");
+  };
+
+  previousImage = () => {
+    console.log("reee");
+  };
+
   render() {
     return (
       <div
-        className="overlay"
+        className="overlay overlay-enter"
         // onClick={() => {
         //   this.props.toggle();
         // }}
       >
         <BigArrow customClickEvent={this.props.previousCard} />
-        <div className="card card-show">
+        <div className="card card-show card-enter">
           <div className="image-wrapper">
+            <div className="small-arrows">
+              <BigArrow customClickEvent={this.nextImage} />
+              <BigArrow customClickEvent={this.previousImage} />
+            </div>
+            <img key={this.props.card.id} src={this.props.card.src} />
             <img key={this.props.card.id} src={this.props.card.src} />
           </div>
           <div className="info">
