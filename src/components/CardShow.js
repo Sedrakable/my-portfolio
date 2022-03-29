@@ -9,30 +9,47 @@ class CardShow extends Component {
     this.state = { imageIndex: 0 };
     this.images = React.createRef();
     this.arrows = React.createRef();
+    this.nextImage = this.nextImage.bind(this);
+    this.previousImage = this.previousImage.bind(this);
   }
+
+  componentDidMount = () => {
+    this.arrowChecker();
+  };
 
   arrowChecker = () => {
     const imagesCount = this.images.current.childNodes.length - 1;
-    if (this.state.imageIndex === imagesCount - 1) {
-      this.arrows.current.childNodes[1].classList.add("d-none");
+    if (this.state.imageIndex === imagesCount) {
+      this.arrows.current.childNodes[1].classList.add("v-none");
+    } else if (this.state.imageIndex === 0) {
+      this.arrows.current.childNodes[0].classList.add("v-none");
     } else {
-      this.arrows.current.childNodes[1].classList.remove("d-none");
+      this.arrows.current.childNodes[1].classList.remove("v-none");
+      this.arrows.current.childNodes[0].classList.remove("v-none");
     }
   };
 
-  nextImage = () => {
-    this.arrowChecker();
-    this.setState({ imageIndex: this.state.imageIndex + 1 });
-    const width = this.images.current.parentNode.offsetWidth;
+  incrementCount = (i) => {
+    return { imageIndex: this.state.imageIndex + i };
+  };
 
-    this.images.current.style.transform = `translateX(-${
-      width * (this.state.imageIndex + 1)
-    }px)`;
-    this.arrowChecker();
+  incrementImage = (i) => {
+    this.setState(this.incrementCount(i), () => {
+      console.log(this.state.imageIndex);
+      const width = this.images.current.parentNode.offsetWidth;
+      this.images.current.style.transform = `translateX(-${
+        width * this.state.imageIndex
+      }px)`;
+      this.arrowChecker();
+    });
+  };
+
+  nextImage = () => {
+    this.incrementImage(1);
   };
 
   previousImage = () => {
-    console.log("reee");
+    this.incrementImage(-1);
   };
 
   render() {
