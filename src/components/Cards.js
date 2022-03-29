@@ -53,8 +53,9 @@ const cards = [
 class Cards extends Component {
   constructor(props) {
     super(props);
-    this.state = { card: cards[2] };
+    this.state = { cardIndex: 0 };
     this.setCard = this.setCard.bind(this);
+    this.nextCard = this.nextCard.bind(this);
     this.cards = React.createRef();
   }
 
@@ -62,7 +63,25 @@ class Cards extends Component {
     const btn = e.currentTarget;
     const card = btn.closest(".card");
     const index = [...card.parentNode.children].indexOf(card) - 1;
-    this.setState({ card: cards[index] });
+    this.setState({ cardIndex: index });
+  };
+
+  nextCard = () => {
+    const currentCardIndex = this.state.cardIndex;
+    if (currentCardIndex < this.cards.current.children.length - 2) {
+      this.setState({ cardIndex: currentCardIndex + 1 });
+    } else {
+      this.setState({ cardIndex: 0 });
+    }
+  };
+
+  previousCard = () => {
+    const currentCardIndex = this.state.cardIndex;
+    if (currentCardIndex > 0) {
+      this.setState({ cardIndex: this.state.cardIndex - 1 });
+    } else {
+      this.setState({ cardIndex: this.cards.current.children.length - 2 });
+    }
   };
 
   toggleOverlay = (e) => {
@@ -76,7 +95,12 @@ class Cards extends Component {
   render() {
     return (
       <div className="cards" ref={this.cards}>
-        <CardShow card={this.state.card} toggle={this.toggleOverlay} />
+        <CardShow
+          card={cards[this.state.cardIndex]}
+          toggle={this.toggleOverlay}
+          nextCard={this.nextCard}
+          previousCard={this.previousCard}
+        />
         {cards.map((card, index) => {
           return <Card card={card} key={index} toggle={this.toggleOverlay} />;
         })}

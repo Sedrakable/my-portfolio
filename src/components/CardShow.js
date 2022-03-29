@@ -12,7 +12,7 @@ class CardShow extends Component {
         //   this.props.toggle();
         // }}
       >
-        <BigArrow />
+        <BigArrow customClickEvent={this.props.previousCard} />
         <div className="card card-show">
           <img key={this.props.card.id} src={this.props.card.src} />
           <div className="info">
@@ -43,7 +43,7 @@ class CardShow extends Component {
             </div>
           </div>
         </div>
-        <BigArrow />
+        <BigArrow customClickEvent={this.props.nextCard} />
       </div>
     );
   }
