@@ -135,6 +135,7 @@
     height: 100%;
 
     .images {
+      transition: 500ms;
       @include flex(flex-start);
       min-height: 100%;
       height: 100%;

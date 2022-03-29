@@ -2,18 +2,10 @@ import React, { Component } from "react";
 import Arrow from "./svgs/Arrow";
 
 class Card extends Component {
-  // open = (e) => {
-  //   const btn = e.currentTarget;
-  //   const card = btn.closest(".card");
-  //   const index = [...card.parentNode.children].indexOf(card) - 1;
-  //   console.log(index);
-  //   this.props.setCard(index);
-  // };
-
   render() {
     return (
       <div className="card">
-        <img key={this.props.key} src={this.props.card.src} />
+        <img key={this.props.key} src={this.props.card.src[0]} />
         <div className="info">
           <div className="header">
             <h2>{this.props.card.title}</h2>

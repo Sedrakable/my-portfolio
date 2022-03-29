@@ -61,6 +61,7 @@ class Cards extends Component {
     this.setCard = this.setCard.bind(this);
     this.nextCard = this.nextCard.bind(this);
     this.cards = React.createRef();
+    this.cardShowRef = React.createRef();
   }
 
   setCard = (e) => {
@@ -71,6 +72,7 @@ class Cards extends Component {
   };
 
   nextCard = () => {
+    this.cardShowRef.current.resetImage();
     const currentCardIndex = this.state.cardIndex;
     if (currentCardIndex < this.cards.current.children.length - 2) {
       this.setState({ cardIndex: currentCardIndex + 1 });
@@ -80,6 +82,7 @@ class Cards extends Component {
   };
 
   previousCard = () => {
+    this.cardShowRef.current.resetImage();
     const currentCardIndex = this.state.cardIndex;
     if (currentCardIndex > 0) {
       this.setState({ cardIndex: this.state.cardIndex - 1 });
@@ -104,6 +107,8 @@ class Cards extends Component {
           toggle={this.toggleOverlay}
           nextCard={this.nextCard}
           previousCard={this.previousCard}
+          resetImageIndex={this.resetImageIndex}
+          ref={this.cardShowRef}
         />
         {cards.map((card, index) => {
           return <Card card={card} key={index} toggle={this.toggleOverlay} />;

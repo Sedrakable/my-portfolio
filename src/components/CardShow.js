@@ -15,18 +15,31 @@ class CardShow extends Component {
 
   componentDidMount = () => {
     this.arrowChecker();
+    console.log("reee");
   };
 
   arrowChecker = () => {
     const imagesCount = this.images.current.childNodes.length - 1;
+    console.log(imagesCount);
+    console.log(this.state.imageIndex);
+    this.resetArrows();
     if (this.state.imageIndex === imagesCount) {
       this.arrows.current.childNodes[1].classList.add("v-none");
     } else if (this.state.imageIndex === 0) {
       this.arrows.current.childNodes[0].classList.add("v-none");
     } else {
-      this.arrows.current.childNodes[1].classList.remove("v-none");
-      this.arrows.current.childNodes[0].classList.remove("v-none");
+      this.resetArrows();
     }
+
+    if (imagesCount === 0) {
+      this.arrows.current.childNodes[0].classList.add("v-none");
+      this.arrows.current.childNodes[1].classList.add("v-none");
+    }
+  };
+
+  resetArrows = () => {
+    this.arrows.current.childNodes[1].classList.remove("v-none");
+    this.arrows.current.childNodes[0].classList.remove("v-none");
   };
 
   incrementCount = (i) => {
@@ -35,8 +48,8 @@ class CardShow extends Component {
 
   incrementImage = (i) => {
     this.setState(this.incrementCount(i), () => {
-      console.log(this.state.imageIndex);
       const width = this.images.current.parentNode.offsetWidth;
+      this.images.current.style.transition = "500ms";
       this.images.current.style.transform = `translateX(-${
         width * this.state.imageIndex
       }px)`;
@@ -50,6 +63,15 @@ class CardShow extends Component {
 
   previousImage = () => {
     this.incrementImage(-1);
+  };
+
+  resetImage = () => {
+    this.setState({ imageIndex: 0 }, () => {
+      this.images.current.style.transition = "0s";
+      this.images.current.style.transform = "translateX(0px)";
+
+      this.arrowChecker();
+    });
   };
 
   render() {
