@@ -13,7 +13,11 @@ import Illu from "./svgs/Illu";
 
 const cards = [
   {
-    src: require("../content/projects/waitist.png"),
+    src: [
+      require("../content/projects/waitist.png"),
+      require("../content/projects/pets2go.png"),
+      require("../content/projects/plazma.jpg"),
+    ],
     title: "Waitist",
     langs: [
       [<Rails />, "Ruby on Rails"],
@@ -26,7 +30,7 @@ const cards = [
     code: "https://github.com/gch90/WAITIST",
   },
   {
-    src: require("../content/projects/pets2go.png"),
+    src: [require("../content/projects/pets2go.png")],
     title: "Pets2Go",
     langs: [
       [<Rails />, "Ruby on Rails"],
@@ -39,7 +43,7 @@ const cards = [
     code: "https://github.com/MarMcG/pets_2_go",
   },
   {
-    src: require("../content/projects/plazma.jpg"),
+    src: [require("../content/projects/plazma.jpg")],
     title: "Plazma Pong",
     langs: [
       [<Unity />, "Unity"],

@@ -127,18 +127,28 @@
   transition: 500ms;
   margin-top: -1000px;
   .image-wrapper {
-    position: relative;
     @include flex(flex-start);
+    position: relative;
     overflow: hidden;
     width: 512px;
+    min-height: 100%;
     height: 100%;
+
+    .images {
+      @include flex(flex-start);
+      min-height: 100%;
+      height: 100%;
+      img {
+        min-width: 512px;
+        min-height: 100%;
+        height: 100%;
+      }
+    }
     .small-arrows {
       @include flex(space-between);
       position: absolute;
       width: 100%;
-    }
-    img {
-      min-height: 100%;
+      z-index: 4;
     }
   }
 

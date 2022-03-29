@@ -4,8 +4,31 @@ import ScrollButton from "./ScrollButton";
 import BigArrow from "./svgs/BigArrow";
 
 class CardShow extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { imageIndex: 0 };
+    this.images = React.createRef();
+    this.arrows = React.createRef();
+  }
+
+  arrowChecker = () => {
+    const imagesCount = this.images.current.childNodes.length - 1;
+    if (this.state.imageIndex === imagesCount - 1) {
+      this.arrows.current.childNodes[1].classList.add("d-none");
+    } else {
+      this.arrows.current.childNodes[1].classList.remove("d-none");
+    }
+  };
+
   nextImage = () => {
-    console.log("reee");
+    this.arrowChecker();
+    this.setState({ imageIndex: this.state.imageIndex + 1 });
+    const width = this.images.current.parentNode.offsetWidth;
+
+    this.images.current.style.transform = `translateX(-${
+      width * (this.state.imageIndex + 1)
+    }px)`;
+    this.arrowChecker();
   };
 
   previousImage = () => {
@@ -23,12 +46,15 @@ class CardShow extends Component {
         <BigArrow customClickEvent={this.props.previousCard} />
         <div className="card card-show card-enter">
           <div className="image-wrapper">
-            <div className="small-arrows">
-              <BigArrow customClickEvent={this.nextImage} />
+            <div className="small-arrows" ref={this.arrows}>
               <BigArrow customClickEvent={this.previousImage} />
+              <BigArrow customClickEvent={this.nextImage} />
             </div>
-            <img key={this.props.card.id} src={this.props.card.src} />
-            <img key={this.props.card.id} src={this.props.card.src} />
+            <div className="images" ref={this.images}>
+              {this.props.card.src.map((src, index) => {
+                return <img key={this.props.card.id} src={src} />;
+              })}
+            </div>
           </div>
           <div className="info">
             <div className="header">
