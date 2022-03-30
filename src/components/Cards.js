@@ -93,7 +93,7 @@ class Cards extends Component {
 
   toggleOverlay = (e) => {
     if (e) this.setCard(e);
-
+    this.cardShowRef.current.resetImage();
     const overlay = this.cards.current.querySelector(".overlay");
     overlay.classList.toggle("overlay-enter");
     overlay.querySelector(".card-show").classList.toggle("card-enter");

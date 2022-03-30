@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Exit from "./svgs/Exit";
-import ScrollButton from "./ScrollButton";
 import BigArrow from "./svgs/BigArrow";
+import Arrow from "./svgs/Arrow";
 
 class CardShow extends Component {
   constructor(props) {
@@ -76,18 +76,17 @@ class CardShow extends Component {
 
   render() {
     return (
-      <div
-        className="overlay overlay-enter"
-        // onClick={() => {
-        //   this.props.toggle();
-        // }}
-      >
+      <div className="overlay overlay-enter">
         <BigArrow customClickEvent={this.props.previousCard} />
         <div className="card card-show card-enter">
           <div className="image-wrapper">
             <div className="small-arrows" ref={this.arrows}>
-              <BigArrow customClickEvent={this.previousImage} />
-              <BigArrow customClickEvent={this.nextImage} />
+              <div className="wrapper">
+                <Arrow customClickEvent={this.previousImage} />
+              </div>
+              <div className="wrapper">
+                <Arrow customClickEvent={this.nextImage} />
+              </div>
             </div>
             <div className="images" ref={this.images}>
               {this.props.card.src.map((src, index) => {
@@ -100,7 +99,6 @@ class CardShow extends Component {
               <h2>{this.props.card.title}</h2>
               <Exit toggle={this.props.toggle} />
             </div>
-
             <p className="desc">
               lorem ipsum dolor sit amet, consectetur adip. elit, sed do eiusmod
               tempor incididunt ut lab. Lorem ipsum dolor sit amet, consectetur

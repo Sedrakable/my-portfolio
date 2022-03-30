@@ -90,3 +90,11 @@
     }
   }
 }
+
+.arrow {
+  cursor: pointer;
+  @include flex;
+  path {
+    fill: $primary;
+  }
+}

@@ -19,7 +19,7 @@ class Card extends Component {
             <a id="left" href={this.props.card.view} target="_blank">
               Visit
             </a>
-            <Arrow toggle={this.props.toggle} />
+            <Arrow customClickEvent={this.props.toggle} />
             <a id="right" href={this.props.card.code} target="_blank">
               Code
             </a>
