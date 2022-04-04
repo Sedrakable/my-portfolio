@@ -9,19 +9,18 @@ class CardShow extends Component {
     this.state = { imageIndex: 0 };
     this.images = React.createRef();
     this.arrows = React.createRef();
+    this.markers = React.createRef();
     this.nextImage = this.nextImage.bind(this);
     this.previousImage = this.previousImage.bind(this);
   }
 
   componentDidMount = () => {
     this.arrowChecker();
-    console.log("reee");
+    this.markerChecker();
   };
 
   arrowChecker = () => {
     const imagesCount = this.images.current.childNodes.length - 1;
-    console.log(imagesCount);
-    console.log(this.state.imageIndex);
     this.resetArrows();
     if (this.state.imageIndex === imagesCount) {
       this.arrows.current.childNodes[1].classList.add("v-none");
@@ -35,6 +34,19 @@ class CardShow extends Component {
       this.arrows.current.childNodes[0].classList.add("v-none");
       this.arrows.current.childNodes[1].classList.add("v-none");
     }
+  };
+
+  markerChecker = () => {
+    this.resetMarkers();
+    console.log(this.markers.current.childNodes[this.state.imageIndex]);
+    this.markers.current.childNodes[this.state.imageIndex].style.background =
+      "white";
+  };
+
+  resetMarkers = () => {
+    this.markers.current.childNodes.forEach((marker) => {
+      marker.style.background = "black";
+    });
   };
 
   resetArrows = () => {
@@ -54,6 +66,7 @@ class CardShow extends Component {
         width * this.state.imageIndex
       }px)`;
       this.arrowChecker();
+      this.markerChecker();
     });
   };
 
@@ -75,6 +88,15 @@ class CardShow extends Component {
   };
 
   render() {
+    const markerRender = () => {
+      return (
+        <div className="markers" ref={this.markers}>
+          {this.props.card.src.map(() => {
+            return <div className="marker"></div>;
+          })}
+        </div>
+      );
+    };
     return (
       <div className="overlay overlay-enter">
         <BigArrow customClickEvent={this.props.previousCard} />
@@ -84,10 +106,12 @@ class CardShow extends Component {
               <div className="wrapper">
                 <Arrow customClickEvent={this.previousImage} />
               </div>
+
               <div className="wrapper">
                 <Arrow customClickEvent={this.nextImage} />
               </div>
             </div>
+            {this.props.card.src.length > 1 ? markerRender() : null}
             <div className="images" ref={this.images}>
               {this.props.card.src.map((src, index) => {
                 return <img key={this.props.card.id} src={src} />;
