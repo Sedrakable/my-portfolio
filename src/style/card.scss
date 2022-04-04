@@ -155,6 +155,7 @@
         @include flex;
         height: 100%;
         padding: 0 8px 0 24px;
+        cursor: pointer;
         &:nth-child(1) {
           background: linear-gradient(-90deg, transparent, rgba($black, 0.8));
           padding: 0 64px 0 8px;
@@ -175,6 +176,11 @@
           path {
             fill: $white;
           }
+          &:hover {
+            path {
+              fill: $primary;
+            }
+          }
         }
       }
     }
@@ -184,13 +190,36 @@
       gap: 8px;
       position: absolute;
       bottom: 0;
-      right: 0;
-      left: 0;
-      margin: 8px;
+      right: 40%;
+      left: 40%;
+      min-width: fit-content;
+      min-height: fit-content;
+      padding: 10px 14px 8px 14px;
+      background: $black;
       .marker {
         width: 16px;
         aspect-ratio: 1;
-        background: $black;
+        opacity: 0.6;
+        filter: grayscale(1);
+      }
+      .active {
+        opacity: 1;
+        filter: none;
+      }
+      .cls-1 {
+        fill: $primary;
+        stroke: $primary;
+        stroke-width: 2;
+      }
+      .cls-2 {
+        fill: $orange;
+        stroke: $orange;
+        stroke-width: 2;
+      }
+      .cls-3 {
+        fill: $yellow;
+        stroke: $yellow;
+        stroke-width: 2;
       }
     }
   }
