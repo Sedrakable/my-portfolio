@@ -38,6 +38,39 @@
   animation-iteration-count: 1;
 }
 
+@mixin flip {
+  animation: 1400ms flip ease-in-out;
+  animation-iteration-count: 1;
+}
+
+@keyframes flip {
+  0% {
+    transform: scaleY(1);
+  }
+  50% {
+    transform: scaleY(0);
+  }
+  100% {
+    transform: scaleY(1);
+  }
+}
+
+@mixin up-and-down {
+  animation: 1400ms upDown infinite ease-in-out;
+}
+
+@keyframes upDown {
+  0% {
+    top: 0;
+  }
+  50% {
+    top: 1%;
+  }
+  100% {
+    top: 0;
+  }
+}
+
 @keyframes gradient {
   0% {
     background-position: 0% 0%;
