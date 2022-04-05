@@ -22,7 +22,15 @@ const NavbarColumn = React.forwardRef((props, ref) => (
         })}
       </div>
     </div>
-    <div className="icons">{props.icons}</div>
+    <div className="icons">
+      {props.icons.map((icon) => {
+        return (
+          <a href={icon.href} target="_blank">
+            {icon.comp}
+          </a>
+        );
+      })}
+    </div>
   </nav>
 ));
 
