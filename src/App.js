@@ -1,4 +1,4 @@
-import React, { useRef, useState } from "react";
+import React, { useRef, useState, useEffect } from "react";
 import Navbar from "./components/Navbar";
 import NavbarColumn from "./components/NavbarColumn";
 import Banner from "./components/Banner";
@@ -13,21 +13,18 @@ const App = (props) => {
   const container = useRef();
   const nav = useRef();
   const navColumn = useRef();
-  const scrollBtn = useRef();
-  const state = { scrolled: false };
 
   const initialize = () => {
     navColumn.current.style.left = `${-100}px`;
   };
 
-  const componentDidMount = () => {
+  useEffect(() => {
     initialize();
     createObserver();
     window.addEventListener("scroll", onScroll, true);
-  };
+  });
 
   const onScroll = () => {
-    state.scrolled = true;
     const scrollY = window.scrollY; //Don't get confused by what's scrolling - It's not the window
 
     const navHeight = nav.current.offsetHeight;

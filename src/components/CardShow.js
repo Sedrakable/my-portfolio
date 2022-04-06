@@ -10,7 +10,7 @@ import BigArrow from "./svgs/BigArrow";
 import Arrow from "./svgs/Arrow";
 import Marker from "./svgs/Marker";
 
-const CardShow = forwardRef((props, ref) => {
+const CardShow = React.forwardRef((props, ref) => {
   const images = useRef();
   const arrows = useRef();
   const markers = useRef();
@@ -121,11 +121,7 @@ const CardShow = forwardRef((props, ref) => {
             <h2>{props.card.title}</h2>
             <Exit toggle={props.toggle} />
           </div>
-          <p className="desc">
-            lorem ipsum dolor sit amet, consectetur adip. elit, sed do eiusmod
-            tempor incididunt ut lab. Lorem ipsum dolor sit amet, consectetur
-            adip
-          </p>
+          <p className="desc">{props.card.description}</p>
           <div className="langs">
             {props.card.langs.map((lang, index) => {
               return <p key={index}>{lang}</p>;

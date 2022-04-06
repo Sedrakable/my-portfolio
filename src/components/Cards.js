@@ -20,6 +20,7 @@ const Cards = (props) => {
         require("../content/projects/plazma.jpg"),
       ],
       title: "Waitist",
+      description: "Find a waiter or find a restaurant to wait tables.",
       langs: [
         [<Rails />, "Ruby on Rails"],
         [<JS />, "JS"],
