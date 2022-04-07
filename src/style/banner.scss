@@ -6,7 +6,7 @@
   gap: 32px;
   height: 100%;
   .text {
-    margin-left: 64px;
+    // margin-left: 64px;
     text-align: start;
     h1 {
       width: fit-content;
@@ -42,8 +42,10 @@
   // }
 
   .hex-holder {
-    width: 320px;
+    max-width: 320px;
+    min-width: auto;
     position: relative;
+
     .flying {
       position: absolute;
       top: 0;

@@ -5,6 +5,7 @@ import Banner from "./components/Banner";
 import Cards from "./components/Cards";
 import About from "./components/About";
 import Contact from "./components/Contact";
+import Burgir from "./components/svgs/Exit";
 
 import Background from "./components/Background";
 import ScrollButton from "./components/ScrollButton";
@@ -13,6 +14,8 @@ const App = (props) => {
   const container = useRef();
   const nav = useRef();
   const navColumn = useRef();
+  const [width, setWidth] = React.useState(window.innerWidth);
+  const breakpoint = 992;
 
   const initialize = () => {
     navColumn.current.style.left = `${-100}px`;
@@ -21,12 +24,12 @@ const App = (props) => {
   useEffect(() => {
     initialize();
     createObserver();
-    window.addEventListener("scroll", onScroll, true);
+    window.addEventListener("resize", () => setWidth(window.innerWidth));
+    nav.current != null && window.addEventListener("scroll", onScroll, true);
   });
 
   const onScroll = () => {
     const scrollY = window.scrollY; //Don't get confused by what's scrolling - It's not the window
-
     const navHeight = nav.current.offsetHeight;
     const navColumnWidth = navColumn.current.offsetWidth;
 
@@ -104,6 +107,14 @@ const App = (props) => {
     });
   };
 
+  const navChoser = () => {
+    return width < breakpoint ? (
+      <Burgir />
+    ) : (
+      <Navbar ref={nav} tabs={tabs} customClickEvent={scrollTab} />
+    );
+  };
+
   const github = () => {
     return (
       <svg
@@ -159,7 +170,7 @@ const App = (props) => {
   return (
     <div className="App">
       <Background />
-      <Navbar ref={nav} tabs={tabs} customClickEvent={scrollTab} />
+      {navChoser()}
       <NavbarColumn
         ref={navColumn}
         tabs={tabs}
