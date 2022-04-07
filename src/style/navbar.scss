@@ -24,6 +24,15 @@
   }
 }
 
+.burgir {
+  position: fixed;
+  margin: 8px 16px;
+  z-index: 2;
+  path {
+    fill: $primary;
+  }
+}
+
 .navbarColumn {
   @include flex(space-between);
   flex-direction: column;
@@ -35,15 +44,17 @@
   left: 0;
   bottom: 0;
   z-index: 1;
+  transition: 100ms;
   .top {
     text-align: center;
+    width: 100%;
   }
   .tabs {
     @include flex;
     flex-direction: column;
     margin-top: 128px;
     gap: 4px;
-    width: fit-content;
+    width: 100%;
     a {
       border-bottom: 2px solid $black;
       padding: 4px 0;
@@ -79,5 +90,15 @@
     path {
       fill: $gray;
     }
+  }
+}
+
+.navEnter {
+  transition: 200ms;
+  left: 0px !important;
+  width: 128px;
+  a {
+    text-align: start !important;
+    padding-left: 8px !important;
   }
 }

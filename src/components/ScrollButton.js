@@ -7,7 +7,7 @@ const ScrollButton = React.forwardRef((props, ref) => (
     className={"btn-scroll d-none"}
     ref={ref}
     onClick={(e) => {
-      props.customClickEvent(e);
+      props.customClick(e);
     }}
   >
     <BigArrow />

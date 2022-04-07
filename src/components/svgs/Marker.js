@@ -1,13 +1,13 @@
 import React from "react";
 
-const Marker = ({ customClickEvent }) => {
+const Marker = ({ customClick }) => {
   return (
     <svg
       className="marker"
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 55.46 64.01"
       onClick={() => {
-        customClickEvent();
+        customClick();
       }}
     >
       <g id="Layer_2" data-name="Layer 2">

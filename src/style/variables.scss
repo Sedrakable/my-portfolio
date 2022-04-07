@@ -9,6 +9,7 @@ $gray: #7c7d80;
 $white: #f5f6fa;
 $shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.3);
 $shadow-big: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
+$mobile: 992px;
 
 $header-font: "Bebas Neue", cursive;
 $main-font: Calibri, sans-serif;
@@ -81,6 +82,9 @@ textarea {
   margin: 128px 15% 128px 15%;
   gap: 192px;
   text-align: center;
+  @media (max-width: $mobile) {
+    margin: 92px 15%;
+  }
 }
 
 .d-none {

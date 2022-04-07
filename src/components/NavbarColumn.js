@@ -12,7 +12,7 @@ const NavbarColumn = React.forwardRef((props, ref) => (
             <a
               className={index === 0 ? "active" : ""}
               onClick={(e) => {
-                props.customClickEvent(e, index);
+                props.customClick(e, index);
               }}
               href="#"
             >

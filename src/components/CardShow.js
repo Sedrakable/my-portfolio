@@ -89,7 +89,7 @@ const CardShow = React.forwardRef((props, ref) => {
     return (
       <div className="markers" ref={markers}>
         {props.card.src.map((_, index) => {
-          return <Marker customClickEvent={() => setImage(index)} />;
+          return <Marker customClick={() => setImage(index)} />;
         })}
       </div>
     );
@@ -97,7 +97,7 @@ const CardShow = React.forwardRef((props, ref) => {
 
   return (
     <div className="overlay">
-      <BigArrow customClickEvent={props.previousCard} />
+      <BigArrow customClick={props.previousCard} />
       <div className="card card-show">
         <div className="image-wrapper">
           <div className="small-arrows" ref={arrows}>
@@ -139,7 +139,7 @@ const CardShow = React.forwardRef((props, ref) => {
           </div>
         </div>
       </div>
-      <BigArrow customClickEvent={props.nextCard} />
+      <BigArrow customClick={props.nextCard} />
     </div>
   );
 });

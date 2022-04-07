@@ -6,7 +6,7 @@ const BigArrow = React.forwardRef((props, ref) => (
     viewBox="0 0 83.19 96"
     className="big-arrow"
     onClick={() => {
-      props.customClickEvent();
+      props.customClick();
     }}
   >
     <g id="grid">
