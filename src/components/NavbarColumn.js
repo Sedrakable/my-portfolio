@@ -1,6 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
+
 import MainLogo from "./MainLogo";
+import { Capsule } from "./Capsule";
 
 const NavbarColumn = React.forwardRef((props, ref) => (
   <nav className="navbarColumn" ref={ref}>
@@ -22,14 +23,17 @@ const NavbarColumn = React.forwardRef((props, ref) => (
         })}
       </div>
     </div>
-    <div className="icons">
-      {props.icons.map((icon) => {
-        return (
-          <a href={icon.href} target="_blank">
-            {icon.comp}
-          </a>
-        );
-      })}
+    <div className="bottom">
+      <Capsule customCLick={props.colorToggle} color={props.color} />
+      <div className="icons">
+        {props.icons.map((icon) => {
+          return (
+            <a href={icon.href} target="_blank">
+              {icon.comp}
+            </a>
+          );
+        })}
+      </div>
     </div>
   </nav>
 ));

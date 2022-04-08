@@ -8,10 +8,10 @@
   @include flex(flex-start);
   flex-direction: column;
   width: 100%;
-  // min-height: 100vh;
   height: fit-content;
   position: relative;
   gap: 48px;
+  padding-top: 64px;
   .title {
     color: $white;
     border-bottom: 2px solid $primary;
@@ -29,6 +29,11 @@
   box-shadow: $shadow;
   border-left: 32px solid $dark-gray;
   border-right: 32px solid $dark-gray;
+  @media (max-width: $mobile) {
+    padding: 16px;
+    border-left: 8px solid $dark-gray;
+    border-right: 8px solid $dark-gray;
+  }
   h3 {
     width: 85%;
     text-align: start;

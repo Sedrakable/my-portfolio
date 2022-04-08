@@ -11,7 +11,8 @@
   flex-direction: column;
   position: relative;
   box-shadow: $shadow;
-  width: 320px;
+  max-width: 320px;
+  width: 100%;
   background: $dark-gray;
   transition: 200ms;
   img {

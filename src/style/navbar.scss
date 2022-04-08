@@ -25,6 +25,7 @@
 }
 
 .burgir {
+  cursor: pointer;
   position: fixed;
   margin: 8px 16px;
   z-index: 2;
@@ -77,18 +78,28 @@
       }
     }
   }
-  .icons {
-    justify-self: flex-end;
-    cursor: pointer;
-    svg {
-      &:hover {
+  .bottom {
+    @include flex;
+    flex-direction: column;
+    gap: 8px;
+    .capsule {
+      background-color: $gray;
+    }
+    .icons {
+      justify-self: flex-end;
+      cursor: pointer;
+      a {
+        svg {
+          &:hover {
+            path {
+              fill: $primary;
+            }
+          }
+        }
         path {
-          fill: $primary;
+          fill: $gray;
         }
       }
-    }
-    path {
-      fill: $gray;
     }
   }
 }
