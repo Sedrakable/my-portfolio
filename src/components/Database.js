@@ -1,17 +1,25 @@
 import React from "react";
 
-const DarkMode = {
-  "--black": "hsl(220, 6%, 8%)",
-  "--bg-black": "hsl(220, 6%, 8.5%)",
-  "--dark-gray": "hsl(220, 6%, 12%)",
-  "--white": "hsl(220, 6%, 98%)",
-};
+const customVariables = [
+  "--black",
+  "--bg-black",
+  "--dark-gray",
+  "--white",
+  "--shadow",
+];
+
+const DarkMode = {};
+
+customVariables.forEach((vari) => {
+  DarkMode[vari] = document.querySelector(":root").style.getPropertyValue(vari);
+});
 
 const LightMode = {
   "--black": "hsl(220, 6%, 94%)",
   "--bg-black": "hsl(220, 6%, 96%)",
   "--dark-gray": "hsl(220, 6%, 98%)",
   "--white": "hsl(220, 6%, 24%)",
+  "--shadow": "0px 0px 4px 4px rgba(0, 0, 0, 0.1)",
 };
 
 export const Colors = {
