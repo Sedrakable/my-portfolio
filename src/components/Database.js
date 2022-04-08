@@ -1,5 +1,14 @@
 import React from "react";
 
+import Rails from "./svgs/Rails";
+import JS from "./svgs/JS";
+import SQL from "./svgs/SQL";
+import SCSS from "./svgs/SCSS";
+import HTML from "./svgs/HTML";
+import Unity from "./svgs/Unity";
+import CSharp from "./svgs/CSharp";
+import Illu from "./svgs/Illu";
+
 const customVariables = [
   "--black",
   "--bg-black",
@@ -69,5 +78,50 @@ export const Icons = [
   {
     comp: github(),
     href: "https://github.com/Sedrakable",
+  },
+];
+
+export const CardsContent = [
+  {
+    src: [
+      require("../content/projects/waitist.png"),
+      require("../content/projects/pets2go.png"),
+      require("../content/projects/plazma.jpg"),
+    ],
+    title: "Waitist",
+    description: "Find a waiter or find a restaurant to wait tables.",
+    langs: [
+      [<Rails />, "Ruby on Rails"],
+      [<JS />, "JS"],
+      [<SQL />, "SQL"],
+      [<SCSS />, "SCSS"],
+      [<HTML />, "HTML"],
+    ],
+    view: "http://waitist.click/",
+    code: "https://github.com/gch90/WAITIST",
+  },
+  {
+    src: [require("../content/projects/pets2go.png")],
+    title: "Pets2Go",
+    langs: [
+      [<Rails />, "Ruby on Rails"],
+      [<JS />, "JS"],
+      [<SQL />, "SQL"],
+      [<SCSS />, "SCSS"],
+      [<HTML />, "HTML"],
+    ],
+    view: "https://pets-2-go.herokuapp.com/",
+    code: "https://github.com/MarMcG/pets_2_go",
+  },
+  {
+    src: [require("../content/projects/plazma.jpg")],
+    title: "Plazma Pong",
+    langs: [
+      [<Unity />, "Unity"],
+      [<CSharp />, "C#"],
+      [<Illu />, "Illustrator"],
+    ],
+    view: "https://play.google.com/store/apps/details?id=com.Ree.BallGame",
+    code: "https://github.com/Sedrakable",
   },
 ];

@@ -1,61 +1,10 @@
 import React, { useRef, useState, useEffect } from "react";
+import { CardsContent } from "./Database";
+
 import Card from "./Card";
 import CardShow from "./CardShow";
 
-import Rails from "./svgs/Rails";
-import JS from "./svgs/JS";
-import SQL from "./svgs/SQL";
-import SCSS from "./svgs/SCSS";
-import HTML from "./svgs/HTML";
-import Unity from "./svgs/Unity";
-import CSharp from "./svgs/CSharp";
-import Illu from "./svgs/Illu";
-
 const Cards = (props) => {
-  const cards = [
-    {
-      src: [
-        require("../content/projects/waitist.png"),
-        require("../content/projects/pets2go.png"),
-        require("../content/projects/plazma.jpg"),
-      ],
-      title: "Waitist",
-      description: "Find a waiter or find a restaurant to wait tables.",
-      langs: [
-        [<Rails />, "Ruby on Rails"],
-        [<JS />, "JS"],
-        [<SQL />, "SQL"],
-        [<SCSS />, "SCSS"],
-        [<HTML />, "HTML"],
-      ],
-      view: "http://waitist.click/",
-      code: "https://github.com/gch90/WAITIST",
-    },
-    {
-      src: [require("../content/projects/pets2go.png")],
-      title: "Pets2Go",
-      langs: [
-        [<Rails />, "Ruby on Rails"],
-        [<JS />, "JS"],
-        [<SQL />, "SQL"],
-        [<SCSS />, "SCSS"],
-        [<HTML />, "HTML"],
-      ],
-      view: "https://pets-2-go.herokuapp.com/",
-      code: "https://github.com/MarMcG/pets_2_go",
-    },
-    {
-      src: [require("../content/projects/plazma.jpg")],
-      title: "Plazma Pong",
-      langs: [
-        [<Unity />, "Unity"],
-        [<CSharp />, "C#"],
-        [<Illu />, "Illustrator"],
-      ],
-      view: "https://play.google.com/store/apps/details?id=com.Ree.BallGame",
-      code: "https://github.com/Sedrakable",
-    },
-  ];
   const [cardIndex, setCardIndex] = useState(0);
   const cardsRef = useRef();
   const cardShowRef = useRef();
@@ -102,13 +51,13 @@ const Cards = (props) => {
   return (
     <div className="cards" ref={cardsRef}>
       <CardShow
-        card={cards[cardIndex]}
+        card={CardsContent[cardIndex]}
         toggle={toggleOverlay}
         nextCard={nextCard}
         previousCard={previousCard}
         ref={cardShowRef}
       />
-      {cards.map((card, index) => {
+      {CardsContent.map((card, index) => {
         return <Card card={card} key={index} toggle={toggleOverlay} />;
       })}
     </div>
