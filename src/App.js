@@ -23,8 +23,16 @@ const App = (props) => {
     navColumn.current.style.left = `${-100}px`;
   };
 
-  const colorToggle = () => {
-    color === "light" ? setColor("dark") : setColor("light");
+  const colorToggle = (e) => {
+    const toggle = e.currentTarget;
+    e.currentTarget.classList.add("toggle-transition");
+
+    setTimeout(() => {
+      color === "light" ? setColor("dark") : setColor("light");
+
+      toggle.classList.remove("toggle-transition");
+      toggle.classList.toggle("on");
+    }, 200);
   };
 
   const colorChange = () => {
@@ -35,16 +43,16 @@ const App = (props) => {
   };
 
   useEffect(() => {
+    console.log(color);
+    colorChange();
+  }, [color]);
+
+  useEffect(() => {
     initialize();
     createObserver();
     window.addEventListener("resize", () => setWidth(window.innerWidth));
     nav.current != null && window.addEventListener("scroll", onScroll, true);
   }, [width]);
-
-  useEffect(() => {
-    console.log(color);
-    colorChange();
-  }, [color]);
 
   const onScroll = () => {
     const scrollY = window.scrollY; //Don't get confused by what's scrolling - It's not the window
@@ -132,10 +140,15 @@ const App = (props) => {
 
   const navChoser = () => {
     return width < breakpoint ? (
-      // <Burgir customClick={openColumnBar} />
-      <Burgir customClick={colorToggle} />
+      <Burgir customClick={openColumnBar} />
     ) : (
-      <Navbar ref={nav} tabs={tabs} customClick={scrollTab} />
+      <Navbar
+        ref={nav}
+        tabs={tabs}
+        customClick={scrollTab}
+        colorToggle={colorToggle}
+        color={color}
+      />
     );
   };
 

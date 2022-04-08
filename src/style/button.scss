@@ -12,42 +12,6 @@
   }
 }
 
-// .btn-scroll {
-//   z-index: 2;
-//   @include flex;
-//   position: fixed;
-//   bottom: 0;
-//   left: 50%;
-//   right: 50%;
-//   width: 64px;
-//   height: 64px;
-//   background: $white;
-//   border: 2px solid $orange;
-//   border-radius: 50%;
-//   margin: 32px 0;
-//   box-shadow: $shadow;
-//   cursor: pointer;
-//   animation: hover-small infinite 2s;
-//   &:hover {
-//     animation: hover infinite 2s;
-//   }
-//   svg {
-//     width: 32px;
-//     transform: rotate(90deg) translateX(4px);
-//     .cls-1 {
-//       fill: $primary;
-//     }
-//     .cls-2 {
-//       fill: $orange;
-//     }
-//   }
-//   .hex {
-//     position: absolute;
-//     width: 100%;
-//     height: 100%;
-//   }
-// }
-
 .btn-scroll {
   z-index: 2;
   @include flex;
@@ -97,5 +61,63 @@
   @include flex;
   path {
     fill: $primary;
+  }
+}
+
+$trans: 200ms;
+
+.capsule {
+  @include flex;
+  background: $white;
+  width: fit-content;
+  flex-direction: row;
+  transition: $trans;
+  gap: 4px;
+  height: 24px;
+  border-radius: 32px;
+  padding: 2px;
+  .toggle {
+    transition: $trans;
+    opacity: 1;
+    border-radius: 50%;
+    background: $dark-gray;
+    height: 100%;
+    aspect-ratio: 1;
+  }
+  svg {
+    transition: $trans;
+    opacity: 1;
+    width: 100%;
+    height: 100%;
+    path {
+      fill: $dark-gray;
+    }
+  }
+}
+
+.toggle-transition {
+  svg {
+    transition: $trans;
+    transform: translateX(-20px);
+    opacity: 0;
+  }
+  .toggle {
+    transition: $trans;
+    transform: translateX(20px);
+    opacity: 0;
+  }
+}
+
+.on {
+  flex-direction: row-reverse;
+  svg {
+    transition: 0ms;
+    transform: translateX(0);
+    opacity: 1;
+  }
+  .toggle {
+    transition: 0ms;
+    transform: translateX(0);
+    opacity: 1;
   }
 }

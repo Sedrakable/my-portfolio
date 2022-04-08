@@ -1,6 +1,7 @@
 import React from "react";
-import ReactDOM from "react-dom";
+
 import MainLogo from "./MainLogo";
+import { Capsule } from "./Capsule";
 
 const Navbar = React.forwardRef((props, ref) => (
   <nav className="navbar" ref={ref}>
@@ -19,6 +20,7 @@ const Navbar = React.forwardRef((props, ref) => (
           </a>
         );
       })}
+      <Capsule customCLick={props.colorToggle} color={props.color} />
     </div>
   </nav>
 ));

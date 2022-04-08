@@ -1,16 +1,10 @@
 import React, { useRef, useEffect } from "react";
-import { HexPattern } from "./svgs/HexPattern";
 
 const Background = () => {
   const glow = useRef();
   const grid = useRef();
 
-  const initialize = () => {
-    grid.current.syle.backgroundImage = `url(${HexPattern})`;
-  };
-
   useEffect(() => {
-    // initialize();
     window.addEventListener("mousemove", move, true);
   });
 
