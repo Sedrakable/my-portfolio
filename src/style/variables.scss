@@ -1,12 +1,20 @@
 @import url("https://fonts.googleapis.com/css2?family=Bebas+Neue&display=swap");
 
-$black: hsl(220, 6%, 8%);
-$dark-gray: hsl(220, 6%, 12%);
+:root {
+  --black: hsl(220, 6%, 8%);
+  --bg-black: hsl(220, 6%, 8.5%);
+  --dark-gray: hsl(220, 6%, 12%);
+  --white: hsl(220, 6%, 98%);
+}
+
+$black: var(--black);
+$bg-black: var(--bg-black);
+$dark-gray: var(--dark-gray);
 $primary: rgb(255, 163, 0);
 $orange: rgb(254, 136, 1);
 $yellow: rgb(254, 204, 0);
 $gray: #7c7d80;
-$white: #f5f6fa;
+$white: var(--white);
 $shadow: 0px 0px 4px 4px rgba(0, 0, 0, 0.3);
 $shadow-big: 4px 4px 4px 4px rgba(0, 0, 0, 0.1);
 $mobile: 992px;
@@ -15,7 +23,9 @@ $header-font: "Bebas Neue", cursive;
 $main-font: Calibri, sans-serif;
 
 body {
+  box-shadow: inset 0px 0px 64px 64px rgba(black, 0.2);
   overflow-x: hidden;
+  // background: $black;
   background: $black;
   margin: 0 auto;
 }

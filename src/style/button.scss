@@ -60,6 +60,7 @@
   animation: hover-small infinite 2s, glow-small infinite 2s;
   border-radius: 50%;
   margin: 32px 0;
+  margin-left: -36px;
   cursor: pointer;
   &:hover {
     animation: hover infinite 2s, glow infinite 2s;

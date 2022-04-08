@@ -1,24 +1,37 @@
 import React, { useRef, useState, useEffect } from "react";
+import { Colors } from "./components/Database";
+
 import Navbar from "./components/Navbar";
 import NavbarColumn from "./components/NavbarColumn";
 import Banner from "./components/Banner";
 import Cards from "./components/Cards";
 import About from "./components/About";
 import Contact from "./components/Contact";
-import { Burgir } from "./components/svgs/Burgir";
-
 import Background from "./components/Background";
 import ScrollButton from "./components/ScrollButton";
+import { Burgir } from "./components/svgs/Burgir";
 
 const App = (props) => {
   const container = useRef();
   const nav = useRef();
   const navColumn = useRef();
   const [width, setWidth] = React.useState(window.innerWidth);
+  const [color, setColor] = React.useState("dark");
   const breakpoint = 992;
 
   const initialize = () => {
     navColumn.current.style.left = `${-100}px`;
+  };
+
+  const colorToggle = () => {
+    color === "light" ? setColor("dark") : setColor("light");
+  };
+
+  const colorChange = () => {
+    const rootStyle = document.querySelector(":root").style;
+    Object.keys(Colors()[color]).forEach((key) => {
+      rootStyle.setProperty(key, Colors()[color][key]);
+    });
   };
 
   useEffect(() => {
@@ -26,7 +39,12 @@ const App = (props) => {
     createObserver();
     window.addEventListener("resize", () => setWidth(window.innerWidth));
     nav.current != null && window.addEventListener("scroll", onScroll, true);
-  });
+  }, [width]);
+
+  useEffect(() => {
+    console.log(color);
+    colorChange();
+  }, [color]);
 
   const onScroll = () => {
     const scrollY = window.scrollY; //Don't get confused by what's scrolling - It's not the window
@@ -114,7 +132,8 @@ const App = (props) => {
 
   const navChoser = () => {
     return width < breakpoint ? (
-      <Burgir customClick={openColumnBar} />
+      // <Burgir customClick={openColumnBar} />
+      <Burgir customClick={colorToggle} />
     ) : (
       <Navbar ref={nav} tabs={tabs} customClick={scrollTab} />
     );
