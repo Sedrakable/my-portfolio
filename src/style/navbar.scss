@@ -25,6 +25,8 @@
 }
 
 .burgir {
+  width: 48px;
+  height: 48px;
   cursor: pointer;
   position: fixed;
   margin: 8px 16px;
@@ -49,6 +51,11 @@
   .top {
     text-align: center;
     width: 100%;
+    svg {
+      width: 75%;
+
+      height: auto;
+    }
   }
   .tabs {
     @include flex;
@@ -108,6 +115,7 @@
   transition: 200ms;
   left: 0px !important;
   width: 128px;
+  padding-top: 96px;
   a {
     text-align: start !important;
     padding-left: 8px !important;

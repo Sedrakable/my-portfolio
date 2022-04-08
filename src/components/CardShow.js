@@ -1,11 +1,5 @@
-import React, {
-  useRef,
-  forwardRef,
-  useState,
-  useEffect,
-  useImperativeHandle,
-} from "react";
-import Exit from "./svgs/Exit";
+import React, { useRef, useState, useEffect, useImperativeHandle } from "react";
+import { Exit } from "./svgs/Exit";
 import BigArrow from "./svgs/BigArrow";
 import Arrow from "./svgs/Arrow";
 import Marker from "./svgs/Marker";
@@ -119,7 +113,7 @@ const CardShow = React.forwardRef((props, ref) => {
         <div className="info">
           <div className="header">
             <h2>{props.card.title}</h2>
-            <Exit toggle={props.toggle} />
+            <Exit customClick={props.toggle} />
           </div>
           <p className="desc">{props.card.description}</p>
           <div className="langs">

@@ -10,6 +10,7 @@ import Contact from "./components/Contact";
 import Background from "./components/Background";
 import ScrollButton from "./components/ScrollButton";
 import { Burgir } from "./components/svgs/Burgir";
+import { Exit } from "./components/svgs/Exit";
 
 const App = (props) => {
   const container = useRef();
@@ -17,6 +18,7 @@ const App = (props) => {
   const navColumn = useRef();
   const [width, setWidth] = React.useState(window.innerWidth);
   const [color, setColor] = React.useState("dark");
+  const [burgirOpen, setBurgirOpen] = React.useState(false);
   const breakpoint = 992;
 
   const initialize = () => {
@@ -79,7 +81,7 @@ const App = (props) => {
   };
 
   const openColumnBar = () => {
-    console.log("ree");
+    setBurgirOpen(burgirOpen === false);
     navColumn.current.classList.toggle("navEnter");
   };
 
@@ -138,7 +140,11 @@ const App = (props) => {
 
   const navChoser = () => {
     return width < breakpoint ? (
-      <Burgir customClick={openColumnBar} />
+      burgirOpen ? (
+        <Exit class={"burgir"} customClick={openColumnBar} />
+      ) : (
+        <Burgir customClick={openColumnBar} />
+      )
     ) : (
       <Navbar
         ref={nav}
