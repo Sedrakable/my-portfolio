@@ -15,6 +15,7 @@ const Navbar = React.forwardRef((props, ref) => (
               props.customClick(e, index);
             }}
             href="#"
+            key={index}
           >
             <h2>{tab.title}</h2>
           </a>

@@ -16,6 +16,7 @@ const NavbarColumn = React.forwardRef((props, ref) => (
                 props.customClick(e, index);
               }}
               href="#"
+              key={index}
             >
               <h3>{tab.title}</h3>
             </a>
@@ -26,9 +27,9 @@ const NavbarColumn = React.forwardRef((props, ref) => (
     <div className="bottom">
       <Capsule customCLick={props.colorToggle} color={props.color} />
       <div className="icons">
-        {props.icons.map((icon) => {
+        {props.icons.map((icon, index) => {
           return (
-            <a href={icon.href} target="_blank">
+            <a key={index} href={icon.href} target="_blank">
               {icon.comp}
             </a>
           );

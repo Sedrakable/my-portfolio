@@ -83,7 +83,7 @@ const CardShow = React.forwardRef((props, ref) => {
     return (
       <div className="markers" ref={markers}>
         {props.card.src.map((_, index) => {
-          return <Marker customClick={() => setImage(index)} />;
+          return <Marker key={index} customClick={() => setImage(index)} />;
         })}
       </div>
     );
@@ -105,8 +105,8 @@ const CardShow = React.forwardRef((props, ref) => {
           </div>
           {props.card.src.length > 1 ? markerRender() : null}
           <div className="images" ref={images}>
-            {props.card.src.map((src) => {
-              return <img key={props.card.id} src={src} />;
+            {props.card.src.map((src, index) => {
+              return <img key={index} src={src} />;
             })}
           </div>
         </div>

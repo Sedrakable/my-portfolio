@@ -12,7 +12,7 @@ import ScrollButton from "./components/ScrollButton";
 import { Burgir } from "./components/svgs/Burgir";
 import { Exit } from "./components/svgs/Exit";
 
-const App = (props) => {
+const App = () => {
   const container = useRef();
   const nav = useRef();
   const navColumn = useRef();
@@ -141,7 +141,7 @@ const App = (props) => {
   const navChoser = () => {
     return width < breakpoint ? (
       burgirOpen ? (
-        <Exit class={"burgir"} customClick={openColumnBar} />
+        <Exit className={"burgir"} customClick={openColumnBar} />
       ) : (
         <Burgir customClick={openColumnBar} />
       )
@@ -178,7 +178,7 @@ const App = (props) => {
       <div className="container" ref={container}>
         {tabs.map((tab, index) => {
           return (
-            <div className="box">
+            <div className="box" key={index}>
               <h2 className="title">{tab.title}</h2>
               {tab.component}
               {tabs.length - 1 > index && (

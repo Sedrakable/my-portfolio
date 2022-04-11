@@ -11,9 +11,9 @@ const Banner = ({ icons }) => {
         <h1>Front End Developer</h1>
         <h2 className="phrase">Making simple UI with complex designs </h2>
         <div className="icons">
-          {icons.map((icon) => {
+          {icons.map((icon, index) => {
             return (
-              <a href={icon.href} target="_blank">
+              <a key={index} href={icon.href} target="_blank">
                 {icon.comp}
               </a>
             );

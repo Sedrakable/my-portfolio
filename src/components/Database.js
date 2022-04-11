@@ -81,47 +81,59 @@ export const Icons = [
   },
 ];
 
-export const CardsContent = [
-  {
-    src: [
-      require("../content/projects/waitist.png"),
-      require("../content/projects/pets2go.png"),
-      require("../content/projects/plazma.jpg"),
-    ],
-    title: "Waitist",
-    description: "Find a waiter or find a restaurant to wait tables.",
-    langs: [
-      [<Rails />, "Ruby on Rails"],
-      [<JS />, "JS"],
-      [<SQL />, "SQL"],
-      [<SCSS />, "SCSS"],
-      [<HTML />, "HTML"],
-    ],
-    view: "http://waitist.click/",
-    code: "https://github.com/gch90/WAITIST",
-  },
-  {
-    src: [require("../content/projects/pets2go.png")],
-    title: "Pets2Go",
-    langs: [
-      [<Rails />, "Ruby on Rails"],
-      [<JS />, "JS"],
-      [<SQL />, "SQL"],
-      [<SCSS />, "SCSS"],
-      [<HTML />, "HTML"],
-    ],
-    view: "https://pets-2-go.herokuapp.com/",
-    code: "https://github.com/MarMcG/pets_2_go",
-  },
-  {
-    src: [require("../content/projects/plazma.jpg")],
-    title: "Plazma Pong",
-    langs: [
-      [<Unity />, "Unity"],
-      [<CSharp />, "C#"],
-      [<Illu />, "Illustrator"],
-    ],
-    view: "https://play.google.com/store/apps/details?id=com.Ree.BallGame",
-    code: "https://github.com/Sedrakable",
-  },
-];
+const importAll = (require) => {
+  const imgs = [];
+  require.keys().reduce((_, next) => {
+    imgs.push(require(next));
+  }, {});
+  return imgs;
+};
+
+const Waitist = {
+  src: importAll(
+    require.context("../content/projects/waitist", false, /\.(png|jpe?g|svg)$/)
+  ),
+  title: "Waitist",
+  description: "Find a waiter or find a restaurant to wait tables.",
+  langs: [
+    [<Rails />, "Ruby on Rails"],
+    [<JS />, "JS"],
+    [<SQL />, "SQL"],
+    [<SCSS />, "SCSS"],
+    [<HTML />, "HTML"],
+  ],
+  view: "http://waitist.click/",
+  code: "https://github.com/gch90/WAITIST",
+};
+
+const Pets2Go = {
+  src: importAll(
+    require.context("../content/projects/pets2go", false, /\.(png|jpe?g|svg)$/)
+  ),
+  title: "Pets2Go",
+  langs: [
+    [<Rails />, "Ruby on Rails"],
+    [<JS />, "JS"],
+    [<SQL />, "SQL"],
+    [<SCSS />, "SCSS"],
+    [<HTML />, "HTML"],
+  ],
+  view: "https://pets-2-go.herokuapp.com/",
+  code: "https://github.com/MarMcG/pets_2_go",
+};
+
+const PlazmaPong = {
+  src: importAll(
+    require.context("../content/projects/plazma", false, /\.(png|jpe?g|svg)$/)
+  ),
+  title: "Plazma Pong",
+  langs: [
+    [<Unity />, "Unity"],
+    [<CSharp />, "C#"],
+    [<Illu />, "Illustrator"],
+  ],
+  view: "https://play.google.com/store/apps/details?id=com.Ree.BallGame",
+  code: "https://github.com/Sedrakable",
+};
+
+export const CardsContent = [Waitist, Pets2Go, PlazmaPong];
