@@ -1,10 +1,16 @@
-import React, { useRef, useState, useEffect, useImperativeHandle } from "react";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useImperativeHandle,
+  forwardRef,
+} from "react";
 import { Exit } from "./svgs/Exit";
 import BigArrow from "./svgs/BigArrow";
 import Arrow from "./svgs/Arrow";
 import Marker from "./svgs/Marker";
 
-const CardShow = React.forwardRef((props, ref) => {
+const CardShow = forwardRef((props, ref) => {
   const images = useRef();
   const arrows = useRef();
   const markers = useRef();

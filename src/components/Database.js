@@ -1,13 +1,6 @@
 import React from "react";
 
-import Rails from "./svgs/Rails";
-import JS from "./svgs/JS";
-import SQL from "./svgs/SQL";
-import SCSS from "./svgs/SCSS";
-import HTML from "./svgs/HTML";
-import Unity from "./svgs/Unity";
-import CSharp from "./svgs/CSharp";
-import Illu from "./svgs/Illu";
+import * as langs from "./svgs/Langs";
 
 const customVariables = [
   "--black",
@@ -96,11 +89,11 @@ const Waitist = {
   title: "Waitist",
   description: "Find a waiter or find a restaurant to wait tables.",
   langs: [
-    [<Rails />, "Ruby on Rails"],
-    [<JS />, "JS"],
-    [<SQL />, "SQL"],
-    [<SCSS />, "SCSS"],
-    [<HTML />, "HTML"],
+    [langs.Rails(), "Ruby on Rails"],
+    [langs.JS(), "JS"],
+    [langs.SQL(), "SQL"],
+    [langs.SCSS(), "SCSS"],
+    [langs.HTML(), "HTML"],
   ],
   view: "http://waitist.click/",
   code: "https://github.com/gch90/WAITIST",
@@ -112,11 +105,11 @@ const Pets2Go = {
   ),
   title: "Pets2Go",
   langs: [
-    [<Rails />, "Ruby on Rails"],
-    [<JS />, "JS"],
-    [<SQL />, "SQL"],
-    [<SCSS />, "SCSS"],
-    [<HTML />, "HTML"],
+    [langs.Rails(), "Ruby on Rails"],
+    [langs.JS(), "JS"],
+    [langs.SQL(), "SQL"],
+    [langs.SCSS(), "SCSS"],
+    [langs.HTML(), "HTML"],
   ],
   view: "https://pets-2-go.herokuapp.com/",
   code: "https://github.com/MarMcG/pets_2_go",
@@ -128,12 +121,26 @@ const PlazmaPong = {
   ),
   title: "Plazma Pong",
   langs: [
-    [<Unity />, "Unity"],
-    [<CSharp />, "C#"],
-    [<Illu />, "Illustrator"],
+    [langs.Unity(), "Unity"],
+    [langs.CSharp(), "C#"],
+    [langs.Illustrator(), "Illustrator"],
   ],
   view: "https://play.google.com/store/apps/details?id=com.Ree.BallGame",
   code: "https://github.com/Sedrakable",
 };
 
-export const CardsContent = [Waitist, Pets2Go, PlazmaPong];
+const MatrixReducer = {
+  src: importAll(
+    require.context("../content/projects/plazma", false, /\.(png|jpe?g|svg)$/)
+  ),
+  title: "Matrix Reducer",
+  langs: [
+    [langs.Unity(), "Unity"],
+    [langs.CSharp(), "C#"],
+    [langs.Illustrator(), "Illustrator"],
+  ],
+  view: "https://play.google.com/store/apps/details?id=com.Ree.BallGame",
+  code: "https://github.com/Sedrakable",
+};
+
+export const CardsContent = [Waitist, Pets2Go, PlazmaPong, MatrixReducer];

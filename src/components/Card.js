@@ -10,8 +10,8 @@ const Card = (props) => {
           <h2>{props.card.title}</h2>
         </div>
         <div className="langs">
-          {props.card.langs.map((lang, index) => {
-            return <p key={index}>{lang}</p>;
+          {props.card.langs.map((lang) => {
+            return <p key={lang[1]}>{lang}</p>;
           })}
         </div>
         <div className="btns">

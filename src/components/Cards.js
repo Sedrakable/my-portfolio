@@ -4,10 +4,10 @@ import { CardsContent } from "./Database";
 import Card from "./Card";
 import CardShow from "./CardShow";
 
-const Cards = (props) => {
+const Cards = () => {
   const [cardIndex, setCardIndex] = useState(0);
   const cardsRef = useRef();
-  const cardShowRef = useRef();
+  const cardShowRef = useRef(null);
 
   const setCard = (e) => {
     const btn = e.currentTarget;
