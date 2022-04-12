@@ -84,7 +84,11 @@ const importAll = (require) => {
 
 const Waitist = {
   src: importAll(
-    require.context("../content/projects/waitist", false, /\.(png|jpe?g|svg)$/)
+    require.context(
+      "../content/projects/waitist",
+      false,
+      /\.(png|jpe?g|svg|mp4)$/
+    )
   ),
   title: "Waitist",
   description: "Find a waiter or find a restaurant to wait tables.",
@@ -133,6 +137,7 @@ const MatrixReducer = {
   src: importAll(
     require.context("../content/projects/matrix", false, /\.(png|jpe?g|svg)$/)
   ),
+  video: require("../content/projects/matrix/video.mp4"),
   title: "Matrix Reducer",
   langs: [
     [langs.Java(), "Java"],
@@ -146,6 +151,7 @@ const TrafficSimulator = {
     require.context("../content/projects/traffic", false, /\.(png|jpe?g|svg)$/)
   ),
   title: "Traffic Simulator",
+  video: require("../content/projects/traffic/video.mp4"),
   langs: [
     [langs.Java(), "Java"],
     [langs.CSS(), "CSS"],

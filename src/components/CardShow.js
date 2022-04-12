@@ -91,6 +91,12 @@ const CardShow = forwardRef((props, ref) => {
         {props.card.src.map((_, index) => {
           return <Marker key={index} customClick={() => setImage(index)} />;
         })}
+        {props.card.video && (
+          <Marker
+            key={"video"}
+            customClick={() => setImage(props.card.src.length)}
+          />
+        )}
       </div>
     );
   };
@@ -114,6 +120,11 @@ const CardShow = forwardRef((props, ref) => {
             {props.card.src.map((src, index) => {
               return <img key={index} src={src} />;
             })}
+            {props.card.video && (
+              <video frameborder="0" autoplay controls allowfullscreen>
+                <source src={props.card.video} type="video/mp4" />
+              </video>
+            )}
           </div>
         </div>
         <div className="info">
