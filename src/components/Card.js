@@ -15,13 +15,18 @@ const Card = (props) => {
           })}
         </div>
         <div className="btns">
-          <a id="left" href={props.card.view} target="_blank">
-            Visit
-          </a>
+          {props.card.view != undefined && (
+            <a id="left" href={props.card.view} target="_blank">
+              Visit
+            </a>
+          )}
+
           <Arrow customClick={props.toggle} />
-          <a id="right" href={props.card.code} target="_blank">
-            Code
-          </a>
+          {props.card.view != undefined && (
+            <a id="left" href={props.card.code} target="_blank">
+              Code
+            </a>
+          )}
         </div>
       </div>
     </div>

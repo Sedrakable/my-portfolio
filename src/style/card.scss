@@ -66,7 +66,8 @@
       a {
         @include bcb($black, $primary, $primary);
         padding: 5px 10px;
-        flex-grow: 1;
+        flex-grow: 2;
+        width: 100%;
       }
       #left {
         text-align: right;
@@ -100,7 +101,8 @@
         background: linear-gradient($black 50%, $primary 50%);
         background-size: 100% 200%;
         transition: 100ms;
-
+        min-width: 24px;
+        flex-grow: 1;
         path {
           fill: $primary;
         }

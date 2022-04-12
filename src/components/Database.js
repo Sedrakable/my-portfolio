@@ -131,7 +131,7 @@ const PlazmaPong = {
 
 const MatrixReducer = {
   src: importAll(
-    require.context("../content/projects/plazma", false, /\.(png|jpe?g|svg)$/)
+    require.context("../content/projects/matrix", false, /\.(png|jpe?g|svg)$/)
   ),
   title: "Matrix Reducer",
   langs: [
@@ -139,8 +139,24 @@ const MatrixReducer = {
     [langs.CSharp(), "C#"],
     [langs.Illustrator(), "Illustrator"],
   ],
-  view: "https://play.google.com/store/apps/details?id=com.Ree.BallGame",
-  code: "https://github.com/Sedrakable",
 };
 
-export const CardsContent = [Waitist, Pets2Go, PlazmaPong, MatrixReducer];
+const TrafficSimulator = {
+  src: importAll(
+    require.context("../content/projects/traffic", false, /\.(png|jpe?g|svg)$/)
+  ),
+  title: "Traffic Simulator",
+  langs: [
+    [langs.Unity(), "Unity"],
+    [langs.CSharp(), "C#"],
+    [langs.Illustrator(), "Illustrator"],
+  ],
+};
+
+export const CardsContent = [
+  Waitist,
+  Pets2Go,
+  PlazmaPong,
+  MatrixReducer,
+  TrafficSimulator,
+];
