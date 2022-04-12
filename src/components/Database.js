@@ -82,14 +82,31 @@ const importAll = (require) => {
   return imgs;
 };
 
+const Video = ({ src }) => {
+  return (
+    <video frameborder="0" autoplay controls allowfullscreen>
+      <source src={src} type="video/mp4" />
+    </video>
+  );
+};
+
+const Youtube = ({ src }) => {
+  return (
+    <iframe
+      src={src}
+      title="YouTube video player"
+      frameborder="0"
+      allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+      allowfullscreen
+    ></iframe>
+  );
+};
+
 const Waitist = {
   src: importAll(
-    require.context(
-      "../content/projects/waitist",
-      false,
-      /\.(png|jpe?g|svg|mp4)$/
-    )
+    require.context("../content/projects/waitist", false, /\.(png|jpe?g|svg)$/)
   ),
+  video: <Youtube src="https://www.youtube.com/embed/MSlCtJjQQbo?start=934" />,
   title: "Waitist",
   description: "Find a waiter or find a restaurant to wait tables.",
   langs: [
@@ -107,6 +124,7 @@ const Pets2Go = {
   src: importAll(
     require.context("../content/projects/pets2go", false, /\.(png|jpe?g|svg)$/)
   ),
+  youtube: "",
   title: "Pets2Go",
   langs: [
     [langs.Rails(), "Ruby on Rails"],
@@ -123,6 +141,7 @@ const PlazmaPong = {
   src: importAll(
     require.context("../content/projects/plazma", false, /\.(png|jpe?g|svg)$/)
   ),
+  video: <Youtube src="https://www.youtube.com/embed/UayT-DkgXOk" />,
   title: "Plazma Pong",
   langs: [
     [langs.Unity(), "Unity"],
@@ -137,7 +156,7 @@ const MatrixReducer = {
   src: importAll(
     require.context("../content/projects/matrix", false, /\.(png|jpe?g|svg)$/)
   ),
-  video: require("../content/projects/matrix/video.mp4"),
+  video: <Video src={require("../content/projects/matrix/video.mp4")} />,
   title: "Matrix Reducer",
   langs: [
     [langs.Java(), "Java"],
@@ -151,7 +170,7 @@ const TrafficSimulator = {
     require.context("../content/projects/traffic", false, /\.(png|jpe?g|svg)$/)
   ),
   title: "Traffic Simulator",
-  video: require("../content/projects/traffic/video.mp4"),
+  video: <Video src={require("../content/projects/traffic/video.mp4")} />,
   langs: [
     [langs.Java(), "Java"],
     [langs.CSS(), "CSS"],

@@ -107,11 +107,11 @@ const CardShow = forwardRef((props, ref) => {
       <div className="card card-show">
         <div className="image-wrapper">
           <div className="small-arrows" ref={arrows}>
-            <div className="wrapper" onClick={previousImage}>
+            <div className="wrapper" id="left" onClick={previousImage}>
               <Arrow />
             </div>
 
-            <div className="wrapper" onClick={nextImage}>
+            <div className="wrapper" id="right" onClick={nextImage}>
               <Arrow />
             </div>
           </div>
@@ -120,11 +120,7 @@ const CardShow = forwardRef((props, ref) => {
             {props.card.src.map((src, index) => {
               return <img key={index} src={src} />;
             })}
-            {props.card.video && (
-              <video frameborder="0" autoplay controls allowfullscreen>
-                <source src={props.card.video} type="video/mp4" />
-              </video>
-            )}
+            {props.card.video}
           </div>
         </div>
         <div className="info">
