@@ -23,7 +23,7 @@ const Card = (props) => {
 
           <Arrow customClick={props.toggle} />
           {props.card.view != undefined && (
-            <a id="left" href={props.card.code} target="_blank">
+            <a id="right" href={props.card.code} target="_blank">
               Code
             </a>
           )}

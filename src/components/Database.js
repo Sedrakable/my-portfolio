@@ -135,9 +135,9 @@ const MatrixReducer = {
   ),
   title: "Matrix Reducer",
   langs: [
-    [langs.Unity(), "Unity"],
-    [langs.CSharp(), "C#"],
-    [langs.Illustrator(), "Illustrator"],
+    [langs.Java(), "Java"],
+    [langs.CSS(), "CSS"],
+    [langs.JavaFX(), "Java FX"],
   ],
 };
 
@@ -147,9 +147,9 @@ const TrafficSimulator = {
   ),
   title: "Traffic Simulator",
   langs: [
-    [langs.Unity(), "Unity"],
-    [langs.CSharp(), "C#"],
-    [langs.Illustrator(), "Illustrator"],
+    [langs.Java(), "Java"],
+    [langs.CSS(), "CSS"],
+    [langs.JavaFX(), "Java FX"],
   ],
 };
 
