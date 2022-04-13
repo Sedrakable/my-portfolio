@@ -47,8 +47,8 @@ export const Illustrator = () => {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       role="img"
-      width="24"
-      height="24"
+      width="20"
+      height="20"
       preserveAspectRatio="xMidYMid meet"
       viewBox="0 0 512 512"
     >
@@ -68,8 +68,8 @@ export const JS = () => {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       role="img"
-      width="1em"
-      height="1em"
+      width="24"
+      height="24"
       preserveAspectRatio="xMidYMid meet"
       viewBox="0 0 24 24"
     >
@@ -88,10 +88,10 @@ export const Rails = () => {
       // xmlns:xlink="http://www.w3.org/1999/xlink"
       aria-hidden="true"
       role="img"
-      width="1em"
-      height="1em"
+      width="24"
+      height="24"
       preserveAspectRatio="xMidYMid meet"
-      viewBox="0 0 24 24"
+      viewBox="0 0 26 26"
     >
       <path
         fill="currentColor"
@@ -223,8 +223,8 @@ export const CSS = () => {
       xmlns="http://www.w3.org/2000/svg"
       aria-hidden="true"
       role="img"
-      width="24"
-      height="24"
+      width="22"
+      height="22"
       preserveAspectRatio="xMidYMid meet"
       viewBox="0 0 256 232"
     >
@@ -244,8 +244,7 @@ export const JavaFX = () => {
       role="img"
       width="26"
       height="26"
-      preserveAspectRatio="xMidYMid meet"
-      viewBox="0 0 24 24"
+      viewBox="0 -2 24 24"
     >
       <path
         fill="none"
@@ -254,6 +253,170 @@ export const JavaFX = () => {
         stroke-linejoin="round"
         stroke-width="1.5"
         d="M3 17V7h7m-7 5h5m5 5l4-5m0 0l4-5m-4 5l-4-5m4 5l4 5"
+      />
+    </svg>
+  );
+};
+
+export const Figma = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      role="img"
+      width="18"
+      height="22"
+      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 384 512"
+    >
+      <path
+        fill="currentColor"
+        d="M14 95.792C14 42.888 56.888 0 109.793 0h164.368c52.905 0 95.793 42.888 95.793 95.792c0 33.5-17.196 62.984-43.243 80.105c26.047 17.122 43.243 46.605 43.243 80.105c0 52.905-42.888 95.793-95.793 95.793h-2.08c-24.802 0-47.403-9.426-64.415-24.891v88.263c0 53.61-44.009 96.833-97.357 96.833C57.536 512 14 469.243 14 416.207c0-33.498 17.195-62.98 43.24-80.102C31.193 318.983 14 289.5 14 256.002c0-33.5 17.196-62.983 43.242-80.105C31.197 158.776 14 129.292 14 95.792Zm162.288 95.795h-66.495c-35.576 0-64.415 28.84-64.415 64.415c0 35.438 28.617 64.192 64.003 64.414l.412-.001h66.495V191.587Zm31.378 64.415c0 35.575 28.839 64.415 64.415 64.415h2.08c35.576 0 64.415-28.84 64.415-64.415s-28.839-64.415-64.415-64.415h-2.08c-35.576 0-64.415 28.84-64.415 64.415Zm-97.873 95.793l-.412-.001c-35.386.221-64.003 28.975-64.003 64.413c0 35.445 29.225 64.415 64.931 64.415c36.282 0 65.979-29.436 65.979-65.455v-63.372h-66.495Zm0-320.417c-35.576 0-64.415 28.84-64.415 64.414c0 35.576 28.84 64.415 64.415 64.415h66.495V31.377h-66.495Zm97.873 128.829h66.495c35.576 0 64.415-28.839 64.415-64.415c0-35.575-28.839-64.414-64.415-64.414h-66.495v128.829Z"
+      />
+    </svg>
+  );
+};
+
+export const Trello = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      role="img"
+      width="21"
+      height="24"
+      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 448 512"
+    >
+      <path
+        fill="currentColor"
+        d="M392.3 32H56.1C25.1 32 0 57.1 0 88c-.1 0 0-4 0 336c0 30.9 25.1 56 56 56h336.2c30.8-.2 55.7-25.2 55.7-56V88c.1-30.8-24.8-55.8-55.6-56zM197 371.3c-.2 14.7-12.1 26.6-26.9 26.6H87.4c-14.8.1-26.9-11.8-27-26.6V117.1c0-14.8 12-26.9 26.9-26.9h82.9c14.8 0 26.9 12 26.9 26.9v254.2zm193.1-112c0 14.8-12 26.9-26.9 26.9h-81c-14.8 0-26.9-12-26.9-26.9V117.2c0-14.8 12-26.9 26.8-26.9h81.1c14.8 0 26.9 12 26.9 26.9v142.1z"
+      />
+    </svg>
+  );
+};
+
+export const VScode = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      role="img"
+      width="22"
+      height="22"
+      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="currentColor"
+        d="M.228 8.37s-.584-.427.117-.995L1.98 5.897s.467-.497.962-.064l15.081 11.542v5.534s-.007.87-1.11.774L.227 8.369Z"
+      />
+      <path
+        fill="currentColor"
+        d="M4.116 11.937L.228 15.509s-.4.3 0 .837l1.805 1.66s.429.465 1.062-.065l4.121-3.158l-3.1-2.846Zm6.824.029l7.13-5.502l-.047-5.505s-.305-1.202-1.32-.576L7.216 9.11l3.724 2.856Z"
+      />
+      <path
+        fill="currentColor"
+        d="M16.912 23.69c.414.428.916.288.916.288l5.556-2.767c.711-.49.611-1.098.611-1.098V3.588c0-.726-.735-.977-.735-.977L18.444.264c-1.052-.657-1.741.119-1.741.119s.886-.645 1.32.576v21.85c0 .15-.032.297-.095.43c-.127.259-.402.5-1.062.4l.046.051Z"
+      />
+    </svg>
+  );
+};
+
+export const Git = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      role="img"
+      width="22"
+      height="22"
+      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 16 16"
+    >
+      <path
+        fill="currentColor"
+        d="M15.698 7.287L8.712.302a1.03 1.03 0 0 0-1.457 0l-1.45 1.45l1.84 1.84a1.223 1.223 0 0 1 1.55 1.56l1.773 1.774a1.224 1.224 0 0 1 1.267 2.025a1.226 1.226 0 0 1-2.002-1.334L8.58 5.963v4.353a1.226 1.226 0 1 1-1.008-.036V5.887a1.226 1.226 0 0 1-.666-1.608L5.093 2.465l-4.79 4.79a1.03 1.03 0 0 0 0 1.457l6.986 6.986a1.03 1.03 0 0 0 1.457 0l6.953-6.953a1.031 1.031 0 0 0 0-1.457"
+      />
+    </svg>
+  );
+};
+
+export const Slack = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      role="img"
+      width="22"
+      height="22"
+      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="currentColor"
+        fill-rule="evenodd"
+        d="M9.066 1a2.2 2.2 0 1 0 .001 4.4h2.2V3.2a2.202 2.202 0 0 0-2.2-2.2Zm0 5.867H3.2a2.2 2.2 0 0 0 0 4.4h5.866a2.2 2.2 0 1 0 0-4.4ZM23 9.066a2.2 2.2 0 0 0-4.4 0v2.2h2.2a2.2 2.2 0 0 0 2.2-2.2Zm-5.867 0V3.2a2.2 2.2 0 0 0-4.4 0v5.866a2.2 2.2 0 1 0 4.4 0ZM14.933 23a2.2 2.2 0 1 0 0-4.4h-2.2v2.2a2.201 2.201 0 0 0 2.2 2.2Zm0-5.868H20.8a2.2 2.2 0 0 0 0-4.4h-5.866a2.2 2.2 0 0 0-.001 4.4ZM1 14.933a2.2 2.2 0 0 0 4.4 0v-2.2H3.2a2.2 2.2 0 0 0-2.2 2.2Zm5.867 0v5.866a2.2 2.2 0 0 0 4.4.001v-5.866a2.2 2.2 0 0 0-4.4-.001Z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  );
+};
+
+export const Heroku = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      role="img"
+      width="22"
+      height="22"
+      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="currentColor"
+        d="M20.61 0H3.39a2.15 2.15 0 0 0-2.16 2.16v19.681A2.15 2.15 0 0 0 3.39 24h17.22a2.15 2.15 0 0 0 2.159-2.159V2.16A2.149 2.149 0 0 0 20.61 0zm.96 21.841c0 .539-.421.96-.96.96H3.39a.948.948 0 0 1-.96-.96V2.16c0-.54.42-.961.96-.961h17.22a.95.95 0 0 1 .96.961v19.681zM6.63 20.399L9.33 18l-2.7-2.4v4.799zm9.72-9.719c-.479-.48-1.379-1.08-2.879-1.08c-1.621 0-3.301.421-4.5.84V3.6h-2.4v10.38l1.68-.78s2.76-1.26 5.16-1.26c1.2 0 1.5.66 1.5 1.26v7.2h2.4v-7.2c.059-.179.059-1.501-.961-2.52zM13.17 7.5h2.4c1.08-1.26 1.62-2.521 1.8-3.9h-2.399c-.241 1.379-.841 2.64-1.801 3.9z"
+      />
+    </svg>
+  );
+};
+
+export const Bootstrap = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      role="img"
+      width="24"
+      height="24"
+      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="currentColor"
+        fill-rule="evenodd"
+        d="M4.985 2c-1.37 0-2.383 1.199-2.337 2.498c.043 1.25-.013 2.867-.42 4.186c-.41 1.322-1.1 2.16-2.228 2.268v1.215c1.128.107 1.819.945 2.227 2.268c.408 1.319.464 2.936.42 4.185c-.045 1.3.968 2.499 2.338 2.499h14.032c1.37 0 2.383-1.199 2.337-2.499c-.043-1.249.013-2.866.42-4.185c.409-1.323 1.098-2.16 2.226-2.268v-1.215c-1.128-.108-1.817-.946-2.226-2.268c-.407-1.32-.463-2.937-.42-4.186C21.4 3.198 20.386 2 19.017 2H4.985ZM16.27 13.769c0 1.79-1.335 2.875-3.55 2.875H8.949a.407.407 0 0 1-.407-.407V6.881a.407.407 0 0 1 .407-.406h3.75c1.847 0 3.06 1 3.06 2.537c0 1.078-.816 2.043-1.855 2.213v.056c1.415.155 2.367 1.135 2.367 2.488Zm-3.96-6.005h-2.15v3.038h1.811c1.4 0 2.172-.564 2.172-1.572c0-.944-.664-1.466-1.833-1.466Zm-2.15 4.243v3.347h2.23c1.457 0 2.23-.585 2.23-1.684c0-1.1-.794-1.663-2.324-1.663H10.16Z"
+        clip-rule="evenodd"
+      />
+    </svg>
+  );
+};
+
+export const Piskel = () => {
+  return (
+    <svg
+      xmlns="http://www.w3.org/2000/svg"
+      aria-hidden="true"
+      role="img"
+      width="24"
+      height="24"
+      preserveAspectRatio="xMidYMid meet"
+      viewBox="0 0 24 24"
+    >
+      <path
+        fill="currentColor"
+        d="M3 3v18h18V3H3zm16 2v14H5V5h14zM7 7h6v6H9v2H7V7zm8 6h-2v2h-2v2h2v-2h2v2h2v-2h-2v-2zm0 0h2v-2h-2v2zM9 9v2h2V9H9z"
       />
     </svg>
   );

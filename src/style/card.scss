@@ -44,12 +44,20 @@
       height: 48px;
       flex-wrap: wrap;
       margin: 12px 10px;
+      gap: 2px;
+      row-gap: 4px;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
       p {
-        @include flex;
-        gap: 4px;
+        @include flex(center, flex-end);
+        gap: 2px;
         color: $gray;
         padding: 0 4px;
+        max-height: 22px;
+        width: fit-content;
         svg {
+          max-height: 100%;
           color: $gray;
         }
         &:hover {
@@ -310,6 +318,10 @@
       color: $gray;
       text-align: justify;
       hyphens: auto;
+    }
+    .langs {
+      overflow: visible;
+      height: fit-content;
     }
   }
 }
