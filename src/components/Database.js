@@ -108,7 +108,34 @@ const Waitist = {
   ),
   video: <Youtube src="https://www.youtube.com/embed/MSlCtJjQQbo?start=934" />,
   title: "Waitist",
-  description: "Find a waiter or find a restaurant to wait tables.",
+  description: (
+    <p className="desc">
+      An app that connects waiters and restaurant owners.
+      <ul>
+        <li>
+          Coding langauges used were:
+          <strong>Ruby, Javascript, HTML, CSS, SCSS and SQL</strong>
+        </li>
+        <li>
+          Created in a <strong>team</strong> of 4
+        </li>
+        <li>
+          Tasks were assigned using <strong>Trello</strong> and comunication was
+          done though <strong>Slack</strong>
+        </li>
+        <li>
+          Version control was done trough <strong>Git</strong> &
+          <strong>GitHub</strong>
+        </li>
+        <li>
+          The draft was built through <strong>Figma</strong>
+        </li>
+        <li>
+          The app was built using the <strong>Ruby on Rails framework</strong>
+        </li>
+      </ul>
+    </p>
+  ),
   langs: [
     [langs.Rails(), "Ruby on Rails"],
     [langs.JS(), "JS"],
@@ -124,7 +151,6 @@ const Pets2Go = {
   src: importAll(
     require.context("../content/projects/pets2go", false, /\.(png|jpe?g|svg)$/)
   ),
-  youtube: "",
   title: "Pets2Go",
   langs: [
     [langs.Rails(), "Ruby on Rails"],

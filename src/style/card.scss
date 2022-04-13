@@ -342,6 +342,7 @@
     margin: 16px;
     transform: rotate(90deg);
     cursor: pointer;
+    z-index: 8;
 
     &:first-child {
       transform: rotate(-90deg);

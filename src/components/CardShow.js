@@ -103,12 +103,6 @@ const CardShow = forwardRef((props, ref) => {
 
   return (
     <div className="module">
-      <div
-        className="overlay"
-        onClick={() => {
-          props.toggle();
-        }}
-      ></div>
       <BigArrow customClick={props.previousCard} />
       <div className="card card-show">
         <div className="image-wrapper">
@@ -134,7 +128,7 @@ const CardShow = forwardRef((props, ref) => {
             <h2>{props.card.title}</h2>
             <Exit customClick={props.toggle} />
           </div>
-          <p className="desc">{props.card.description}</p>
+          {props.card.description}
           <div className="langs">
             {props.card.langs.map((lang, index) => {
               return <p key={index}>{lang}</p>;
@@ -153,6 +147,12 @@ const CardShow = forwardRef((props, ref) => {
         </div>
       </div>
       <BigArrow customClick={props.nextCard} />
+      <div
+        className="overlay"
+        onClick={() => {
+          props.toggle();
+        }}
+      ></div>
     </div>
   );
 });

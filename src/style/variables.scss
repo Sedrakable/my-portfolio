@@ -70,6 +70,12 @@ p {
   margin: 0;
 }
 
+ol,
+ul {
+  padding-inline-start: 12px;
+  padding-inline-end: 12px;
+}
+
 a,
 input,
 textarea {
