@@ -36,12 +36,13 @@ const Cards = () => {
     }
   };
 
-  const toggleOverlay = (e) => {
+  const toggleModule = (e) => {
+    console.log(e);
     if (e) setCard(e);
     cardShowRef.current.resetImage();
-    const overlay = cardsRef.current.querySelector(".overlay");
-    overlay.classList.toggle("overlay-enter");
-    overlay.querySelector(".card-show").classList.toggle("card-enter");
+    const module = cardsRef.current.querySelector(".module");
+    module.classList.toggle("module-enter");
+    module.querySelector(".card-show").classList.toggle("card-enter");
   };
 
   useEffect(() => {
@@ -52,13 +53,13 @@ const Cards = () => {
     <div className="cards" ref={cardsRef}>
       <CardShow
         card={CardsContent[cardIndex]}
-        toggle={toggleOverlay}
+        toggle={toggleModule}
         nextCard={nextCard}
         previousCard={previousCard}
         ref={cardShowRef}
       />
       {CardsContent.map((card, index) => {
-        return <Card card={card} key={index} toggle={toggleOverlay} />;
+        return <Card card={card} key={index} toggle={toggleModule} />;
       })}
     </div>
   );

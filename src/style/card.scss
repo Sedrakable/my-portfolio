@@ -314,12 +314,12 @@
   }
 }
 
-.overlay {
+.module {
   visibility: hidden;
   position: fixed;
   @include flex;
   flex-direction: column;
-  background: rgba(black, 0.9);
+
   opacity: 0;
   top: 0;
   left: 0;
@@ -329,6 +329,12 @@
   z-index: 10;
   transition: 500ms;
   padding: 64px;
+  .overlay {
+    background: rgba(black, 0.9);
+    position: absolute;
+    width: 100%;
+    height: 100%;
+  }
   .big-arrow {
     position: relative;
     width: 64px;
@@ -356,7 +362,7 @@
   }
 }
 
-.overlay-enter {
+.module-enter {
   visibility: visible;
   max-height: inherit;
   opacity: 1;

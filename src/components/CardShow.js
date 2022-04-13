@@ -102,7 +102,13 @@ const CardShow = forwardRef((props, ref) => {
   };
 
   return (
-    <div className="overlay">
+    <div className="module">
+      <div
+        className="overlay"
+        onClick={() => {
+          props.toggle();
+        }}
+      ></div>
       <BigArrow customClick={props.previousCard} />
       <div className="card card-show">
         <div className="image-wrapper">
