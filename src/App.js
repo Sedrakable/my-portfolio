@@ -5,6 +5,7 @@ import Navbar from "./components/Navbar";
 import NavbarColumn from "./components/NavbarColumn";
 import Banner from "./components/Banner";
 import Cards from "./components/Cards";
+import Art from "./components/Art";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Background from "./components/Background";
@@ -159,6 +160,7 @@ const App = () => {
   const tabs = [
     { title: "Intro", component: <Banner icons={Icons} /> },
     { title: "Projects", component: <Cards /> },
+    { title: "Art", component: <Art /> },
     { title: "About", component: <About /> },
     { title: "Contact", component: <Contact /> },
   ];
