@@ -1,6 +1,7 @@
 import React from "react";
 
 import * as langs from "./svgs/Langs";
+import * as categories from "./svgs/Categories";
 
 const customVariables = [
   "--black",
@@ -300,4 +301,11 @@ export const CardsContent = [
   PlazmaPong,
   MatrixReducer,
   TrafficSimulator,
+];
+
+export const Categories = [
+  ["Origami", categories.Origami()],
+  ["Digital", categories.Digital()],
+  ["Draw", categories.Draw()],
+  ["Paint", categories.Paint()],
 ];
