@@ -8,7 +8,7 @@ import React, {
 import { Exit } from "./svgs/Exit";
 import BigArrow from "./svgs/BigArrow";
 import Arrow from "./svgs/Arrow";
-import Marker from "./svgs/Marker";
+import { Marker, VideoMarker } from "./svgs/Marker";
 
 const CardShow = forwardRef((props, ref) => {
   const images = useRef();
@@ -92,7 +92,7 @@ const CardShow = forwardRef((props, ref) => {
           return <Marker key={index} customClick={() => setImage(index)} />;
         })}
         {props.card.video && (
-          <Marker
+          <VideoMarker
             key={"video"}
             customClick={() => setImage(props.card.src.length)}
           />

@@ -158,6 +158,32 @@ const Pets2Go = {
   src: importAll(
     require.context("../content/projects/pets2go", false, /\.(png|jpe?g|svg)$/)
   ),
+  description: (
+    <p className="desc">
+      An app that lets pet owners rent out their pets and for people to rent
+      those pets. An Airbnb clone.
+      <ul>
+        <li>
+          Coding langauges used were:
+          <strong>Ruby, Javascript, HTML, CSS, SCSS and SQL</strong>
+        </li>
+        <li>
+          Created in a <strong>team</strong> of 4
+        </li>
+        <li>
+          Tasks were assigned using <strong>Trello</strong> and comunication was
+          done though <strong>Slack</strong>
+        </li>
+        <li>
+          Version control was done trough <strong>Git</strong> &
+          <strong>GitHub</strong>
+        </li>
+        <li>
+          The app was built using the <strong>Ruby on Rails framework</strong>
+        </li>
+      </ul>
+    </p>
+  ),
   title: "Pets2Go",
   langs: [
     [langs.Rails(), "Ruby on Rails"],
@@ -166,7 +192,6 @@ const Pets2Go = {
     [langs.SQL(), "SQL"],
     [langs.Bootstrap(), "Bootstrap"],
     [langs.HTML(), "HTML"],
-    [langs.Figma(), "Figma"],
     [langs.Git(), "Git"],
     [langs.Heroku(), "Heroku"],
     [langs.Trello(), "Trello"],
@@ -183,6 +208,23 @@ const PlazmaPong = {
   ),
   video: <Youtube src="https://www.youtube.com/embed/UayT-DkgXOk" />,
   title: "Plazma Pong",
+  description: (
+    <p className="desc">
+      An app that lets pet owners rent out their pets and for people to rent
+      those pets. An Airbnb clone.
+      <ul>
+        <li>
+          Coded with <strong>C#</strong>, using the 2D Unity engine
+        </li>
+        <li>
+          Art was made with <strong>Illustrator</strong>
+        </li>
+        <li>
+          Currently on the <strong>Play Store</strong>
+        </li>
+      </ul>
+    </p>
+  ),
   langs: [
     [langs.Unity(), "Unity"],
     [langs.CSharp(), "C#"],
@@ -198,11 +240,29 @@ const MatrixReducer = {
     require.context("../content/projects/matrix", false, /\.(png|jpe?g|svg)$/)
   ),
   video: <Video src={require("../content/projects/matrix/video.mp4")} />,
+  description: (
+    <p className="desc">
+      This project is inspired by linear algebra. The Reducer is able to reduce
+      any Matrix up to 10x10, while showing every step of the prossedure to the
+      user.
+      <ul>
+        <li>
+          Coded with <strong>Java</strong>,<strong>JavaFX</strong>&
+          <strong>CSS</strong>, using
+          <strong>Netbeans</strong>
+        </li>
+        <li>
+          Art was made with <strong>Piskel</strong>, a pixel art creation tool
+        </li>
+      </ul>
+    </p>
+  ),
   title: "Matrix Reducer",
   langs: [
     [langs.Java(), "Java"],
     [langs.CSS(), "CSS"],
     [langs.JavaFX(), "Java FX"],
+    [langs.Piskel(), "Piskel"],
   ],
 };
 
@@ -211,6 +271,21 @@ const TrafficSimulator = {
     require.context("../content/projects/traffic", false, /\.(png|jpe?g|svg)$/)
   ),
   title: "Traffic Simulator",
+  description: (
+    <p className="desc">
+      Simulates simple traffic physics and logic
+      <ul>
+        <li>
+          Coded with <strong>Java</strong>,<strong>JavaFX</strong>&
+          <strong>CSS</strong>, using
+          <strong>Netbeans</strong>
+        </li>
+        <li>
+          Art was made with <strong>Piskel</strong>, a pixel art creation tool
+        </li>
+      </ul>
+    </p>
+  ),
   video: <Video src={require("../content/projects/traffic/video.mp4")} />,
   langs: [
     [langs.Java(), "Java"],

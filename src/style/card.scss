@@ -267,6 +267,13 @@
           filter: grayscale(0.5);
         }
       }
+      .video-marker {
+        width: 20px;
+        height: 20px;
+        path {
+          fill: $primary;
+        }
+      }
       .active {
         opacity: 1;
         filter: none;
