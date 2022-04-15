@@ -303,9 +303,50 @@ export const CardsContent = [
   TrafficSimulator,
 ];
 
-export const Categories = [
-  ["Origami", categories.Origami()],
-  ["Digital", categories.Digital()],
-  ["Draw", categories.Draw()],
-  ["Paint", categories.Paint()],
-];
+const origami = {
+  title: "Origami",
+  svg: categories.Origami(),
+  images: [
+    "Turtle",
+    "Turtle_1",
+    "Blue_Star",
+    "Celtic",
+    "Celtic_1",
+    "Circle_Shell",
+    "Circle_Shell_1",
+    "Shell",
+    "Spider",
+    "Lion",
+    "Lizzard",
+    "Scorpion",
+    "Pigion",
+    "Rat",
+    "Dragon",
+    "Griffin",
+    "Fish",
+    "Frog",
+    "Cactus",
+    "Crown",
+    "Yoda",
+    "Jester",
+    "Self_Fold",
+    "Match_Box",
+    "Greek_Icosahedron",
+  ],
+};
+
+const digital = {
+  title: "Digital",
+  svg: categories.Digital(),
+};
+
+const draw = {
+  title: "Draw",
+  svg: categories.Draw(),
+};
+
+const paint = {
+  title: "Paint",
+  svg: categories.Paint(),
+};
+export const Categories = [origami, digital, draw, paint];
