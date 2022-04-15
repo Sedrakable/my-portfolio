@@ -338,15 +338,48 @@ const origami = {
 const digital = {
   title: "Digital",
   svg: categories.Digital(),
+  images: [
+    "Concordia_1",
+    "Concordia_2",
+    "Concordia_3",
+    "Concordia_4",
+    "Concordia_5",
+    "Boris_Red_Army_Phone",
+    "Boris_Army_Phone",
+    "Barrel_Beast",
+    "Allexiane",
+  ],
 };
 
 const draw = {
   title: "Draw",
   svg: categories.Draw(),
+  images: [
+    "Concordia_1",
+    "Concordia_2",
+    "Concordia_3",
+    "Concordia_4",
+    "Concordia_5",
+    "Boris_Red_Army_Phone",
+    "Boris_Army_Phone",
+    "Barrel_Beast",
+    "Allexiane",
+  ],
 };
 
 const paint = {
   title: "Paint",
   svg: categories.Paint(),
+  images: [
+    "Concordia_1",
+    "Concordia_2",
+    "Concordia_3",
+    "Concordia_4",
+    "Concordia_5",
+    "Boris_Red_Army_Phone",
+    "Boris_Army_Phone",
+    "Barrel_Beast",
+    "Allexiane",
+  ],
 };
 export const Categories = [origami, digital, draw, paint];
