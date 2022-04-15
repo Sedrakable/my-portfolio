@@ -354,32 +354,19 @@ const digital = {
 const draw = {
   title: "Draw",
   svg: categories.Draw(),
-  images: [
-    "Concordia_1",
-    "Concordia_2",
-    "Concordia_3",
-    "Concordia_4",
-    "Concordia_5",
-    "Boris_Red_Army_Phone",
-    "Boris_Army_Phone",
-    "Barrel_Beast",
-    "Allexiane",
-  ],
+  images: ["Pinecone", "Metal", "Sculls", "Wood"],
 };
 
 const paint = {
   title: "Paint",
   svg: categories.Paint(),
   images: [
-    "Concordia_1",
-    "Concordia_2",
-    "Concordia_3",
-    "Concordia_4",
-    "Concordia_5",
-    "Boris_Red_Army_Phone",
-    "Boris_Army_Phone",
-    "Barrel_Beast",
-    "Allexiane",
+    "Red_Paper",
+    "Lemons",
+    "My_Logo",
+    "My_Logo_1",
+    "My_Logo_2",
+    "My_Logo_3",
   ],
 };
-export const Categories = [origami, digital, draw, paint];
+export const Categories = [digital, origami, draw, paint];
