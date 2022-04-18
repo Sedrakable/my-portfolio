@@ -5,6 +5,7 @@ import { IKImage, IKContext, IKUpload } from "imagekitio-react";
 export const Art = ({ props }) => {
   const cards = useRef();
   const [categoryIndex, setCategoryIndex] = React.useState(null);
+  const [cardIndex, setCardIndex] = useState(0);
 
   const switchCategory = (index) => {
     categoryIndex != index ? setCategoryIndex(index) : setCategoryIndex(null);
@@ -12,6 +13,13 @@ export const Art = ({ props }) => {
 
   return (
     <div className="art">
+      {/* <CardShow
+        card={CardsContent[cardIndex]}
+        toggle={toggleModule}
+        nextCard={nextCard}
+        previousCard={previousCard}
+        ref={cardShowRef}
+      /> */}
       <div className="categories">
         {Categories.map((cat, index) => {
           return (
@@ -22,25 +30,29 @@ export const Art = ({ props }) => {
           );
         })}
       </div>
+
       {categoryIndex != null && (
-        <div className="cards" ref={cards}>
-          {Categories[categoryIndex].images.map((image) => {
-            return (
-              <div className="card-lil">
-                <IKContext urlEndpoint="https://ik.imagekit.io/sedrakable">
-                  <IKImage
-                    path={`/${Categories[categoryIndex].title}/${image}.jpg`}
-                    transformation={[
-                      {
-                        height: "192",
-                        width: "192",
-                      },
-                    ]}
-                  />
-                </IKContext>
-              </div>
-            );
-          })}
+        <div className="wrapper">
+          <h1>{Categories[categoryIndex].title}</h1>
+          <div className="cards" ref={cards}>
+            {Categories[categoryIndex].images.map((image) => {
+              return (
+                <div className="card-lil">
+                  <IKContext urlEndpoint="https://ik.imagekit.io/sedrakable">
+                    <IKImage
+                      path={`/${Categories[categoryIndex].title}/${image}.jpg`}
+                      transformation={[
+                        {
+                          height: "192",
+                          width: "192",
+                        },
+                      ]}
+                    />
+                  </IKContext>
+                </div>
+              );
+            })}
+          </div>
         </div>
       )}
     </div>

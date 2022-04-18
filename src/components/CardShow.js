@@ -11,10 +11,14 @@ import Arrow from "./svgs/Arrow";
 import { Marker, VideoMarker } from "./svgs/Marker";
 
 const CardShow = forwardRef((props, ref) => {
+  console.log(props);
+  const cards = props.cards;
   const images = useRef();
   const arrows = useRef();
   const markers = useRef();
+  const module = useRef();
 
+  const [cardIndex, setCardIndex] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
 
   useEffect(() => {
@@ -41,6 +45,14 @@ const CardShow = forwardRef((props, ref) => {
     setImageIndex(imageIndex - 1);
   };
 
+  const toggleModule = (e) => {
+    console.log(e);
+    if (e) setCard(e);
+    setImageIndex(0);
+    module.current.classList.toggle("module-enter");
+    module.current.querySelector(".card-show").classList.toggle("card-enter");
+  };
+
   const arrowChecker = () => {
     const imagesCount = images.current.childNodes.length - 1;
     resetArrows();
@@ -58,6 +70,11 @@ const CardShow = forwardRef((props, ref) => {
     }
   };
 
+  const resetArrows = () => {
+    arrows.current.childNodes[1].classList.remove("v-none");
+    arrows.current.childNodes[0].classList.remove("v-none");
+  };
+
   const markerChecker = () => {
     if (markers.current !== null) {
       resetMarkers();
@@ -71,30 +88,52 @@ const CardShow = forwardRef((props, ref) => {
     });
   };
 
-  const resetArrows = () => {
-    arrows.current.childNodes[1].classList.remove("v-none");
-    arrows.current.childNodes[0].classList.remove("v-none");
+  //CARD INDEX
+  const setCard = (e) => {
+    const btn = e.currentTarget;
+    const card = btn.closest(".card");
+    const index = [...card.parentNode.children].indexOf(card) - 1;
+    setCardIndex(index);
   };
 
-  useImperativeHandle(ref, () => ({
-    resetImage() {
-      setImageIndex(0);
-    },
-    incrementImage() {
-      incrementImage();
-    },
-  }));
+  const nextCard = () => {
+    setImageIndex(0);
+    const currentCardIndex = cardIndex;
+    if (currentCardIndex < cards.length - 1) {
+      setCardIndex(currentCardIndex + 1);
+    } else {
+      setCardIndex(0);
+    }
+  };
+
+  const previousCard = () => {
+    setImageIndex(0);
+    const currentCardIndex = cardIndex;
+    if (currentCardIndex > 0) {
+      setCardIndex(cardIndex - 1);
+    } else {
+      setCardIndex(cards.length - 1);
+    }
+  };
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      toggleModule,
+    }),
+    []
+  );
 
   const markerRender = () => {
     return (
       <div className="markers" ref={markers}>
-        {props.card.src.map((_, index) => {
+        {cards[cardIndex].src.map((_, index) => {
           return <Marker key={index} customClick={() => setImage(index)} />;
         })}
-        {props.card.video && (
+        {cards[cardIndex].video && (
           <VideoMarker
             key={"video"}
-            customClick={() => setImage(props.card.src.length)}
+            customClick={() => setImage(cards[cardIndex].src.length)}
           />
         )}
       </div>
@@ -102,55 +141,55 @@ const CardShow = forwardRef((props, ref) => {
   };
 
   return (
-    <div className="module">
-      <BigArrow customClick={props.previousCard} />
+    <div className="module" ref={module}>
+      <BigArrow customClick={previousCard} />
       <div className="card card-show">
         <div className="image-wrapper">
           <div className="small-arrows" ref={arrows}>
-            <div className="wrapper" id="left" onClick={previousImage}>
+            <div className="arrow-wrapper" id="left" onClick={previousImage}>
               <Arrow />
             </div>
 
-            <div className="wrapper" id="right" onClick={nextImage}>
+            <div className="arrow-wrapper" id="right" onClick={nextImage}>
               <Arrow />
             </div>
           </div>
-          {props.card.src.length > 1 ? markerRender() : null}
+          {cards[cardIndex].src.length > 1 ? markerRender() : null}
           <div className="images" ref={images}>
-            {props.card.src.map((src, index) => {
+            {cards[cardIndex].src.map((src, index) => {
               return <img key={index} src={src} />;
             })}
-            {props.card.video}
+            {cards[cardIndex].video}
           </div>
         </div>
         <div className="info">
           <div className="header">
-            <h2>{props.card.title}</h2>
-            <Exit customClick={props.toggle} />
+            <h2>{cards[cardIndex].title}</h2>
+            <Exit customClick={toggleModule} />
           </div>
-          {props.card.description}
+          {cards[cardIndex].description}
           <div className="langs">
-            {props.card.langs.map((lang, index) => {
+            {cards[cardIndex].langs.map((lang, index) => {
               return <p key={index}>{lang}</p>;
             })}
           </div>
 
           <div className="btns">
-            <a id="left" href={props.card.view} target="_blank">
+            <a id="left" href={cards[cardIndex].view} target="_blank">
               Visit
             </a>
 
-            <a id="right" href={props.card.code} target="_blank">
+            <a id="right" href={cards[cardIndex].code} target="_blank">
               Code
             </a>
           </div>
         </div>
       </div>
-      <BigArrow customClick={props.nextCard} />
+      <BigArrow customClick={nextCard} />
       <div
         className="overlay"
         onClick={() => {
-          props.toggle();
+          toggleModule();
         }}
       ></div>
     </div>
