@@ -9,9 +9,9 @@ import { Exit } from "./svgs/Exit";
 import BigArrow from "./svgs/BigArrow";
 import Arrow from "./svgs/Arrow";
 import { Marker, VideoMarker } from "./svgs/Marker";
+import { IKImage, IKContext } from "imagekitio-react";
 
 const CardShow = forwardRef((props, ref) => {
-  console.log(props);
   const cards = props.cards;
   const images = useRef();
   const arrows = useRef();
@@ -20,7 +20,7 @@ const CardShow = forwardRef((props, ref) => {
 
   const [cardIndex, setCardIndex] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
-
+  console.log(cards[cardIndex].images);
   useEffect(() => {
     incrementImage();
   }, [imageIndex]);
@@ -127,13 +127,13 @@ const CardShow = forwardRef((props, ref) => {
   const markerRender = () => {
     return (
       <div className="markers" ref={markers}>
-        {cards[cardIndex].src.map((_, index) => {
-          return <Marker key={index} customClick={() => setImage(index)} />;
+        {cards[cardIndex].images.map((num) => {
+          return <Marker key={num} customClick={() => setImage(num)} />;
         })}
         {cards[cardIndex].video && (
           <VideoMarker
             key={"video"}
-            customClick={() => setImage(cards[cardIndex].src.length)}
+            customClick={() => setImage(cards[cardIndex].images.length)}
           />
         )}
       </div>
@@ -154,10 +154,19 @@ const CardShow = forwardRef((props, ref) => {
               <Arrow />
             </div>
           </div>
-          {cards[cardIndex].src.length > 1 ? markerRender() : null}
+          {cards[cardIndex].images.length > 1 ? markerRender() : null}
           <div className="images" ref={images}>
-            {cards[cardIndex].src.map((src, index) => {
-              return <img key={index} src={src} />;
+            {cards[cardIndex].images.map((num) => {
+              {
+                console.log(cards[cardIndex].image_title);
+              }
+              return (
+                <IKContext urlEndpoint="https://ik.imagekit.io/sedrakable">
+                  <IKImage
+                    path={`/${cards[cardIndex].image_title}/${cards[cardIndex].image_title}_${num}.${cards[cardIndex].image_format}`}
+                  />
+                </IKContext>
+              );
             })}
             {cards[cardIndex].video}
           </div>

@@ -104,9 +104,12 @@ const Youtube = ({ src }) => {
 };
 
 const Waitist = {
-  src: importAll(
-    require.context("../content/projects/waitist", false, /\.(png|jpe?g|svg)$/)
-  ),
+  // src: importAll(
+  //   require.context("../content/projects/waitist", false, /\.(png|jpe?g|svg)$/)
+  // ),
+  image_title: "waitist",
+  image_format: "png",
+  images: [...Array(8).keys()],
   video: <Youtube src="https://www.youtube.com/embed/MSlCtJjQQbo?start=934" />,
   title: "Waitist",
   description: (
@@ -156,9 +159,10 @@ const Waitist = {
 };
 
 const Pets2Go = {
-  src: importAll(
-    require.context("../content/projects/pets2go", false, /\.(png|jpe?g|svg)$/)
-  ),
+  image_title: "waitist",
+  image_format: "png",
+  images: [...Array(8).keys()],
+  title: "Pets2Go",
   description: (
     <p className="desc">
       An app that lets pet owners rent out their pets and for people to rent
@@ -185,7 +189,6 @@ const Pets2Go = {
       </ul>
     </p>
   ),
-  title: "Pets2Go",
   langs: [
     [langs.Rails(), "Ruby on Rails"],
     [langs.JS(), "JS"],
@@ -204,9 +207,12 @@ const Pets2Go = {
 };
 
 const PlazmaPong = {
-  src: importAll(
-    require.context("../content/projects/plazma", false, /\.(png|jpe?g|svg)$/)
-  ),
+  image_title: "waitist",
+  image_format: "png",
+  images: [...Array(8).keys()],
+  // src: importAll(
+  //   require.context("../content/projects/plazma", false, /\.(png|jpe?g|svg)$/)
+  // ),
   video: <Youtube src="https://www.youtube.com/embed/UayT-DkgXOk" />,
   title: "Plazma Pong",
   description: (
@@ -237,10 +243,11 @@ const PlazmaPong = {
 };
 
 const MatrixReducer = {
-  src: importAll(
-    require.context("../content/projects/matrix", false, /\.(png|jpe?g|svg)$/)
-  ),
+  image_title: "waitist",
+  image_format: "png",
+  images: [...Array(8).keys()],
   video: <Video src={require("../content/projects/matrix/video.mp4")} />,
+  title: "Matrix Reducer",
   description: (
     <p className="desc">
       This project is inspired by linear algebra. The Reducer is able to reduce
@@ -258,7 +265,7 @@ const MatrixReducer = {
       </ul>
     </p>
   ),
-  title: "Matrix Reducer",
+
   langs: [
     [langs.Java(), "Java"],
     [langs.CSS(), "CSS"],
@@ -268,9 +275,10 @@ const MatrixReducer = {
 };
 
 const TrafficSimulator = {
-  src: importAll(
-    require.context("../content/projects/traffic", false, /\.(png|jpe?g|svg)$/)
-  ),
+  image_title: "waitist",
+  image_format: "png",
+  images: [...Array(8).keys()],
+  video: <Video src={require("../content/projects/traffic/video.mp4")} />,
   title: "Traffic Simulator",
   description: (
     <p className="desc">
@@ -287,7 +295,7 @@ const TrafficSimulator = {
       </ul>
     </p>
   ),
-  video: <Video src={require("../content/projects/traffic/video.mp4")} />,
+
   langs: [
     [langs.Java(), "Java"],
     [langs.CSS(), "CSS"],
@@ -306,67 +314,185 @@ export const CardsContent = [
 const origami = {
   title: "Origami",
   svg: categories.Origami(),
-  images: [
-    "Turtle",
-    "Turtle_1",
-    "Blue_Star",
-    "Celtic",
-    "Celtic_1",
-    "Circle_Shell",
-    "Circle_Shell_1",
-    "Shell",
-    "Spider",
-    "Lion",
-    "Lizzard",
-    "Scorpion",
-    "Pigion",
-    "Rat",
-    "Dragon",
-    "Griffin",
-    "Fish",
-    "Frog",
-    "Cactus",
-    "Crown",
-    "Yoda",
-    "Jester",
-    "Self_Fold",
-    "Match_Box",
-    "Greek_Icosahedron",
+  arts: [
+    {
+      image_title: "Turtle",
+      image_format: "jpg",
+      images: [0, 1],
+    },
+    {
+      image_title: "Blue_Star",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Celtic",
+      image_format: "jpg",
+      images: [0, 1],
+    },
+    {
+      image_title: "Circle_Shell",
+      image_format: "jpg",
+      images: [0, 1],
+    },
+    {
+      image_title: "Shell",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Spider",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Lion",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Lizzard",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Scorpion",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Pigion",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Rat",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Dragon",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Griffin",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Fish",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Frog",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Cactus",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Crown",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Yoda",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Jester",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Self_Fold",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Match_Box",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Greek_Icosahedron",
+      image_format: "jpg",
+      images: [0],
+    },
   ],
 };
 
 const digital = {
   title: "Digital",
   svg: categories.Digital(),
-  images: [
-    "Concordia_1",
-    "Concordia_2",
-    "Concordia_3",
-    "Concordia_4",
-    "Concordia_5",
-    "Boris_Red_Army_Phone",
-    "Boris_Army_Phone",
-    "Barrel_Beast",
-    "Allexiane",
+  arts: [
+    {
+      image_title: "Concordia",
+      image_format: "jpg",
+      images: [1, 2, 3, 4, 5],
+    },
+    {
+      image_title: "Boris_Army_Phone",
+      image_format: "jpg",
+      images: [0, 1],
+    },
+    {
+      image_title: "Allexiane",
+      image_format: "jpg",
+      images: [0],
+    },
+    { image_title: "Barrel_Beast", image_format: "jpg", images: [0] },
   ],
 };
 
 const draw = {
   title: "Draw",
   svg: categories.Draw(),
-  images: ["Pinecone", "Metal", "Sculls", "Wood"],
+  arts: [
+    {
+      image_title: "Pinecone",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Metal",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Sculls",
+      image_format: "jpg",
+      images: [0],
+    },
+    { image_title: "Wood", image_format: "jpg", images: [0] },
+  ],
 };
 
 const paint = {
   title: "Paint",
   svg: categories.Paint(),
-  images: [
-    "Red_Paper",
-    "Lemons",
-    "My_Logo",
-    "My_Logo_1",
-    "My_Logo_2",
-    "My_Logo_3",
+  arts: [
+    {
+      image_title: "Red_Paper",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Lemons",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "My_Logo",
+      image_format: "jpg",
+      images: [...Array(4).keys()],
+    },
   ],
 };
-export const Categories = [digital, origami, draw, paint];
+export const Categories = [origami, digital, draw, paint];

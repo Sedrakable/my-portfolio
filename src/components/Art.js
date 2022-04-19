@@ -1,25 +1,26 @@
 import React, { useState, useEffect, useRef } from "react";
 import { Categories } from "./Database";
-import { IKImage, IKContext, IKUpload } from "imagekitio-react";
+import CardShow from "./CardShow";
+import { IKImage, IKContext } from "imagekitio-react";
 
-export const Art = ({ props }) => {
+export const Art = () => {
   const cards = useRef();
+  const cardShowRef = useRef();
   const [categoryIndex, setCategoryIndex] = React.useState(null);
-  const [cardIndex, setCardIndex] = useState(0);
 
   const switchCategory = (index) => {
     categoryIndex != index ? setCategoryIndex(index) : setCategoryIndex(null);
   };
 
+  const image_kit_path = (title, art) => {
+    return `/${title}/${art.image_title}${
+      art.images.length > 1 ? "_" + art.images[0] : ""
+    }.${art.image_format}`;
+  };
+
   return (
     <div className="art">
-      {/* <CardShow
-        card={CardsContent[cardIndex]}
-        toggle={toggleModule}
-        nextCard={nextCard}
-        previousCard={previousCard}
-        ref={cardShowRef}
-      /> */}
+      {/* <CardShow cards={Categories[categoryIndex]} ref={cardShowRef} /> */}
       <div className="categories">
         {Categories.map((cat, index) => {
           return (
@@ -35,20 +36,29 @@ export const Art = ({ props }) => {
         <div className="wrapper">
           <h1>{Categories[categoryIndex].title}</h1>
           <div className="cards" ref={cards}>
-            {Categories[categoryIndex].images.map((image) => {
+            {Categories[categoryIndex].arts.map((art) => {
               return (
-                <div className="card-lil">
+                <div
+                  className="card-lil"
+                  onClick={(e) => {
+                    cardShowRef.current.toggleModule(e);
+                  }}
+                >
                   <IKContext urlEndpoint="https://ik.imagekit.io/sedrakable">
                     <IKImage
-                      path={`/${Categories[categoryIndex].title}/${image}.jpg`}
+                      path={image_kit_path(
+                        Categories[categoryIndex].title,
+                        art
+                      )}
                       transformation={[
                         {
-                          height: "192",
-                          width: "192",
+                          height: "384",
+                          width: "384",
                         },
                       ]}
                     />
                   </IKContext>
+                  <h3>{art.image_title}</h3>
                 </div>
               );
             })}

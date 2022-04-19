@@ -1,10 +1,21 @@
 import React, { Component } from "react";
 import Arrow from "./svgs/Arrow";
+import { IKImage, IKContext } from "imagekitio-react";
 
 const Card = (props) => {
   return (
     <div className="card">
-      <img src={props.card.src[0]} />
+      <IKContext urlEndpoint="https://ik.imagekit.io/sedrakable">
+        <IKImage
+          path={`/${props.card.image_title}/${props.card.image_title}_0.${props.card.image_format}`}
+          transformation={[
+            {
+              height: "384",
+              width: "640",
+            },
+          ]}
+        />
+      </IKContext>
       <div className="info">
         <div className="header">
           <h2>{props.card.title}</h2>
