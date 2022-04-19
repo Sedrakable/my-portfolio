@@ -62,7 +62,7 @@ export const Art = () => {
                       ]}
                     />
                   </IKContext>
-                  <h3>{art.image_title}</h3>
+                  <h3>{art.image_title.replace("_", " ")}</h3>
                 </div>
               );
             })}

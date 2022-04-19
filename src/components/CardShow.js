@@ -12,15 +12,26 @@ import { Marker, VideoMarker } from "./svgs/Marker";
 import { IKImage, IKContext } from "imagekitio-react";
 
 const CardShow = forwardRef((props, ref) => {
+  const [cardIndex, setCardIndex] = useState(0);
+  const [imageIndex, setImageIndex] = useState(0);
+
   const cards = props.cards;
   const folder = props.folder;
+  const title = cards[cardIndex].title
+    ? cards[cardIndex].title
+    : cards[cardIndex].image_title.replace("_", " ");
+
   const images = useRef();
   const arrows = useRef();
   const markers = useRef();
   const module = useRef();
 
-  const [cardIndex, setCardIndex] = useState(0);
-  const [imageIndex, setImageIndex] = useState(0);
+  const image_kit_path = (card, num) => {
+    return `/${folder ? folder : card.image_title}/${card.image_title}${
+      card.images.length > 1 ? "_" + num : ""
+    }.${card.image_format}`;
+  };
+
   useEffect(() => {
     incrementImage();
   }, [imageIndex]);
@@ -144,12 +155,6 @@ const CardShow = forwardRef((props, ref) => {
     );
   };
 
-  const image_kit_path = (card, num) => {
-    return `/${folder ? folder : card.image_title}/${card.image_title}${
-      card.images.length > 1 ? "_" + num : ""
-    }.${card.image_format}`;
-  };
-
   return (
     <div className="module" ref={module}>
       <BigArrow customClick={previousCard} />
@@ -181,7 +186,7 @@ const CardShow = forwardRef((props, ref) => {
         </div>
         <div className="info">
           <div className="header">
-            <h2>{cards[cardIndex].title}</h2>
+            <h2>{title}</h2>
             <Exit customClick={toggleModule} />
           </div>
           {cards[cardIndex].description}
@@ -193,13 +198,17 @@ const CardShow = forwardRef((props, ref) => {
           </div>
 
           <div className="btns">
-            <a id="left" href={cards[cardIndex].view} target="_blank">
-              Visit
-            </a>
+            {cards[cardIndex].view && (
+              <a id="left" href={cards[cardIndex].view} target="_blank">
+                Visit
+              </a>
+            )}
 
-            <a id="right" href={cards[cardIndex].code} target="_blank">
-              Code
-            </a>
+            {cards[cardIndex].code && (
+              <a id="right" href={cards[cardIndex].code} target="_blank">
+                Code
+              </a>
+            )}
           </div>
         </div>
       </div>

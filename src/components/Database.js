@@ -75,13 +75,13 @@ export const Icons = [
   },
 ];
 
-const importAll = (require) => {
-  const imgs = [];
-  require.keys().reduce((_, next) => {
-    imgs.push(require(next));
-  }, {});
-  return imgs;
-};
+// const importAll = (require) => {
+//   const imgs = [];
+//   require.keys().reduce((_, next) => {
+//     imgs.push(require(next));
+//   }, {});
+//   return imgs;
+// };
 
 const Video = ({ src }) => {
   return (
@@ -207,12 +207,9 @@ const Pets2Go = {
 };
 
 const PlazmaPong = {
-  image_title: "waitist",
-  image_format: "png",
-  images: [...Array(8).keys()],
-  // src: importAll(
-  //   require.context("../content/projects/plazma", false, /\.(png|jpe?g|svg)$/)
-  // ),
+  image_title: "plazma",
+  image_format: "jpg",
+  images: [...Array(9).keys()],
   video: <Youtube src="https://www.youtube.com/embed/UayT-DkgXOk" />,
   title: "Plazma Pong",
   description: (
