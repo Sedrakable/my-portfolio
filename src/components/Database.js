@@ -159,9 +159,9 @@ const Waitist = {
 };
 
 const Pets2Go = {
-  image_title: "waitist",
+  image_title: "pets2go",
   image_format: "png",
-  images: [...Array(8).keys()],
+  images: [1, 2, 3, 4, 5],
   title: "Pets2Go",
   description: (
     <p className="desc">

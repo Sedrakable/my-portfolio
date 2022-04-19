@@ -3,11 +3,17 @@ import Arrow from "./svgs/Arrow";
 import { IKImage, IKContext } from "imagekitio-react";
 
 const Card = (props) => {
+  const image_kit_path = (card) => {
+    return `/${card.image_title}/${card.image_title}${
+      card.images.length > 1 ? "_" + card.images[0] : ""
+    }.${card.image_format}`;
+  };
+
   return (
     <div className="card">
       <IKContext urlEndpoint="https://ik.imagekit.io/sedrakable">
         <IKImage
-          path={`/${props.card.image_title}/${props.card.image_title}_0.${props.card.image_format}`}
+          path={image_kit_path(props.card)}
           transformation={[
             {
               height: "384",
