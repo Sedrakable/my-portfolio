@@ -5,7 +5,7 @@ import { IKImage, IKContext } from "imagekitio-react";
 
 export const Art = () => {
   const cards = useRef();
-  const cardShowRef = useRef();
+  const cardShowRef = useRef(null);
   const [categoryIndex, setCategoryIndex] = React.useState(null);
 
   const switchCategory = (index) => {
@@ -20,7 +20,6 @@ export const Art = () => {
 
   return (
     <div className="art">
-      {/* <CardShow cards={Categories[categoryIndex]} ref={cardShowRef} /> */}
       <div className="categories">
         {Categories.map((cat, index) => {
           return (
@@ -36,6 +35,11 @@ export const Art = () => {
         <div className="wrapper">
           <h1>{Categories[categoryIndex].title}</h1>
           <div className="cards" ref={cards}>
+            <CardShow
+              folder={Categories[categoryIndex].title}
+              cards={Categories[categoryIndex].arts}
+              ref={cardShowRef}
+            />
             {Categories[categoryIndex].arts.map((art) => {
               return (
                 <div

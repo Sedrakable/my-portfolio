@@ -13,6 +13,7 @@ import { IKImage, IKContext } from "imagekitio-react";
 
 const CardShow = forwardRef((props, ref) => {
   const cards = props.cards;
+  const folder = props.folder;
   const images = useRef();
   const arrows = useRef();
   const markers = useRef();
@@ -20,7 +21,6 @@ const CardShow = forwardRef((props, ref) => {
 
   const [cardIndex, setCardIndex] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
-  console.log(cards[cardIndex].images);
   useEffect(() => {
     incrementImage();
   }, [imageIndex]);
@@ -91,8 +91,12 @@ const CardShow = forwardRef((props, ref) => {
   //CARD INDEX
   const setCard = (e) => {
     const btn = e.currentTarget;
-    const card = btn.closest(".card");
+    const card =
+      btn.closest(".card") === null
+        ? btn.closest(".card-lil")
+        : btn.closest(".card");
     const index = [...card.parentNode.children].indexOf(card) - 1;
+    console.log(index);
     setCardIndex(index);
   };
 
@@ -140,6 +144,12 @@ const CardShow = forwardRef((props, ref) => {
     );
   };
 
+  const image_kit_path = (card, num) => {
+    return `/${folder ? folder : card.image_title}/${card.image_title}${
+      card.images.length > 1 ? "_" + num : ""
+    }.${card.image_format}`;
+  };
+
   return (
     <div className="module" ref={module}>
       <BigArrow customClick={previousCard} />
@@ -157,13 +167,11 @@ const CardShow = forwardRef((props, ref) => {
           {cards[cardIndex].images.length > 1 ? markerRender() : null}
           <div className="images" ref={images}>
             {cards[cardIndex].images.map((num) => {
-              {
-                console.log(cards[cardIndex].image_title);
-              }
               return (
                 <IKContext urlEndpoint="https://ik.imagekit.io/sedrakable">
                   <IKImage
-                    path={`/${cards[cardIndex].image_title}/${cards[cardIndex].image_title}_${num}.${cards[cardIndex].image_format}`}
+                    key={num}
+                    path={image_kit_path(cards[cardIndex], num)}
                   />
                 </IKContext>
               );
@@ -178,9 +186,10 @@ const CardShow = forwardRef((props, ref) => {
           </div>
           {cards[cardIndex].description}
           <div className="langs">
-            {cards[cardIndex].langs.map((lang, index) => {
-              return <p key={index}>{lang}</p>;
-            })}
+            {cards[cardIndex].langs &&
+              cards[cardIndex].langs.map((lang, index) => {
+                return <p key={index}>{lang}</p>;
+              })}
           </div>
 
           <div className="btns">

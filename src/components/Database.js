@@ -85,7 +85,7 @@ const importAll = (require) => {
 
 const Video = ({ src }) => {
   return (
-    <video frameborder="0" autoplay controls allowfullscreen>
+    <video frameBorder="0" autoplay controls allowFullScreen>
       <source src={src} type="video/mp4" />
     </video>
   );
@@ -96,9 +96,9 @@ const Youtube = ({ src }) => {
     <iframe
       src={src}
       title="YouTube video player"
-      frameborder="0"
+      frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
+      allowFullScreen
     ></iframe>
   );
 };
@@ -316,6 +316,7 @@ const origami = {
   svg: categories.Origami(),
   arts: [
     {
+      title: "Turtle",
       image_title: "Turtle",
       image_format: "jpg",
       images: [0, 1],

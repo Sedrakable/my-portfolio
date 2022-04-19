@@ -128,9 +128,15 @@ const App = () => {
         const tabs = navColumn.current.querySelector(".tabs").childNodes;
         const index = getBoxIndex(entry.target);
         tabs[index].classList.toggle("active", entry.isIntersecting);
-        container.current.childNodes[index]
-          .querySelector(".btn-scroll")
-          .classList.toggle("d-none", !entry.isIntersecting);
+
+        const scrollBtn =
+          container.current.childNodes[index].querySelector(".btn-scroll");
+
+        scrollBtn &&
+          scrollBtn.classList.toggle("d-none", !entry.isIntersecting);
+        // container.current.childNodes[index]
+        //   .querySelector(".btn-scroll")
+        //   .classList.toggle("d-none", !entry.isIntersecting);
       });
     }, options);
 
