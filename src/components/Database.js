@@ -240,10 +240,10 @@ const PlazmaPong = {
 };
 
 const MatrixReducer = {
-  image_title: "waitist",
+  image_title: "matrix",
   image_format: "png",
-  images: [...Array(8).keys()],
-  video: <Video src={require("../content/projects/matrix/video.mp4")} />,
+  images: [...Array(4).keys()],
+  video: <Video src={"https://ik.imagekit.io/sedrakable/matrix/video.mp4"} />,
   title: "Matrix Reducer",
   description: (
     <p className="desc">
@@ -272,10 +272,10 @@ const MatrixReducer = {
 };
 
 const TrafficSimulator = {
-  image_title: "waitist",
+  image_title: "traffic",
   image_format: "png",
-  images: [...Array(8).keys()],
-  video: <Video src={require("../content/projects/traffic/video.mp4")} />,
+  images: [...Array(3).keys()],
+  video: <Video src={"https://ik.imagekit.io/sedrakable/traffic/video.mp4"} />,
   title: "Traffic Simulator",
   description: (
     <p className="desc">
@@ -313,15 +313,20 @@ const origami = {
   svg: categories.Origami(),
   arts: [
     {
-      title: "Turtle",
       image_title: "Turtle",
       image_format: "jpg",
       images: [0, 1],
+      description: (
+        <p className="desc">Simulates simple traffic physics and logic</p>
+      ),
     },
     {
       image_title: "Blue_Star",
       image_format: "jpg",
       images: [0],
+      description: (
+        <p className="desc">Simulates simple traffic physics and logic</p>
+      ),
     },
     {
       image_title: "Celtic",
