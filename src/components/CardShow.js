@@ -5,18 +5,21 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from "react";
+import ReactDOM from "react-dom";
 import { Exit } from "./svgs/Exit";
 import BigArrow from "./svgs/BigArrow";
 import Arrow from "./svgs/Arrow";
 import { Marker, VideoMarker } from "./svgs/Marker";
 import { IKImage, IKContext } from "imagekitio-react";
+import Module from "./Module";
 
 const CardShow = forwardRef((props, ref) => {
   const [cardIndex, setCardIndex] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
-
-  const cards = props.cards;
+  const [cards, setCards] = useState(props.projectCards);
+  const [cardsType, setCardsType] = useState("projects");
   const folder = props.folder;
+
   const title = cards[cardIndex].title
     ? cards[cardIndex].title
     : cards[cardIndex].image_title.replace("_", " ");
@@ -24,17 +27,20 @@ const CardShow = forwardRef((props, ref) => {
   const images = useRef();
   const arrows = useRef();
   const markers = useRef();
-  const module = useRef();
 
   const image_kit_path = (card, num) => {
-    return `/${folder ? folder : card.image_title}/${card.image_title}${
-      card.images.length > 1 ? "_" + num : ""
-    }.${card.image_format}`;
+    return `/${cardsType !== "projects" ? folder : card.image_title}/${
+      card.image_title
+    }${card.images.length > 1 ? "_" + num : ""}.${card.image_format}`;
   };
 
   useEffect(() => {
     incrementImage();
-  }, [imageIndex]);
+  }, [imageIndex, cardIndex]);
+
+  useEffect(() => {
+    markerChecker();
+  }, [cardIndex]);
 
   const incrementImage = () => {
     const width = images.current.parentNode.offsetWidth;
@@ -54,14 +60,6 @@ const CardShow = forwardRef((props, ref) => {
 
   const previousImage = () => {
     setImageIndex(imageIndex - 1);
-  };
-
-  const toggleModule = (e) => {
-    console.log(e);
-    if (e) setCard(e);
-    setImageIndex(0);
-    module.current.classList.toggle("module-enter");
-    module.current.querySelector(".card-show").classList.toggle("card-enter");
   };
 
   const arrowChecker = () => {
@@ -99,46 +97,6 @@ const CardShow = forwardRef((props, ref) => {
     });
   };
 
-  //CARD INDEX
-  const setCard = (e) => {
-    const btn = e.currentTarget;
-    const card =
-      btn.closest(".card") === null
-        ? btn.closest(".card-lil")
-        : btn.closest(".card");
-    const index = [...card.parentNode.children].indexOf(card) - 1;
-    console.log(index);
-    setCardIndex(index);
-  };
-
-  const nextCard = () => {
-    setImageIndex(0);
-    const currentCardIndex = cardIndex;
-    if (currentCardIndex < cards.length - 1) {
-      setCardIndex(currentCardIndex + 1);
-    } else {
-      setCardIndex(0);
-    }
-  };
-
-  const previousCard = () => {
-    setImageIndex(0);
-    const currentCardIndex = cardIndex;
-    if (currentCardIndex > 0) {
-      setCardIndex(cardIndex - 1);
-    } else {
-      setCardIndex(cards.length - 1);
-    }
-  };
-
-  useImperativeHandle(
-    ref,
-    () => ({
-      toggleModule,
-    }),
-    []
-  );
-
   const markerRender = () => {
     return (
       <div className="markers" ref={markers}>
@@ -156,8 +114,7 @@ const CardShow = forwardRef((props, ref) => {
   };
 
   return (
-    <div className="module" ref={module}>
-      <BigArrow customClick={previousCard} />
+    <Module>
       <div className="card card-show">
         <div className="image-wrapper">
           <div className="small-arrows" ref={arrows}>
@@ -212,14 +169,7 @@ const CardShow = forwardRef((props, ref) => {
           </div>
         </div>
       </div>
-      <BigArrow customClick={nextCard} />
-      <div
-        className="overlay"
-        onClick={() => {
-          toggleModule();
-        }}
-      ></div>
-    </div>
+    </Module>
   );
 });
 

@@ -1,12 +1,16 @@
-import React, { useState, useEffect, useRef } from "react";
+import React, {
+  useState,
+  useEffect,
+  useRef,
+  useImperativeHandle,
+  forwardRef,
+} from "react";
 import { Categories } from "./Database";
-import CardShow from "./CardShow";
 import { IKImage, IKContext } from "imagekitio-react";
 
-export const Art = () => {
+export const Art = forwardRef((props, ref) => {
   const cards = useRef();
-  const cardShowRef = useRef(null);
-  const [categoryIndex, setCategoryIndex] = React.useState(null);
+  const [categoryIndex, setCategoryIndex] = useState(null);
 
   const switchCategory = (index) => {
     categoryIndex != index ? setCategoryIndex(index) : setCategoryIndex(null);
@@ -17,6 +21,16 @@ export const Art = () => {
       art.images.length > 1 ? "_" + art.images[0] : ""
     }.${art.image_format}`;
   };
+
+  useImperativeHandle(
+    ref,
+    () => ({
+      getCategoryIndex: () => {
+        return categoryIndex;
+      },
+    }),
+    [categoryIndex]
+  );
 
   return (
     <div className="art">
@@ -30,22 +44,16 @@ export const Art = () => {
           );
         })}
       </div>
-
       {categoryIndex != null && (
         <div className="wrapper">
           <h1>{Categories[categoryIndex].title}</h1>
           <div className="cards" ref={cards}>
-            <CardShow
-              folder={Categories[categoryIndex].title}
-              cards={Categories[categoryIndex].arts}
-              ref={cardShowRef}
-            />
             {Categories[categoryIndex].arts.map((art) => {
               return (
                 <div
                   className="card-lil"
                   onClick={(e) => {
-                    cardShowRef.current.toggleModule(e);
+                    props.cardShow.current.toggleModule(e);
                   }}
                 >
                   <IKContext urlEndpoint="https://ik.imagekit.io/sedrakable">
@@ -71,6 +79,6 @@ export const Art = () => {
       )}
     </div>
   );
-};
+});
 
 export default Art;

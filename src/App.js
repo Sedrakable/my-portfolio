@@ -9,18 +9,33 @@ import Art from "./components/Art";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Background from "./components/Background";
+import CardShow from "./components/CardShow";
 import ScrollButton from "./components/ScrollButton";
 import { Burgir } from "./components/svgs/Burgir";
 import { Exit } from "./components/svgs/Exit";
+import { CardsContent, Categories } from "./components/Database";
 
 const App = () => {
   const container = useRef();
   const nav = useRef();
   const navColumn = useRef();
-  const [width, setWidth] = React.useState(window.innerWidth);
-  const [color, setColor] = React.useState("dark");
-  const [burgirOpen, setBurgirOpen] = React.useState(false);
+  const cardShowRef = useRef(null);
+  const artRef = useRef(null);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [color, setColor] = useState("dark");
+  const [burgirOpen, setBurgirOpen] = useState(false);
+  const [cards, setCards] = useState(CardsContent);
   const breakpoint = 992;
+
+  const categoryIndex = () => {
+    if (artRef.current !== null) {
+      return artRef.current.getCategoryIndex()
+        ? artRef.current.getCategoryIndex()
+        : 0;
+    } else {
+      return 0;
+    }
+  };
 
   const initialize = () => {
     navColumn.current.style.left = `${-100}px`;
@@ -45,9 +60,12 @@ const App = () => {
   };
 
   useEffect(() => {
-    console.log(color);
     colorChange();
   }, [color]);
+
+  useEffect(() => {
+    console.log(categoryIndex());
+  }, []);
 
   useEffect(() => {
     initialize();
@@ -94,14 +112,11 @@ const App = () => {
 
     const nextBox = currentBox.parentNode.children[index + 1];
     const nextButton = nextBox.querySelector(".btn-scroll");
-    // console.log(nextBox);
-    // console.log(nextButton);
     currentButton.classList.add("d-none");
     nextButton !== null && nextButton.classList.remove("d-none");
     nextBox.scrollIntoView({
       behavior: "smooth",
     });
-    // console.log("index: " + index);
   };
 
   const scrollTab = (e, index) => {
@@ -134,9 +149,6 @@ const App = () => {
 
         scrollBtn &&
           scrollBtn.classList.toggle("d-none", !entry.isIntersecting);
-        // container.current.childNodes[index]
-        //   .querySelector(".btn-scroll")
-        //   .classList.toggle("d-none", !entry.isIntersecting);
       });
     }, options);
 
@@ -165,8 +177,8 @@ const App = () => {
 
   const tabs = [
     { title: "Intro", component: <Banner icons={Icons} /> },
-    { title: "Projects", component: <Cards /> },
-    { title: "Art", component: <Art /> },
+    { title: "Projects", component: <Cards cardShow={cardShowRef} /> },
+    { title: "Art", component: <Art ref={artRef} cardShow={cardShowRef} /> },
     { title: "About", component: <About /> },
     { title: "Contact", component: <Contact /> },
   ];
@@ -175,6 +187,13 @@ const App = () => {
     <div className="App">
       <Background />
       {navChoser()}
+      {console.log(categoryIndex())}
+      <CardShow
+        projectCards={CardsContent}
+        folder={Categories[categoryIndex()].title}
+        artCards={Categories[categoryIndex()].arts}
+        ref={cardShowRef}
+      />
       <NavbarColumn
         ref={navColumn}
         tabs={tabs}
