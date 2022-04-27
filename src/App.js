@@ -188,12 +188,7 @@ const App = () => {
       <Background />
       {navChoser()}
       {console.log(categoryIndex())}
-      <CardShow
-        projectCards={CardsContent}
-        folder={Categories[categoryIndex()].title}
-        artCards={Categories[categoryIndex()].arts}
-        ref={cardShowRef}
-      />
+      <CardShow cards={cards} ref={cardShowRef} />
       <NavbarColumn
         ref={navColumn}
         tabs={tabs}

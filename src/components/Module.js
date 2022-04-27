@@ -10,12 +10,11 @@ import BigArrow from "./svgs/BigArrow";
 const Module = forwardRef((props, ref) => {
   const [cardIndex, setCardIndex] = useState(0);
   const [cards, setCards] = useState(props.projectCards);
-  const [cardsType, setCardsType] = useState("projects");
 
   const module = useRef();
 
   const toggleModule = (e) => {
-    setImageIndex(0);
+    // setImageIndex(0);
     if (e) setCard(e);
     module.current.classList.toggle("module-enter");
     module.current.querySelector(".card-show").classList.toggle("card-enter");
@@ -25,21 +24,21 @@ const Module = forwardRef((props, ref) => {
   const setCard = (e) => {
     const btn = e.currentTarget;
     let card = null;
-    if (btn.closest(".card") === null) {
-      setCardsType("art");
-      setCards(props.artCards);
-      card = btn.closest(".card-lil");
-    } else {
-      setCardsType("projects");
-      setCards(props.projectCards);
-      card = btn.closest(".card");
-    }
+    // if (btn.closest(".card") === null) {
+    //   setCards(props.artCards);
+    //   card = btn.closest(".card-lil");
+    // } else {
+    //   setCards(props.projectCards);
+    //   card = btn.closest(".card");
+    // }
+    card = btn.closest(".card");
+
     const index = [...card.parentNode.children].indexOf(card);
     setCardIndex(index);
   };
 
   const nextCard = () => {
-    setImageIndex(0);
+    // setImageIndex(0);
     const currentCardIndex = cardIndex;
     if (currentCardIndex < cards.length - 1) {
       setCardIndex(currentCardIndex + 1);
@@ -49,7 +48,7 @@ const Module = forwardRef((props, ref) => {
   };
 
   const previousCard = () => {
-    setImageIndex(0);
+    // setImageIndex(0);
     const currentCardIndex = cardIndex;
     if (currentCardIndex > 0) {
       setCardIndex(cardIndex - 1);
@@ -69,7 +68,7 @@ const Module = forwardRef((props, ref) => {
   return ReactDOM.createPortal(
     <div className="module" ref={module}>
       <BigArrow customClick={previousCard} />
-
+      {props.children}
       <BigArrow customClick={nextCard} />
       <div
         className="overlay"

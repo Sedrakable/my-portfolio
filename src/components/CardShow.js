@@ -5,20 +5,17 @@ import React, {
   useImperativeHandle,
   forwardRef,
 } from "react";
-import ReactDOM from "react-dom";
 import { Exit } from "./svgs/Exit";
-import BigArrow from "./svgs/BigArrow";
 import Arrow from "./svgs/Arrow";
 import { Marker, VideoMarker } from "./svgs/Marker";
 import { IKImage, IKContext } from "imagekitio-react";
 import Module from "./Module";
 
 const CardShow = forwardRef((props, ref) => {
+  const cards = props.cards;
+
   const [cardIndex, setCardIndex] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
-  const [cards, setCards] = useState(props.projectCards);
-  const [cardsType, setCardsType] = useState("projects");
-  const folder = props.folder;
 
   const title = cards[cardIndex].title
     ? cards[cardIndex].title
@@ -28,10 +25,16 @@ const CardShow = forwardRef((props, ref) => {
   const arrows = useRef();
   const markers = useRef();
 
+  // const image_kit_path = (card, num) => {
+  //   return `/${cardsType !== "projects" ? folder : card.image_title}/${
+  //     card.image_title
+  //   }${card.images.length > 1 ? "_" + num : ""}.${card.image_format}`;
+  // };
+
   const image_kit_path = (card, num) => {
-    return `/${cardsType !== "projects" ? folder : card.image_title}/${
-      card.image_title
-    }${card.images.length > 1 ? "_" + num : ""}.${card.image_format}`;
+    return `/${card.image_title}/${card.image_title}${
+      card.images.length > 1 ? "_" + num : ""
+    }.${card.image_format}`;
   };
 
   useEffect(() => {
@@ -43,6 +46,7 @@ const CardShow = forwardRef((props, ref) => {
   }, [cardIndex]);
 
   const incrementImage = () => {
+    console.log(images);
     const width = images.current.parentNode.offsetWidth;
     images.current.style.transition = "500ms";
     images.current.style.transform = `translateX(-${width * imageIndex}px)`;
@@ -144,7 +148,7 @@ const CardShow = forwardRef((props, ref) => {
         <div className="info">
           <div className="header">
             <h2>{title}</h2>
-            <Exit customClick={toggleModule} />
+            {/* <Exit customClick={toggleModule} /> */}
           </div>
           {cards[cardIndex].description}
           <div className="langs">
