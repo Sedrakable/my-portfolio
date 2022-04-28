@@ -16,7 +16,7 @@ const CardShow = forwardRef((props, ref) => {
   const cards = props.cards;
   const cardCtx = useContext(ModuleContext);
 
-  const [cardIndex, setCardIndex] = useState(0);
+  const cardIndex = cardCtx.cardIndex;
   const [imageIndex, setImageIndex] = useState(0);
 
   const title = cards[cardIndex].title

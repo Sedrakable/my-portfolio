@@ -41,9 +41,9 @@ const Module = forwardRef((props, ref) => {
       className={`module ${cardCtx.isModule && "module-enter"}`}
       ref={module}
     >
-      <BigArrow customClick={previousCard} />
+      <BigArrow customClick={cardCtx.previousCard} />
       {props.children}
-      <BigArrow customClick={nextCard} />
+      <BigArrow customClick={cardCtx.nextCard} />
       <div
         className="overlay"
         onClick={() => {
