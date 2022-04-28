@@ -8,9 +8,15 @@ const defaultCardState = {
   isModule: false,
 };
 
+const incrementImage = (images, imageIndex) => {
+  const width = images.parentNode.offsetWidth;
+  images.style.transition = "500ms";
+  images.style.transform = `translateX(-${width * imageIndex}px)`;
+};
+
 const moduleReducer = (state, action) => {
+  console.log(action.type);
   if (action.type === "TOGGLE ON") {
-    console.log("Toggle On");
     const btn = action.event.currentTarget;
     const card = btn.closest(".card");
     const index = [...card.parentNode.children].indexOf(card);
@@ -23,7 +29,6 @@ const moduleReducer = (state, action) => {
   }
 
   if (action.type === "TOGGLE OFF") {
-    console.log("Toggle Off");
     return {
       cards: CardsContent,
       cardIndex: 0,
@@ -33,28 +38,27 @@ const moduleReducer = (state, action) => {
   }
 
   if (action.type === "NEXT CARD") {
-    console.log("Next Card");
-    console.log(state.cards);
     const cardIndex =
       state.cardIndex < state.cards.length - 1 ? state.cardIndex + 1 : 0;
-    return {
-      cards: CardsContent,
-      cardIndex: cardIndex,
-      imageIndex: 0,
-      isModule: true,
-    };
+    return { ...state, cardIndex: cardIndex, imageIndex: 0 };
   }
 
   if (action.type === "PREVIOUS CARD") {
-    console.log("Previous Card");
     const cardIndex =
       state.cardIndex > 0 ? state.cardIndex - 1 : state.cards.length - 1;
-    return {
-      cards: CardsContent,
-      cardIndex: cardIndex,
-      imageIndex: 0,
-      isModule: true,
-    };
+    return { ...state, cardIndex: cardIndex, imageIndex: 0 };
+  }
+
+  if (action.type === "NEXT IMAGE") {
+    const imageIndex = state.imageIndex + 1;
+    incrementImage(action.images, imageIndex);
+    return { ...state, imageIndex: imageIndex };
+  }
+
+  if (action.type === "PREVIOUS IMAGE") {
+    const imageIndex = state.imageIndex - 1;
+    incrementImage(action.images, imageIndex);
+    return { ...state, imageIndex: imageIndex };
   }
 
   return defaultCardState;
@@ -82,9 +86,13 @@ export const ModuleProvider = (props) => {
     dispatchCardAction({ type: "PREVIOUS CARD" });
   };
 
-  const nextImage = () => {};
+  const nextImage = (images) => {
+    dispatchCardAction({ type: "NEXT IMAGE", images: images });
+  };
 
-  const previousImage = () => {};
+  const previousImage = (images) => {
+    dispatchCardAction({ type: "PREVIOUS IMAGE", images: images });
+  };
 
   const setImage = () => {};
 

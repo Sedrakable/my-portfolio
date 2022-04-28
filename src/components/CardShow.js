@@ -17,7 +17,6 @@ const CardShow = forwardRef((props, ref) => {
   const cardCtx = useContext(ModuleContext);
 
   const cardIndex = cardCtx.cardIndex;
-  const [imageIndex, setImageIndex] = useState(0);
 
   const title = cards[cardIndex].title
     ? cards[cardIndex].title
@@ -39,80 +38,75 @@ const CardShow = forwardRef((props, ref) => {
     }.${card.image_format}`;
   };
 
-  useEffect(() => {
-    incrementImage();
-  }, [imageIndex, cardIndex]);
+  // useEffect(() => {
+  //   incrementImage();
+  // }, [imageIndex, cardIndex]);
 
-  useEffect(() => {
-    markerChecker();
-  }, [cardIndex]);
+  // useEffect(() => {
+  //   markerChecker();
+  // }, [cardIndex]);
 
-  const incrementImage = () => {
-    console.log(images);
-    const width = images.current.parentNode.offsetWidth;
-    images.current.style.transition = "500ms";
-    images.current.style.transform = `translateX(-${width * imageIndex}px)`;
-    arrowChecker();
-    markerChecker();
-  };
+  // const incrementImage = () => {
+  //   const width = images.current.parentNode.offsetWidth;
+  //   images.current.style.transition = "500ms";
+  //   images.current.style.transform = `translateX(-${width * imageIndex}px)`;
+  //   arrowChecker();
+  //   markerChecker();
+  // };
 
-  const nextImage = () => {
-    setImageIndex(imageIndex + 1);
-  };
+  // const setImage = (i) => {
+  //   setImageIndex(i);
+  // };
 
-  const setImage = (i) => {
-    setImageIndex(i);
-  };
+  // const previousImage = () => {
+  //   setImageIndex(imageIndex - 1);
+  // };
 
-  const previousImage = () => {
-    setImageIndex(imageIndex - 1);
-  };
+  // const arrowChecker = () => {
+  //   const imagesCount = images.current.childNodes.length - 1;
+  //   resetArrows();
+  //   if (imageIndex === imagesCount) {
+  //     arrows.current.childNodes[1].classList.add("v-none");
+  //   } else if (imageIndex === 0) {
+  //     arrows.current.childNodes[0].classList.add("v-none");
+  //   } else {
+  //     resetArrows();
+  //   }
 
-  const arrowChecker = () => {
-    const imagesCount = images.current.childNodes.length - 1;
-    resetArrows();
-    if (imageIndex === imagesCount) {
-      arrows.current.childNodes[1].classList.add("v-none");
-    } else if (imageIndex === 0) {
-      arrows.current.childNodes[0].classList.add("v-none");
-    } else {
-      resetArrows();
-    }
+  //   if (imagesCount === 0) {
+  //     arrows.current.childNodes[0].classList.add("v-none");
+  //     arrows.current.childNodes[1].classList.add("v-none");
+  //   }
+  // };
 
-    if (imagesCount === 0) {
-      arrows.current.childNodes[0].classList.add("v-none");
-      arrows.current.childNodes[1].classList.add("v-none");
-    }
-  };
+  // const resetArrows = () => {
+  //   arrows.current.childNodes[1].classList.remove("v-none");
+  //   arrows.current.childNodes[0].classList.remove("v-none");
+  // };
 
-  const resetArrows = () => {
-    arrows.current.childNodes[1].classList.remove("v-none");
-    arrows.current.childNodes[0].classList.remove("v-none");
-  };
+  // const markerChecker = () => {
+  //   if (markers.current !== null) {
+  //     resetMarkers();
+  //     markers.current.childNodes[imageIndex].classList.add("active");
+  //   }
+  // };
 
-  const markerChecker = () => {
-    if (markers.current !== null) {
-      resetMarkers();
-      markers.current.childNodes[imageIndex].classList.add("active");
-    }
-  };
-
-  const resetMarkers = () => {
-    markers.current.childNodes.forEach((marker) => {
-      marker.classList.remove("active");
-    });
-  };
+  // const resetMarkers = () => {
+  //   markers.current.childNodes.forEach((marker) => {
+  //     marker.classList.remove("active");
+  //   });
+  // };
 
   const markerRender = () => {
     return (
       <div className="markers" ref={markers}>
         {cards[cardIndex].images.map((num) => {
-          return <Marker key={num} customClick={() => setImage(num)} />;
+          return <Marker key={num} customClick={() => cardCtx.setImage(num)} />;
         })}
         {cards[cardIndex].video && (
           <VideoMarker
             key={"video"}
-            customClick={() => setImage(cards[cardIndex].images.length)}
+            customClick={() => cardCtx.setImage(cards[cardIndex].images.length)}
           />
         )}
       </div>
@@ -124,11 +118,23 @@ const CardShow = forwardRef((props, ref) => {
       <div className={`card card-show ${cardCtx.isModule && "card-enter"}`}>
         <div className="image-wrapper">
           <div className="small-arrows" ref={arrows}>
-            <div className="arrow-wrapper" id="left" onClick={previousImage}>
+            <div
+              className="arrow-wrapper"
+              id="left"
+              onClick={() => {
+                cardCtx.previousImage(images.current);
+              }}
+            >
               <Arrow />
             </div>
 
-            <div className="arrow-wrapper" id="right" onClick={nextImage}>
+            <div
+              className="arrow-wrapper"
+              id="right"
+              onClick={() => {
+                cardCtx.nextImage(images.current);
+              }}
+            >
               <Arrow />
             </div>
           </div>
