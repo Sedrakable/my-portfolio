@@ -2,17 +2,19 @@ import React, {
   useRef,
   useState,
   useEffect,
-  useImperativeHandle,
+  useContext,
   forwardRef,
 } from "react";
 import { Exit } from "./svgs/Exit";
 import Arrow from "./svgs/Arrow";
 import { Marker, VideoMarker } from "./svgs/Marker";
 import { IKImage, IKContext } from "imagekitio-react";
+import { ModuleContext } from "../store/context";
 import Module from "./Module";
 
 const CardShow = forwardRef((props, ref) => {
   const cards = props.cards;
+  const cardCtx = useContext(ModuleContext);
 
   const [cardIndex, setCardIndex] = useState(0);
   const [imageIndex, setImageIndex] = useState(0);
@@ -119,7 +121,7 @@ const CardShow = forwardRef((props, ref) => {
 
   return (
     <Module>
-      <div className="card card-show">
+      <div className={`card card-show ${cardCtx.isModule && "card-enter"}`}>
         <div className="image-wrapper">
           <div className="small-arrows" ref={arrows}>
             <div className="arrow-wrapper" id="left" onClick={previousImage}>
@@ -148,7 +150,7 @@ const CardShow = forwardRef((props, ref) => {
         <div className="info">
           <div className="header">
             <h2>{title}</h2>
-            {/* <Exit customClick={toggleModule} /> */}
+            <Exit customClick={cardCtx.toggleModuleOff} />
           </div>
           {cards[cardIndex].description}
           <div className="langs">

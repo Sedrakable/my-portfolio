@@ -2,40 +2,19 @@ import React, {
   useRef,
   useState,
   useImperativeHandle,
+  useContext,
   forwardRef,
 } from "react";
 import ReactDOM from "react-dom";
 import BigArrow from "./svgs/BigArrow";
+import { ModuleContext } from "../store/context";
 
 const Module = forwardRef((props, ref) => {
   const [cardIndex, setCardIndex] = useState(0);
   const [cards, setCards] = useState(props.projectCards);
+  const cardCtx = useContext(ModuleContext);
 
-  const module = useRef();
-
-  const toggleModule = (e) => {
-    // setImageIndex(0);
-    if (e) setCard(e);
-    module.current.classList.toggle("module-enter");
-    module.current.querySelector(".card-show").classList.toggle("card-enter");
-  };
-
-  //CARD INDEX
-  const setCard = (e) => {
-    const btn = e.currentTarget;
-    let card = null;
-    // if (btn.closest(".card") === null) {
-    //   setCards(props.artCards);
-    //   card = btn.closest(".card-lil");
-    // } else {
-    //   setCards(props.projectCards);
-    //   card = btn.closest(".card");
-    // }
-    card = btn.closest(".card");
-
-    const index = [...card.parentNode.children].indexOf(card);
-    setCardIndex(index);
-  };
+  console.log(cardCtx.isModule);
 
   const nextCard = () => {
     // setImageIndex(0);
@@ -57,23 +36,18 @@ const Module = forwardRef((props, ref) => {
     }
   };
 
-  useImperativeHandle(
-    ref,
-    () => ({
-      toggleModule,
-    }),
-    []
-  );
-
   return ReactDOM.createPortal(
-    <div className="module" ref={module}>
+    <div
+      className={`module ${cardCtx.isModule && "module-enter"}`}
+      ref={module}
+    >
       <BigArrow customClick={previousCard} />
       {props.children}
       <BigArrow customClick={nextCard} />
       <div
         className="overlay"
         onClick={() => {
-          toggleModule();
+          cardCtx.toggleModuleOff();
         }}
       />
     </div>,

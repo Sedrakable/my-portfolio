@@ -14,6 +14,7 @@ import ScrollButton from "./components/ScrollButton";
 import { Burgir } from "./components/svgs/Burgir";
 import { Exit } from "./components/svgs/Exit";
 import { CardsContent, Categories } from "./components/Database";
+import { ModuleProvider } from "./store/ModuleProvider";
 
 const App = () => {
   const container = useRef();
@@ -184,7 +185,7 @@ const App = () => {
   ];
 
   return (
-    <div className="App">
+    <ModuleProvider>
       <Background />
       {navChoser()}
       {console.log(categoryIndex())}
@@ -210,7 +211,7 @@ const App = () => {
           );
         })}
       </div>
-    </div>
+    </ModuleProvider>
   );
 };
 
