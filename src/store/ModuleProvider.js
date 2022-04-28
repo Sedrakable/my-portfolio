@@ -8,12 +8,6 @@ const defaultCardState = {
   isModule: false,
 };
 
-const incrementImage = (images, imageIndex) => {
-  const width = images.parentNode.offsetWidth;
-  images.style.transition = "500ms";
-  images.style.transform = `translateX(-${width * imageIndex}px)`;
-};
-
 const moduleReducer = (state, action) => {
   console.log(action.type);
   if (action.type === "TOGGLE ON") {
@@ -51,13 +45,16 @@ const moduleReducer = (state, action) => {
 
   if (action.type === "NEXT IMAGE") {
     const imageIndex = state.imageIndex + 1;
-    incrementImage(action.images, imageIndex);
     return { ...state, imageIndex: imageIndex };
   }
 
   if (action.type === "PREVIOUS IMAGE") {
     const imageIndex = state.imageIndex - 1;
-    incrementImage(action.images, imageIndex);
+    return { ...state, imageIndex: imageIndex };
+  }
+
+  if (action.type === "SET IMAGE") {
+    const imageIndex = action.index;
     return { ...state, imageIndex: imageIndex };
   }
 
@@ -87,14 +84,16 @@ export const ModuleProvider = (props) => {
   };
 
   const nextImage = (images) => {
-    dispatchCardAction({ type: "NEXT IMAGE", images: images });
+    dispatchCardAction({ type: "NEXT IMAGE" });
   };
 
   const previousImage = (images) => {
-    dispatchCardAction({ type: "PREVIOUS IMAGE", images: images });
+    dispatchCardAction({ type: "PREVIOUS IMAGE" });
   };
 
-  const setImage = () => {};
+  const setImage = (index) => {
+    dispatchCardAction({ type: "SET IMAGE", index: index });
+  };
 
   const moduleContext = {
     cards: cardState.cards,

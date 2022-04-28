@@ -1,9 +1,9 @@
 import React from "react";
 
-export const Marker = ({ customClick }) => {
+export const Marker = ({ customClick, customClass }) => {
   return (
     <svg
-      className="marker"
+      className={`marker ${customClass}`}
       xmlns="http://www.w3.org/2000/svg"
       viewBox="0 0 55.46 64.01"
       onClick={() => {
@@ -30,10 +30,10 @@ export const Marker = ({ customClick }) => {
   );
 };
 
-export const VideoMarker = ({ customClick }) => {
+export const VideoMarker = ({ customClick, customClass }) => {
   return (
     <svg
-      className="marker video-marker"
+      className={`marker video-marker ${customClass}`}
       viewBox="2 2 20 20"
       xmlns="http://www.w3.org/2000/svg"
       onClick={() => {
