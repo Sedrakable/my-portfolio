@@ -17,6 +17,7 @@ const CardShow = forwardRef((props, ref) => {
   const cardCtx = useContext(ModuleContext);
 
   const cardIndex = cardCtx.cardIndex;
+  const imageIndex = cardCtx.imageIndex;
 
   const title = cards[cardIndex].title
     ? cards[cardIndex].title
@@ -62,23 +63,6 @@ const CardShow = forwardRef((props, ref) => {
   //   setImageIndex(imageIndex - 1);
   // };
 
-  // const arrowChecker = () => {
-  //   const imagesCount = images.current.childNodes.length - 1;
-  //   resetArrows();
-  //   if (imageIndex === imagesCount) {
-  //     arrows.current.childNodes[1].classList.add("v-none");
-  //   } else if (imageIndex === 0) {
-  //     arrows.current.childNodes[0].classList.add("v-none");
-  //   } else {
-  //     resetArrows();
-  //   }
-
-  //   if (imagesCount === 0) {
-  //     arrows.current.childNodes[0].classList.add("v-none");
-  //     arrows.current.childNodes[1].classList.add("v-none");
-  //   }
-  // };
-
   // const resetArrows = () => {
   //   arrows.current.childNodes[1].classList.remove("v-none");
   //   arrows.current.childNodes[0].classList.remove("v-none");
@@ -95,6 +79,22 @@ const CardShow = forwardRef((props, ref) => {
   //   markers.current.childNodes.forEach((marker) => {
   //     marker.classList.remove("active");
   //   });
+  // };
+  const imagesCount = cards[cardIndex].images.length - 1;
+  // const arrowChecker = () => {
+  //   resetArrows();
+  //   if (imageIndex === imagesCount) {
+  //     arrows.current.childNodes[1].classList.add("v-none");
+  //   } else if (imageIndex === 0) {
+  //     arrows.current.childNodes[0].classList.add("v-none");
+  //   } else {
+  //     resetArrows();
+  //   }
+
+  //   if (imagesCount === 0) {
+  //     arrows.current.childNodes[0].classList.add("v-none");
+  //     arrows.current.childNodes[1].classList.add("v-none");
+  //   }
   // };
 
   const markerRender = () => {
@@ -118,25 +118,29 @@ const CardShow = forwardRef((props, ref) => {
       <div className={`card card-show ${cardCtx.isModule && "card-enter"}`}>
         <div className="image-wrapper">
           <div className="small-arrows" ref={arrows}>
-            <div
-              className="arrow-wrapper"
-              id="left"
-              onClick={() => {
-                cardCtx.previousImage(images.current);
-              }}
-            >
-              <Arrow />
-            </div>
+            {imageIndex !== 0 && (
+              <div
+                className={`arrow-wrapper`}
+                id="left"
+                onClick={() => {
+                  cardCtx.previousImage(images.current);
+                }}
+              >
+                <Arrow />
+              </div>
+            )}
 
-            <div
-              className="arrow-wrapper"
-              id="right"
-              onClick={() => {
-                cardCtx.nextImage(images.current);
-              }}
-            >
-              <Arrow />
-            </div>
+            {imageIndex !== imagesCount && (
+              <div
+                className="arrow-wrapper"
+                id="right"
+                onClick={() => {
+                  cardCtx.nextImage(images.current);
+                }}
+              >
+                <Arrow />
+              </div>
+            )}
           </div>
           {cards[cardIndex].images.length > 1 ? markerRender() : null}
           <div className="images" ref={images}>
