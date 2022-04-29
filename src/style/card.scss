@@ -194,10 +194,35 @@
       z-index: 4;
       #right {
         right: 0;
+        padding-left: 48px;
+        .arrow {
+          background: linear-gradient(90deg, $primary 50%, $black 50%);
+          background-size: 200% 100%;
+          background-position: 100% 0%;
+          &:hover {
+            background-position: 0% 0%;
+            transition: 200ms;
+            path {
+              fill: $black;
+            }
+          }
+        }
+        path {
+          transform: rotate(90deg);
+          transform-origin: 50% 50%;
+        }
+      }
+      #left {
+        left: 0;
+        padding-right: 48px;
+        path {
+          transform: rotate(-90deg);
+          transform-origin: 50% 50%;
+        }
       }
       .arrow-wrapper {
         position: absolute;
-        @include flex;
+        @include flex(center, space-between);
         flex-direction: column;
         height: 256px;
         cursor: pointer;
@@ -217,33 +242,6 @@
             path {
               fill: $black;
             }
-          }
-        }
-
-        &:nth-child(1) {
-          padding-right: 48px;
-          path {
-            transform: rotate(-90deg);
-            transform-origin: 50% 50%;
-          }
-        }
-        &:nth-child(2) {
-          padding-left: 48px;
-          .arrow {
-            background: linear-gradient(90deg, $primary 50%, $black 50%);
-            background-size: 200% 100%;
-            background-position: 100% 0%;
-            &:hover {
-              background-position: 0% 0%;
-              transition: 200ms;
-              path {
-                fill: $black;
-              }
-            }
-          }
-          path {
-            transform: rotate(90deg);
-            transform-origin: 50% 50%;
           }
         }
       }

@@ -43,7 +43,6 @@ const moduleReducer = (state, action) => {
   if (action.type === "TOGGLE OFF") {
     return {
       ...state,
-      cards: [],
       cardIndex: 0,
       imageIndex: 0,
       isModule: false,

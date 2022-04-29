@@ -151,7 +151,6 @@ const App = () => {
   };
 
   const navChoser = () => {
-    console.log(burgirOpen);
     return width < breakpoint ? (
       burgirOpen ? (
         <Exit customClass={"burgir"} customClick={openColumnBar} />
