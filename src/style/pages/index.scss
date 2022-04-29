@@ -21,23 +21,31 @@
   }
 }
 
-.about {
-  padding: 48px;
-  background-color: $black;
+#about {
   text-align: start;
   width: fit-content;
-  box-shadow: $shadow;
-  border-left: 32px solid $dark-gray;
-  border-right: 32px solid $dark-gray;
-  @media (max-width: $mobile) {
-    padding: 16px;
-    border-left: 8px solid $dark-gray;
-    border-right: 8px solid $dark-gray;
-  }
   h3 {
     width: 85%;
     text-align: start;
     color: $gray;
     padding: 4px 0;
+  }
+}
+
+.wrapper {
+  padding: 32px;
+  background-color: $black;
+  width: 100%;
+  box-shadow: $shadow;
+  border-left: 32px solid $dark-gray;
+  border-right: 32px solid $dark-gray;
+  h1 {
+    margin-bottom: 16px;
+    color: $gray;
+  }
+  @media (max-width: $mobile) {
+    padding: 16px;
+    border-left: 8px solid $dark-gray;
+    border-right: 8px solid $dark-gray;
   }
 }

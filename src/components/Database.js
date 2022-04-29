@@ -1,6 +1,7 @@
 import React from "react";
 
 import * as langs from "./svgs/Langs";
+import * as categories from "./svgs/Categories";
 
 const customVariables = [
   "--black",
@@ -74,17 +75,17 @@ export const Icons = [
   },
 ];
 
-const importAll = (require) => {
-  const imgs = [];
-  require.keys().reduce((_, next) => {
-    imgs.push(require(next));
-  }, {});
-  return imgs;
-};
+// const importAll = (require) => {
+//   const imgs = [];
+//   require.keys().reduce((_, next) => {
+//     imgs.push(require(next));
+//   }, {});
+//   return imgs;
+// };
 
 const Video = ({ src }) => {
   return (
-    <video frameborder="0" autoplay controls allowfullscreen>
+    <video frameBorder="0" autoplay controls allowFullScreen>
       <source src={src} type="video/mp4" />
     </video>
   );
@@ -95,21 +96,21 @@ const Youtube = ({ src }) => {
     <iframe
       src={src}
       title="YouTube video player"
-      frameborder="0"
+      frameBorder="0"
       allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-      allowfullscreen
+      allowFullScreen
     ></iframe>
   );
 };
 
 const Waitist = {
-  src: importAll(
-    require.context("../content/projects/waitist", false, /\.(png|jpe?g|svg)$/)
-  ),
+  image_title: "waitist",
+  image_format: "png",
+  images: [...Array(8).keys()],
   video: <Youtube src="https://www.youtube.com/embed/MSlCtJjQQbo?start=934" />,
   title: "Waitist",
   description: (
-    <p className="desc">
+    <div className="desc">
       An app that connects waiters and restaurant owners.
       <ul>
         <li>
@@ -134,7 +135,7 @@ const Waitist = {
           The app was built using the <strong>Ruby on Rails framework</strong>
         </li>
       </ul>
-    </p>
+    </div>
   ),
   langs: [
     [langs.Rails(), "Ruby on Rails"],
@@ -155,11 +156,12 @@ const Waitist = {
 };
 
 const Pets2Go = {
-  src: importAll(
-    require.context("../content/projects/pets2go", false, /\.(png|jpe?g|svg)$/)
-  ),
+  image_title: "pets2go",
+  image_format: "png",
+  images: [1, 2, 3, 4, 5],
+  title: "Pets2Go",
   description: (
-    <p className="desc">
+    <div className="desc">
       An app that lets pet owners rent out their pets and for people to rent
       those pets. An Airbnb clone.
       <ul>
@@ -182,9 +184,8 @@ const Pets2Go = {
           The app was built using the <strong>Ruby on Rails framework</strong>
         </li>
       </ul>
-    </p>
+    </div>
   ),
-  title: "Pets2Go",
   langs: [
     [langs.Rails(), "Ruby on Rails"],
     [langs.JS(), "JS"],
@@ -203,13 +204,13 @@ const Pets2Go = {
 };
 
 const PlazmaPong = {
-  src: importAll(
-    require.context("../content/projects/plazma", false, /\.(png|jpe?g|svg)$/)
-  ),
+  image_title: "plazma",
+  image_format: "jpg",
+  images: [...Array(9).keys()],
   video: <Youtube src="https://www.youtube.com/embed/UayT-DkgXOk" />,
   title: "Plazma Pong",
   description: (
-    <p className="desc">
+    <div className="desc">
       An app that lets pet owners rent out their pets and for people to rent
       those pets. An Airbnb clone.
       <ul>
@@ -223,7 +224,7 @@ const PlazmaPong = {
           Currently on the <strong>Play Store</strong>
         </li>
       </ul>
-    </p>
+    </div>
   ),
   langs: [
     [langs.Unity(), "Unity"],
@@ -236,12 +237,13 @@ const PlazmaPong = {
 };
 
 const MatrixReducer = {
-  src: importAll(
-    require.context("../content/projects/matrix", false, /\.(png|jpe?g|svg)$/)
-  ),
-  video: <Video src={require("../content/projects/matrix/video.mp4")} />,
+  image_title: "matrix",
+  image_format: "png",
+  images: [...Array(4).keys()],
+  video: <Video src={"https://ik.imagekit.io/sedrakable/matrix/video.mp4"} />,
+  title: "Matrix Reducer",
   description: (
-    <p className="desc">
+    <div className="desc">
       This project is inspired by linear algebra. The Reducer is able to reduce
       any Matrix up to 10x10, while showing every step of the prossedure to the
       user.
@@ -255,9 +257,9 @@ const MatrixReducer = {
           Art was made with <strong>Piskel</strong>, a pixel art creation tool
         </li>
       </ul>
-    </p>
+    </div>
   ),
-  title: "Matrix Reducer",
+
   langs: [
     [langs.Java(), "Java"],
     [langs.CSS(), "CSS"],
@@ -267,12 +269,13 @@ const MatrixReducer = {
 };
 
 const TrafficSimulator = {
-  src: importAll(
-    require.context("../content/projects/traffic", false, /\.(png|jpe?g|svg)$/)
-  ),
+  image_title: "traffic",
+  image_format: "png",
+  images: [...Array(3).keys()],
+  video: <Video src={"https://ik.imagekit.io/sedrakable/traffic/video.mp4"} />,
   title: "Traffic Simulator",
   description: (
-    <p className="desc">
+    <div className="desc">
       Simulates simple traffic physics and logic
       <ul>
         <li>
@@ -284,9 +287,9 @@ const TrafficSimulator = {
           Art was made with <strong>Piskel</strong>, a pixel art creation tool
         </li>
       </ul>
-    </p>
+    </div>
   ),
-  video: <Video src={require("../content/projects/traffic/video.mp4")} />,
+
   langs: [
     [langs.Java(), "Java"],
     [langs.CSS(), "CSS"],
@@ -301,3 +304,195 @@ export const CardsContent = [
   MatrixReducer,
   TrafficSimulator,
 ];
+
+const origami = {
+  title: "Origami",
+  svg: categories.Origami(),
+  arts: [
+    {
+      image_title: "Turtle",
+      image_format: "jpg",
+      images: [0, 1],
+      description: (
+        <p className="desc">Simulates simple traffic physics and logic</p>
+      ),
+    },
+    {
+      image_title: "Blue_Star",
+      image_format: "jpg",
+      images: [0],
+      description: (
+        <p className="desc">Simulates simple traffic physics and logic</p>
+      ),
+    },
+    {
+      image_title: "Celtic",
+      image_format: "jpg",
+      images: [0, 1],
+    },
+    {
+      image_title: "Circle_Shell",
+      image_format: "jpg",
+      images: [0, 1],
+    },
+    {
+      image_title: "Shell",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Spider",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Lion",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Lizzard",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Scorpion",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Pigion",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Rat",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Dragon",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Griffin",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Fish",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Frog",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Cactus",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Crown",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Yoda",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Jester",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Self_Fold",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Match_Box",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Greek_Icosahedron",
+      image_format: "jpg",
+      images: [0],
+    },
+  ],
+};
+
+const digital = {
+  title: "Digital",
+  svg: categories.Digital(),
+  arts: [
+    {
+      image_title: "Concordia",
+      image_format: "jpg",
+      images: [1, 2, 3, 4, 5],
+    },
+    {
+      image_title: "Boris_Army_Phone",
+      image_format: "jpg",
+      images: [0, 1],
+    },
+    {
+      image_title: "Allexiane",
+      image_format: "jpg",
+      images: [0],
+    },
+    { image_title: "Barrel_Beast", image_format: "jpg", images: [0] },
+  ],
+};
+
+const draw = {
+  title: "Draw",
+  svg: categories.Draw(),
+  arts: [
+    {
+      image_title: "Pinecone",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Metal",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Sculls",
+      image_format: "jpg",
+      images: [0],
+    },
+    { image_title: "Wood", image_format: "jpg", images: [0] },
+  ],
+};
+
+const paint = {
+  title: "Paint",
+  svg: categories.Paint(),
+  arts: [
+    {
+      image_title: "Red_Paper",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "Lemons",
+      image_format: "jpg",
+      images: [0],
+    },
+    {
+      image_title: "My_Logo",
+      image_format: "jpg",
+      images: [...Array(4).keys()],
+    },
+  ],
+};
+export const Categories = [origami, digital, draw, paint];

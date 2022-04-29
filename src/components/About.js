@@ -3,7 +3,7 @@ import React, { Component } from "react";
 class About extends Component {
   render() {
     return (
-      <div className="about">
+      <div className="wrapper" id="about">
         <h3>
           Let's catch up. After finishing college with a Computer Science
           Degree, I worked for a year as a QA tester while doing personal

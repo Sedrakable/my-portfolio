@@ -1,24 +1,37 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useContext,
+  Fragment,
+} from "react";
 import { Colors, Icons } from "./components/Database";
 
 import Navbar from "./components/Navbar";
 import NavbarColumn from "./components/NavbarColumn";
 import Banner from "./components/Banner";
 import Cards from "./components/Cards";
+import Art from "./components/Art";
 import About from "./components/About";
 import Contact from "./components/Contact";
 import Background from "./components/Background";
+import CardShow from "./components/CardShow";
 import ScrollButton from "./components/ScrollButton";
 import { Burgir } from "./components/svgs/Burgir";
 import { Exit } from "./components/svgs/Exit";
 
+import { ModuleContext } from "./store/context";
+
 const App = () => {
+  const cardCtx = useContext(ModuleContext);
   const container = useRef();
   const nav = useRef();
   const navColumn = useRef();
-  const [width, setWidth] = React.useState(window.innerWidth);
-  const [color, setColor] = React.useState("dark");
-  const [burgirOpen, setBurgirOpen] = React.useState(false);
+  const [width, setWidth] = useState(window.innerWidth);
+  const [color, setColor] = useState("dark");
+  const [burgirOpen, setBurgirOpen] = useState(false);
+
+  const cards = cardCtx.cards;
   const breakpoint = 992;
 
   const initialize = () => {
@@ -44,7 +57,6 @@ const App = () => {
   };
 
   useEffect(() => {
-    console.log(color);
     colorChange();
   }, [color]);
 
@@ -93,14 +105,11 @@ const App = () => {
 
     const nextBox = currentBox.parentNode.children[index + 1];
     const nextButton = nextBox.querySelector(".btn-scroll");
-    // console.log(nextBox);
-    // console.log(nextButton);
     currentButton.classList.add("d-none");
     nextButton !== null && nextButton.classList.remove("d-none");
     nextBox.scrollIntoView({
       behavior: "smooth",
     });
-    // console.log("index: " + index);
   };
 
   const scrollTab = (e, index) => {
@@ -127,9 +136,12 @@ const App = () => {
         const tabs = navColumn.current.querySelector(".tabs").childNodes;
         const index = getBoxIndex(entry.target);
         tabs[index].classList.toggle("active", entry.isIntersecting);
-        container.current.childNodes[index]
-          .querySelector(".btn-scroll")
-          .classList.toggle("d-none", !entry.isIntersecting);
+
+        const scrollBtn =
+          container.current.childNodes[index].querySelector(".btn-scroll");
+
+        scrollBtn &&
+          scrollBtn.classList.toggle("d-none", !entry.isIntersecting);
       });
     }, options);
 
@@ -139,9 +151,10 @@ const App = () => {
   };
 
   const navChoser = () => {
+    console.log(burgirOpen);
     return width < breakpoint ? (
       burgirOpen ? (
-        <Exit className={"burgir"} customClick={openColumnBar} />
+        <Exit customClass={"burgir"} customClick={openColumnBar} />
       ) : (
         <Burgir customClick={openColumnBar} />
       )
@@ -159,6 +172,7 @@ const App = () => {
   const tabs = [
     { title: "Intro", component: <Banner icons={Icons} /> },
     { title: "Projects", component: <Cards /> },
+    { title: "Art", component: <Art /> },
     { title: "About", component: <About /> },
     { title: "Contact", component: <Contact /> },
   ];
@@ -167,6 +181,7 @@ const App = () => {
     <div className="App">
       <Background />
       {navChoser()}
+      <CardShow cards={cards} />
       <NavbarColumn
         ref={navColumn}
         tabs={tabs}

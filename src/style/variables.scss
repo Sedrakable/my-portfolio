@@ -70,6 +70,12 @@ p {
   margin: 0;
 }
 
+div {
+  font-family: $main-font;
+  font-size: 18px;
+  font-weight: 300;
+}
+
 ol,
 ul {
   padding-inline-start: 12px;
