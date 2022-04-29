@@ -7,39 +7,51 @@ import React, {
 } from "react";
 import { Exit } from "./svgs/Exit";
 import Arrow from "./svgs/Arrow";
+import CardButtons from "./CardButtons";
 import { Marker, VideoMarker } from "./svgs/Marker";
 import { IKImage, IKContext } from "imagekitio-react";
 import { ModuleContext } from "../store/context";
 import Module from "./Module";
 
-const CardShow = forwardRef((props, ref) => {
+const CardShow = (props) => {
+  // Getting cards from props
   const cards = props.cards;
-  const cardCtx = useContext(ModuleContext);
-  const [imagesStyle, setImagesStyle] = useState({});
 
+  // Getting context from module context and extracting appropriate variables
+  const cardCtx = useContext(ModuleContext);
   const cardIndex = cardCtx.cardIndex;
   const imageIndex = cardCtx.imageIndex;
 
-  const title = cards[cardIndex].title
-    ? cards[cardIndex].title
-    : cards[cardIndex].image_title.replace("_", " ");
+  // Creating state for styling the images, basically changing the translateX on the carousel
+  const [imagesStyle, setImagesStyle] = useState({});
 
+  //Images Ref, className="images wrapper"
   const images = useRef();
 
-  const imagesCount =
-    cards[cardIndex].images.length + (cards[cardIndex].video ? 1 : 0) - 1;
-
-  const image_kit_path = (card, num) => {
-    return `/${card.image_title}/${card.image_title}${
-      card.images.length > 1 ? "_" + num : ""
-    }.${card.image_format}`;
-  };
+  // Creating use effect so that the sate change hapens only hapens after element is rendered, imageIndex is chnaged or images ref changes
   useEffect(() => {
     setImagesStyle({
       transform: `translateX(-${images.current.offsetWidth * imageIndex}px)`,
     });
   }, [imageIndex, images]);
 
+  // Getting Title depending on card, if it had a title key or not
+  const title = cards[cardIndex].title
+    ? cards[cardIndex].title
+    : cards[cardIndex].image_title.replace("_", " ");
+
+  // Getting amount of elements in image wrapper including video for indexing(-1)
+  const imagesCount =
+    cards[cardIndex].images.length + (cards[cardIndex].video ? 1 : 0) - 1;
+
+  // Getting image kit path for card images
+  const image_kit_path = (card, num) => {
+    return `/${cardCtx.title}/${card.image_title}${
+      card.images.length > 1 ? "_" + num : ""
+    }.${card.image_format}`;
+  };
+
+  // Rendering image marker(s) and video marker and adding custom clicks to chnage images
   const markerRender = () => {
     return (
       <div className="markers">
@@ -96,7 +108,10 @@ const CardShow = forwardRef((props, ref) => {
           <div className="images" style={imagesStyle}>
             {cards[cardIndex].images.map((num) => {
               return (
-                <IKContext urlEndpoint="https://ik.imagekit.io/sedrakable">
+                <IKContext
+                  key={num}
+                  urlEndpoint="https://ik.imagekit.io/sedrakable"
+                >
                   <IKImage
                     key={num}
                     path={image_kit_path(cards[cardIndex], num)}
@@ -120,23 +135,14 @@ const CardShow = forwardRef((props, ref) => {
               })}
           </div>
 
-          <div className="btns">
-            {cards[cardIndex].view && (
-              <a id="left" href={cards[cardIndex].view} target="_blank">
-                Visit
-              </a>
-            )}
-
-            {cards[cardIndex].code && (
-              <a id="right" href={cards[cardIndex].code} target="_blank">
-                Code
-              </a>
-            )}
-          </div>
+          <CardButtons
+            view={cards[cardIndex].view}
+            code={cards[cardIndex].code}
+          />
         </div>
       </div>
     </Module>
   );
-});
+};
 
 export default CardShow;

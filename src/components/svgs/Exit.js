@@ -3,7 +3,7 @@ import React from "react";
 export const Exit = (props) => {
   return (
     <svg
-      className={"exit " + props.class}
+      className={"exit " + props.customClass}
       width="24"
       height="24"
       viewBox="0 0 24 24"

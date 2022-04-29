@@ -1,4 +1,10 @@
-import React, { useRef, useState, useEffect } from "react";
+import React, {
+  useRef,
+  useState,
+  useEffect,
+  useContext,
+  Fragment,
+} from "react";
 import { Colors, Icons } from "./components/Database";
 
 import Navbar from "./components/Navbar";
@@ -13,30 +19,20 @@ import CardShow from "./components/CardShow";
 import ScrollButton from "./components/ScrollButton";
 import { Burgir } from "./components/svgs/Burgir";
 import { Exit } from "./components/svgs/Exit";
-import { CardsContent, Categories } from "./components/Database";
-import { ModuleProvider } from "./store/ModuleProvider";
+
+import { ModuleContext } from "./store/context";
 
 const App = () => {
+  const cardCtx = useContext(ModuleContext);
   const container = useRef();
   const nav = useRef();
   const navColumn = useRef();
-  const cardShowRef = useRef(null);
-  const artRef = useRef(null);
   const [width, setWidth] = useState(window.innerWidth);
   const [color, setColor] = useState("dark");
   const [burgirOpen, setBurgirOpen] = useState(false);
-  const [cards, setCards] = useState(CardsContent);
-  const breakpoint = 992;
 
-  const categoryIndex = () => {
-    if (artRef.current !== null) {
-      return artRef.current.getCategoryIndex()
-        ? artRef.current.getCategoryIndex()
-        : 0;
-    } else {
-      return 0;
-    }
-  };
+  const cards = cardCtx.cards;
+  const breakpoint = 992;
 
   const initialize = () => {
     navColumn.current.style.left = `${-100}px`;
@@ -63,10 +59,6 @@ const App = () => {
   useEffect(() => {
     colorChange();
   }, [color]);
-
-  useEffect(() => {
-    console.log(categoryIndex());
-  }, []);
 
   useEffect(() => {
     initialize();
@@ -159,9 +151,10 @@ const App = () => {
   };
 
   const navChoser = () => {
+    console.log(burgirOpen);
     return width < breakpoint ? (
       burgirOpen ? (
-        <Exit className={"burgir"} customClick={openColumnBar} />
+        <Exit customClass={"burgir"} customClick={openColumnBar} />
       ) : (
         <Burgir customClick={openColumnBar} />
       )
@@ -178,18 +171,17 @@ const App = () => {
 
   const tabs = [
     { title: "Intro", component: <Banner icons={Icons} /> },
-    { title: "Projects", component: <Cards cardShow={cardShowRef} /> },
-    { title: "Art", component: <Art ref={artRef} cardShow={cardShowRef} /> },
+    { title: "Projects", component: <Cards /> },
+    { title: "Art", component: <Art /> },
     { title: "About", component: <About /> },
     { title: "Contact", component: <Contact /> },
   ];
 
   return (
-    <ModuleProvider>
+    <div className="App">
       <Background />
       {navChoser()}
-      {console.log(categoryIndex())}
-      <CardShow cards={cards} ref={cardShowRef} />
+      <CardShow cards={cards} />
       <NavbarColumn
         ref={navColumn}
         tabs={tabs}
@@ -211,7 +203,7 @@ const App = () => {
           );
         })}
       </div>
-    </ModuleProvider>
+    </div>
   );
 };
 

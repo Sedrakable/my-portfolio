@@ -1,7 +1,8 @@
 import { createContext } from "react";
+import { CardsContent } from "../components/Database";
 
 export const ModuleContext = createContext({
-  cards: [],
+  cards: CardsContent,
   cardIndex: 0,
   isModule: false,
   toggleModuleOn: (e) => {},
@@ -12,4 +13,5 @@ export const ModuleContext = createContext({
   nextImage: () => {},
   previousImage: () => {},
   setImage: (index) => {},
+  title: "",
 });

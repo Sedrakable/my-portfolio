@@ -1,15 +1,10 @@
-import React, {
-  useState,
-  useEffect,
-  useRef,
-  useImperativeHandle,
-  forwardRef,
-} from "react";
+import React, { useState, useContext } from "react";
 import { Categories } from "./Database";
 import { IKImage, IKContext } from "imagekitio-react";
+import { ModuleContext } from "../store/context";
 
-export const Art = forwardRef((props, ref) => {
-  const cards = useRef();
+export const Art = () => {
+  const cardCtx = useContext(ModuleContext);
   const [categoryIndex, setCategoryIndex] = useState(null);
 
   const switchCategory = (index) => {
@@ -22,22 +17,16 @@ export const Art = forwardRef((props, ref) => {
     }.${art.image_format}`;
   };
 
-  useImperativeHandle(
-    ref,
-    () => ({
-      getCategoryIndex: () => {
-        return categoryIndex;
-      },
-    }),
-    [categoryIndex]
-  );
-
   return (
     <div className="art">
       <div className="categories">
         {Categories.map((cat, index) => {
           return (
-            <div className="category" onClick={() => switchCategory(index)}>
+            <div
+              key={index}
+              className="category"
+              onClick={() => switchCategory(index)}
+            >
               <div className="box">{cat.svg}</div>
               <h3>{cat.title}</h3>
             </div>
@@ -47,13 +36,14 @@ export const Art = forwardRef((props, ref) => {
       {categoryIndex != null && (
         <div className="wrapper">
           <h1>{Categories[categoryIndex].title}</h1>
-          <div className="cards" ref={cards}>
-            {Categories[categoryIndex].arts.map((art) => {
+          <div className="cards">
+            {Categories[categoryIndex].arts.map((art, index) => {
               return (
                 <div
+                  key={index}
                   className="card-lil"
                   onClick={(e) => {
-                    props.cardShow.current.toggleModule(e);
+                    cardCtx.toggleModuleOn(e, categoryIndex);
                   }}
                 >
                   <IKContext urlEndpoint="https://ik.imagekit.io/sedrakable">
@@ -79,6 +69,6 @@ export const Art = forwardRef((props, ref) => {
       )}
     </div>
   );
-});
+};
 
 export default Art;

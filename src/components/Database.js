@@ -104,16 +104,13 @@ const Youtube = ({ src }) => {
 };
 
 const Waitist = {
-  // src: importAll(
-  //   require.context("../content/projects/waitist", false, /\.(png|jpe?g|svg)$/)
-  // ),
   image_title: "waitist",
   image_format: "png",
   images: [...Array(8).keys()],
   video: <Youtube src="https://www.youtube.com/embed/MSlCtJjQQbo?start=934" />,
   title: "Waitist",
   description: (
-    <p className="desc">
+    <div className="desc">
       An app that connects waiters and restaurant owners.
       <ul>
         <li>
@@ -138,7 +135,7 @@ const Waitist = {
           The app was built using the <strong>Ruby on Rails framework</strong>
         </li>
       </ul>
-    </p>
+    </div>
   ),
   langs: [
     [langs.Rails(), "Ruby on Rails"],
@@ -164,7 +161,7 @@ const Pets2Go = {
   images: [1, 2, 3, 4, 5],
   title: "Pets2Go",
   description: (
-    <p className="desc">
+    <div className="desc">
       An app that lets pet owners rent out their pets and for people to rent
       those pets. An Airbnb clone.
       <ul>
@@ -187,7 +184,7 @@ const Pets2Go = {
           The app was built using the <strong>Ruby on Rails framework</strong>
         </li>
       </ul>
-    </p>
+    </div>
   ),
   langs: [
     [langs.Rails(), "Ruby on Rails"],
@@ -213,7 +210,7 @@ const PlazmaPong = {
   video: <Youtube src="https://www.youtube.com/embed/UayT-DkgXOk" />,
   title: "Plazma Pong",
   description: (
-    <p className="desc">
+    <div className="desc">
       An app that lets pet owners rent out their pets and for people to rent
       those pets. An Airbnb clone.
       <ul>
@@ -227,7 +224,7 @@ const PlazmaPong = {
           Currently on the <strong>Play Store</strong>
         </li>
       </ul>
-    </p>
+    </div>
   ),
   langs: [
     [langs.Unity(), "Unity"],
@@ -246,7 +243,7 @@ const MatrixReducer = {
   video: <Video src={"https://ik.imagekit.io/sedrakable/matrix/video.mp4"} />,
   title: "Matrix Reducer",
   description: (
-    <p className="desc">
+    <div className="desc">
       This project is inspired by linear algebra. The Reducer is able to reduce
       any Matrix up to 10x10, while showing every step of the prossedure to the
       user.
@@ -260,7 +257,7 @@ const MatrixReducer = {
           Art was made with <strong>Piskel</strong>, a pixel art creation tool
         </li>
       </ul>
-    </p>
+    </div>
   ),
 
   langs: [
@@ -278,7 +275,7 @@ const TrafficSimulator = {
   video: <Video src={"https://ik.imagekit.io/sedrakable/traffic/video.mp4"} />,
   title: "Traffic Simulator",
   description: (
-    <p className="desc">
+    <div className="desc">
       Simulates simple traffic physics and logic
       <ul>
         <li>
@@ -290,7 +287,7 @@ const TrafficSimulator = {
           Art was made with <strong>Piskel</strong>, a pixel art creation tool
         </li>
       </ul>
-    </p>
+    </div>
   ),
 
   langs: [

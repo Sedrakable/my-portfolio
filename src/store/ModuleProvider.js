@@ -1,30 +1,49 @@
 import React, { useReducer } from "react";
 import { ModuleContext } from "./context";
-import { CardsContent } from "../components/Database";
+import { CardsContent, Categories } from "../components/Database";
 const defaultCardState = {
-  cards: [],
+  cards: CardsContent,
   cardIndex: 0,
   imageIndex: 0,
   isModule: false,
+  title: "waitist",
 };
 
 const moduleReducer = (state, action) => {
   console.log(action.type);
   if (action.type === "TOGGLE ON") {
     const btn = action.event.currentTarget;
-    const card = btn.closest(".card");
-    const index = [...card.parentNode.children].indexOf(card);
+
+    let card;
+    let cardsArray;
+    let title;
+    let index;
+
+    if (btn.closest(".card")) {
+      card = btn.closest(".card");
+      cardsArray = CardsContent;
+      index = [...card.parentNode.children].indexOf(card);
+      title = cardsArray[index].image_title;
+    } else {
+      card = btn.closest(".card-lil");
+      cardsArray = Categories[action.categoryIndex].arts;
+      index = [...card.parentNode.children].indexOf(card);
+      title = Categories[action.categoryIndex].title;
+    }
+
     return {
-      cards: CardsContent,
+      cards: cardsArray,
       cardIndex: index,
       imageIndex: 0,
       isModule: true,
+      title: title,
     };
   }
 
   if (action.type === "TOGGLE OFF") {
     return {
-      cards: CardsContent,
+      ...state,
+      cards: [],
       cardIndex: 0,
       imageIndex: 0,
       isModule: false,
@@ -67,8 +86,12 @@ export const ModuleProvider = (props) => {
     defaultCardState
   );
 
-  const toggleModuleOn = (e) => {
-    dispatchCardAction({ type: "TOGGLE ON", event: e });
+  const toggleModuleOn = (e, categoryIndex) => {
+    dispatchCardAction({
+      type: "TOGGLE ON",
+      event: e,
+      categoryIndex: categoryIndex,
+    });
   };
 
   const toggleModuleOff = (e) => {
@@ -83,11 +106,11 @@ export const ModuleProvider = (props) => {
     dispatchCardAction({ type: "PREVIOUS CARD" });
   };
 
-  const nextImage = (images) => {
+  const nextImage = () => {
     dispatchCardAction({ type: "NEXT IMAGE" });
   };
 
-  const previousImage = (images) => {
+  const previousImage = () => {
     dispatchCardAction({ type: "PREVIOUS IMAGE" });
   };
 
@@ -107,6 +130,7 @@ export const ModuleProvider = (props) => {
     nextImage: nextImage,
     previousImage: previousImage,
     setImage: setImage,
+    title: cardState.title,
   };
 
   return (

@@ -1,5 +1,6 @@
-import React, { Component } from "react";
+import React from "react";
 import Arrow from "./svgs/Arrow";
+import CardButtons from "./CardButtons";
 import { IKImage, IKContext } from "imagekitio-react";
 
 const Card = (props) => {
@@ -27,24 +28,13 @@ const Card = (props) => {
           <h2>{props.card.title}</h2>
         </div>
         <div className="langs">
-          {props.card.langs.map((lang) => {
-            return <p key={lang[1]}>{lang}</p>;
+          {props.card.langs.map((lang, index) => {
+            return <p key={index}>{lang}</p>;
           })}
         </div>
-        <div className="btns">
-          {props.card.view != undefined && (
-            <a id="left" href={props.card.view} target="_blank">
-              Visit
-            </a>
-          )}
-
+        <CardButtons view={props.card.view} code={props.card.code}>
           <Arrow customClick={props.toggle} />
-          {props.card.view != undefined && (
-            <a id="right" href={props.card.code} target="_blank">
-              Code
-            </a>
-          )}
-        </div>
+        </CardButtons>
       </div>
     </div>
   );

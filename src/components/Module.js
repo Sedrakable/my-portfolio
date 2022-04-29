@@ -1,22 +1,13 @@
-import React, {
-  useRef,
-  useState,
-  useImperativeHandle,
-  useContext,
-  forwardRef,
-} from "react";
+import React, { useContext } from "react";
 import ReactDOM from "react-dom";
 import BigArrow from "./svgs/BigArrow";
 import { ModuleContext } from "../store/context";
 
-const Module = forwardRef((props, ref) => {
+const Module = (props) => {
   const cardCtx = useContext(ModuleContext);
 
   return ReactDOM.createPortal(
-    <div
-      className={`module ${cardCtx.isModule && "module-enter"}`}
-      ref={module}
-    >
+    <div className={`module ${cardCtx.isModule && "module-enter"}`}>
       <BigArrow customClick={cardCtx.previousCard} />
       {props.children}
       <BigArrow customClick={cardCtx.nextCard} />
@@ -29,6 +20,6 @@ const Module = forwardRef((props, ref) => {
     </div>,
     document.getElementById("module-root")
   );
-});
+};
 
 export default Module;

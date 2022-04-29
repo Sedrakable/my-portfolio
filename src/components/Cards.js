@@ -1,10 +1,10 @@
-import React, { useRef, useState, useEffect, useContext } from "react";
+import React, { useContext } from "react";
 import { CardsContent } from "./Database";
 import { ModuleContext } from "../store/context";
 
 import Card from "./Card";
 
-const Cards = ({ cardShow }) => {
+const Cards = () => {
   const cardCtx = useContext(ModuleContext);
   return (
     <div className="cards">
@@ -13,6 +13,7 @@ const Cards = ({ cardShow }) => {
           <Card
             card={card}
             key={index}
+            propKey={index}
             toggle={(e) => {
               cardCtx.toggleModuleOn(e);
             }}
