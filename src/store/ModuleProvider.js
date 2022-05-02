@@ -93,7 +93,7 @@ export const ModuleProvider = (props) => {
     });
   };
 
-  const toggleModuleOff = (e) => {
+  const toggleModuleOff = () => {
     dispatchCardAction({ type: "TOGGLE OFF" });
   };
 

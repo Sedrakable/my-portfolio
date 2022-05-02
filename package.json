@@ -2,7 +2,7 @@
   "name": "my-portfolio",
   "version": "0.1.0",
   "private": true,
-  "homepage": "https://sedrak.xyz",
+  "homepage": "https://sedrak.me",
   "dependencies": {
     "@emailjs/browser": "^3.4.0",
     "@testing-library/jest-dom": "^5.14.1",
