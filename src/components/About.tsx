@@ -4,14 +4,16 @@ const About: React.FC = () => {
   return (
     <div className="wrapper" id="about">
       <h3>
-        Let's catch up. After finishing college with a Computer Science Degree,
-        I worked for a year as a QA tester while doing personal projects.
+        With a strong foundation in design, coding, effective communication, and
+        adept problem-solving abilities, I am well-equipped to contribute to a
+        dynamic team. Over the past year, I have been actively engaged as a
+        Front-end web developer.
       </h3>
       <h3>
-        At this point, I finished the Full-stack Web Dev program at the Le Wagon
-        Bootcamp.
+        Additionally, I have successfully managed two Kickstarter campaigns,
+        where I designed and produced two unique playing card decks, focusing on
+        creativity and attention to detail.
       </h3>
-      <h3>I'm Highly skilled in Design, Communication, and Problem Solving.</h3>
     </div>
   );
 };

@@ -125,6 +125,9 @@ textarea {
   @media (max-width: $mobile) {
     margin: 92px 15%;
   }
+  > * {
+    max-width: 1200px;
+  }
 }
 
 .d-none {

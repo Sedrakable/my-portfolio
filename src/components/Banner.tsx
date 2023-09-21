@@ -6,10 +6,10 @@ const Banner = ({ icons }) => {
     <div className="banner">
       <div className="text">
         <h2>
-          Hello, my name is <span>Sedrak</span> and i'm a
+          Hello, my name is <span>Sedrak</span>
         </h2>
-        <h1>Front End Developer</h1>
-        <h2 className="phrase">Making simple UI with complex designs </h2>
+        <h1>Designing the Future</h1>
+        <h2 className="phrase">One Project at a Time</h2>
         <div className="icons">
           {icons.map((icon, index) => {
             return (

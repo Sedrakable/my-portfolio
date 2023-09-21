@@ -23,7 +23,7 @@ const Card: FC<CardProps> = ({ card, shortDesc, toggle }) => {
 
         {(langs || shortDesc) && (
           <div className="langs">
-            {shortDesc && <h3>{shortDesc}</h3>}
+            {shortDesc && <h2>{shortDesc}</h2>}
             {langs &&
               langs.map((lang, index) => {
                 return <p key={index}>{lang}</p>;

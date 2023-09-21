@@ -8,12 +8,13 @@ import { getImagesFromFolder } from "../../utils/getImagesFromFolder";
 
 interface CardsGridProps {
   cards: CardType[];
+  big?: boolean;
 }
 
-export const CardsGrid: React.FC<CardsGridProps> = ({ cards }) => {
+export const CardsGrid: React.FC<CardsGridProps> = ({ cards, big }) => {
   const [, setModalOpen] = useAtom<ModalProps>(modalData);
   return (
-    <div className="cards">
+    <div className={`cards ${big && "cardsBig"}`}>
       {cards.map((card: CardType, index: number) => {
         const importedImages = getImagesFromFolder(card.folder);
         const modal: ModalProps = {

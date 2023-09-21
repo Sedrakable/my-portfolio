@@ -6,6 +6,30 @@
   width: 100%;
 }
 
+.cardsBig {
+  display: grid;
+  grid-template-columns: 1fr;
+
+  @media (min-width: $laptop) {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .card {
+    max-width: 100%;
+    flex: 1;
+    button {
+      height: 300px;
+    }
+    h1 {
+      color: $white;
+    }
+    .langs {
+      h2 {
+        color: $primary;
+      }
+    }
+  }
+}
+
 .card {
   @include flex;
 
@@ -17,6 +41,7 @@
   width: 100%;
   background: $dark-gray;
   transition: 200ms;
+
   button {
     height: 192px;
     width: 100%;

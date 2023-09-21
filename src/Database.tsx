@@ -423,7 +423,7 @@ export const projectContent: CardType[] = [
   trafficSimulator,
 ];
 
-export const kickContent: CardType[] = [animalGangdom, steampunk];
+export const kickContent: CardType[] = [steampunk, animalGangdom];
 
 export type ArtCardType = CardType & { multiple?: boolean };
 

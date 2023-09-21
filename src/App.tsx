@@ -79,6 +79,7 @@ const App = () => {
     const nextBox = currentBox.parentNode?.children[
       index + 1
     ] as HTMLDivElement;
+
     const nextButton = nextBox.querySelector(
       ".btn-scroll"
     ) as HTMLButtonElement;
@@ -150,7 +151,7 @@ const App = () => {
 
   const tabs = [
     { title: "Intro", component: <Banner icons={Icons} /> },
-    { title: "Kickstarters", component: <CardsGrid cards={kickContent} /> },
+    { title: "Kickstarters", component: <CardsGrid cards={kickContent} big /> },
     { title: "Projects", component: <CardsGrid cards={projectContent} /> },
     { title: "Art", component: <Art /> },
     { title: "About", component: <About /> },
