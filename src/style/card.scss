@@ -3,11 +3,13 @@
   gap: 64px;
   margin: 0 auto;
   flex-wrap: wrap;
-  width: fit-content;
+  width: 100%;
 }
 
 .card {
   @include flex;
+
+  align-self: flex-start;
   flex-direction: column;
   position: relative;
   box-shadow: $shadow;
@@ -15,9 +17,13 @@
   width: 100%;
   background: $dark-gray;
   transition: 200ms;
+  button {
+    height: 192px;
+    width: 100%;
+  }
   img {
     width: 100%;
-    height: 192px;
+    height: 100%;
     object-fit: cover;
     transition: 200ms;
   }
@@ -33,7 +39,7 @@
       border-left: none;
       border-right: none;
       border-top: none;
-      padding: 12px 8px 2px 8px;
+      padding: 8px 8px 2px 8px;
 
       path {
         fill: $black;
@@ -41,14 +47,18 @@
     }
     .langs {
       @include flex(flex-start, flex-start);
-      height: 48px;
+      max-height: 48px;
       flex-wrap: wrap;
       margin: 12px 10px;
+      margin-bottom: 0;
       gap: 2px;
       row-gap: 4px;
       overflow: hidden;
       text-overflow: ellipsis;
       white-space: nowrap;
+      // h3 {
+      //   font-size: 24px;
+      // }
       p {
         @include flex(center, flex-end);
         gap: 2px;
@@ -63,64 +73,6 @@
         &:hover {
           color: $primary;
           transform: scale(1.01);
-        }
-      }
-    }
-    .btns {
-      @include flex;
-      gap: 8px;
-      margin-bottom: 8px;
-      a {
-        @include bcb($black, $primary, $primary);
-        padding: 5px 10px;
-        flex-grow: 2;
-        width: 100%;
-      }
-      #left {
-        text-align: right;
-        background: linear-gradient(90deg, $black 50%, $primary 50%);
-        background-size: 200% 100%;
-        transition: 100ms;
-        border-left: none;
-        &:hover {
-          background: linear-gradient(90deg, $black 49%, $primary 49%);
-          background-size: 200% 100%;
-          background-position: 100% 0%;
-          transition: 200ms;
-          color: $black;
-        }
-      }
-      #right {
-        text-align: left;
-        background: linear-gradient(270deg, $black 50%, $primary 50%);
-        background-size: 200% 100%;
-        background-position: 100% 0%;
-        border-right: none;
-        &:hover {
-          background: linear-gradient(270deg, $black 49%, $primary 49%);
-          background-size: 200% 100%;
-          background-position: 0% 0%;
-          transition: 200ms;
-          color: $black;
-        }
-      }
-      svg {
-        padding: 4px;
-        border: 2px solid $primary;
-        background: linear-gradient($black 50%, $primary 50%);
-        background-size: 100% 200%;
-        transition: 100ms;
-        min-width: 24px;
-        flex-grow: 1;
-        path {
-          fill: $primary;
-        }
-        &:hover {
-          background-position: 0% 100%;
-          transition: 200ms;
-          path {
-            fill: $black;
-          }
         }
       }
     }

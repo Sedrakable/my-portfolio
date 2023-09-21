@@ -15,6 +15,11 @@
 
     a {
       padding: 4px 8px;
+      &:hover {
+        h2 {
+          color: $primary;
+        }
+      }
     }
     .active {
       h2 {
@@ -68,6 +73,11 @@
       padding: 4px 0;
       width: 100%;
       text-align: center;
+      &:hover {
+        h3 {
+          color: $primary;
+        }
+      }
       h3 {
         color: $gray;
       }

@@ -1,0 +1,10 @@
+@import "../../style/mixins.scss";
+
+.backdrop {
+  @include absoluteFill;
+  @include flex;
+  @include blurEffect(2px);
+
+  position: fixed;
+  z-index: 10;
+}

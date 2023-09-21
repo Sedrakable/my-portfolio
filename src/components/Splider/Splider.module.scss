@@ -1,0 +1,61 @@
+@import "../../style/mixins.scss";
+
+.wrapper {
+  @include flexColumn;
+
+  width: 100%;
+  max-width: 100%;
+  min-height: 100%;
+  padding-bottom: 0;
+
+  ul:global(.splide__pagination) {
+    button {
+      &:hover {
+        background: $yellow;
+      }
+      &:global(.is-active) {
+        background: $primary;
+      }
+    }
+  }
+
+  .container {
+    position: relative;
+    padding: 0;
+    min-height: 100%;
+    width: 100%;
+
+    .track {
+      height: 100%;
+      width: 100%;
+      img {
+        object-fit: contain;
+        width: 100%;
+        height: 100%;
+      }
+    }
+    button {
+      &:global(.splide__arrow) {
+        display: none;
+        margin: 0 var(--pad-1);
+        opacity: 0.7;
+        svg {
+          fill: $primary;
+        }
+
+        &:hover {
+          opacity: 1;
+          svg {
+            fill: $yellow;
+          }
+        }
+        @media (min-width: $tablet) {
+          display: flex;
+        }
+      }
+    }
+    svg {
+      fill: $black;
+    }
+  }
+}

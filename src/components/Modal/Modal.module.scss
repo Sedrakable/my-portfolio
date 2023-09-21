@@ -1,0 +1,102 @@
+@import "../../style/mixins.scss";
+
+@mixin vars() {
+  --ratio: 16/9;
+  @media (min-width: $tablet) {
+    --ratio: 16/9;
+  }
+
+  @media (min-width: $laptop) {
+    --ratio: unset;
+  }
+}
+
+.modal {
+  @include vars;
+  @include flexColumn;
+
+  width: clamp(66%, 1100px, 95%);
+  background: var(--dark-gray);
+
+  &:not(.noDetails) {
+    @media (min-width: $laptop) {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      .left {
+        grid-column: span 2;
+      }
+    }
+  }
+  .text {
+    @include flex(flex-start, flex-start);
+
+    background-color: var(--black);
+    border-bottom: 2px solid #ffa300;
+    width: 100%;
+    height: fit-content;
+    padding: var(--pad-1);
+    padding-top: var(--pad-2);
+    box-sizing: border-box;
+    position: relative;
+    .exit {
+      position: absolute;
+      right: var(--pad-3);
+      top: 50%;
+      transform: translateY(-50%);
+      cursor: pointer;
+      path {
+        fill: #ffa300;
+      }
+      // background-color: #ffa300;
+    }
+  }
+  .left {
+    @include flex;
+    width: 100%;
+    height: fit-content;
+    @media (min-width: $laptop) {
+      height: 100%;
+    }
+  }
+  .right {
+    @include flexColumn(center, space-between);
+
+    width: 100%;
+    position: relative;
+    height: 100%;
+
+    .description {
+      @include flexColumn(flex-start, flex-start);
+
+      width: 100%;
+      flex: 1;
+      padding: var(--pad-4);
+      box-sizing: border-box;
+      background-color: var(--white);
+      border-bottom: 2px solid #ffa300;
+      color: #7c7d80;
+      height: 100%;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      hyphens: auto;
+    }
+    .langs {
+      @include langs;
+    }
+    .ctas {
+      @include flexColumn(flex-start);
+
+      width: 100%;
+      gap: var(--pad-3);
+      .buttons {
+        @include flex;
+        gap: var(--pad-3);
+      }
+    }
+    .close {
+      position: absolute;
+      top: 0;
+      right: 0;
+    }
+  }
+}
