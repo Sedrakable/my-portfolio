@@ -1,7 +1,7 @@
 {
   "files": {
-    "main.css": "/static/css/main.5e9fa053.css",
-    "main.js": "/static/js/main.9ad1d327.js",
+    "main.css": "/static/css/main.df3041ca.css",
+    "main.js": "/static/js/main.276cfca8.js",
     "static/js/496.68e4681f.chunk.js": "/static/js/496.68e4681f.chunk.js",
     "static/media/video.mp4": "/static/media/video.5be45ab0ebd4ec6ba04f.mp4",
     "static/media/13.png": "/static/media/13.d61187921ba0c78ed06b.png",
@@ -74,12 +74,12 @@
     "static/media/Concordia_4.jpg": "/static/media/Concordia_4.e69e7e0a3d91533105b1.jpg",
     "index.html": "/index.html",
     "static/media/hex_pattern.svg": "/static/media/hex_pattern.aeb46b291d2b2479f622.svg",
-    "main.5e9fa053.css.map": "/static/css/main.5e9fa053.css.map",
-    "main.9ad1d327.js.map": "/static/js/main.9ad1d327.js.map",
+    "main.df3041ca.css.map": "/static/css/main.df3041ca.css.map",
+    "main.276cfca8.js.map": "/static/js/main.276cfca8.js.map",
     "496.68e4681f.chunk.js.map": "/static/js/496.68e4681f.chunk.js.map"
   },
   "entrypoints": [
-    "static/css/main.5e9fa053.css",
-    "static/js/main.9ad1d327.js"
+    "static/css/main.df3041ca.css",
+    "static/js/main.276cfca8.js"
   ]
 }
